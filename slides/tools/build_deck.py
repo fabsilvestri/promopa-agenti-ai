@@ -448,13 +448,13 @@ bullets("Quadro normativo 1/2", [
     "AI Act, art. 4: alfabetizzazione del personale, obbligatoria dal febbraio 2025. Questa lezione ne fa parte",
     "AI Act, art. 50: trasparenza, in vigore dal 2 agosto 2026, non rinviata. Se un'AI parla con le persone, va detto",
     "Alto rischio (Allegato III): rinviato al dicembre 2027 dall'Omnibus. Lo smistamento amministrativo non rientra",
-], notes="Fonti: Reg. UE 2024/1689; Reg. UE 2026/1744 (AI Omnibus, in vigore dal 27 luglio 2026). Dettagli e punti da verificare in docs/normativa.md. Finché l'invio resta umano, art. 50 non scatta per la risposta.")
+], notes="Fonti: Reg. UE 2024/1689; Reg. UE 2026/1744 (AI Omnibus, pubblicato il 24 luglio 2026, in vigore dal 27). L'omnibus ha riscritto l'art. 4: la data resta il 2 febbraio 2025, ma l'obbligo passa da garantire un livello di competenza ad adottare misure proporzionate. Dettagli e fonti in docs/normativa.md. Finché l'invio resta umano, art. 50 non scatta per la risposta.")
 
 bullets("Quadro normativo 2/2", [
-    "Legge 132/2025: supervisione umana, tracciabilità, responsabilità che resta alla persona",
+    "Legge 132/2025, art. 14: l'AI è di supporto, la responsabilità del provvedimento resta alla persona",
     "Linee guida AgID per l'IA nella PA: analisi, rischi, progettazione, monitoraggio. Il pilota le ricalca",
     "GDPR: base giuridica e responsabile del trattamento vanno scritti prima, non dopo",
-], notes="Non fare l'avvocato. Il messaggio è: il caso è nel perimetro semplice, a condizione che invio e decisioni restino umani e che i due documenti esistano.")
+], notes="Non fare l'avvocato. Art. 14 vincola le PA, non la Fondazione: lo citiamo perché è il metro con cui gli enti clienti guarderanno il servizio. Linee guida AgID approvate in Conferenza Unificata il 10 settembre 2025. Il messaggio è: il caso è nel perimetro semplice, a condizione che invio e decisioni restino umani e che i due documenti esistano.")
 
 bullets("Manutenzione", [
     "La tassonomia invecchia: nuovi corsi, nuovi ruoli. Qualcuno la possiede e l'aggiorna",
@@ -517,10 +517,10 @@ bullets("Tre errori da evitare", [
 ], notes="Chiusura. Sono le tre righe della tesi iniziale, al contrario.")
 
 bullets("Materiali e contatti", [
-    "Repository con codice, dati di esempio, griglia e queste slide: link nel messaggio di oggi",
+    "Codice, dati, griglia e slide: github.com/<da completare>/promopa-agenti-ai",
     "Tutto gira anche senza chiave API (modalità 'mock') per provare la forma dell'output",
     "fabrizio.silvestri@uniroma1.it",
-], notes="Sostituire la prima riga con l'URL GitHub una volta pubblicato.")
+], notes="ATTENZIONE: il repository non è ancora pubblicato. Sostituire <da completare> con l'account GitHub prima della lezione, poi rigenerare il deck. Il comando di push è in HANDOFF.md.")
 
 section("Grazie", "Domande?", notes="")
 

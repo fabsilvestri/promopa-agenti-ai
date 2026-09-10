@@ -12,11 +12,32 @@ altrimenti mock).
 from __future__ import annotations
 
 import os
+from pathlib import Path
 from typing import TypeVar
 
 from pydantic import BaseModel
 
 T = TypeVar("T", bound=BaseModel)
+
+
+def _carica_env() -> None:
+    """Legge un .env alla radice del repository, se c'e'.
+
+    Le variabili gia' presenti nell'ambiente vincono: il file e' un comodo
+    ripiego, non un modo per sovrascrivere quello che l'utente ha esportato.
+    """
+    percorso = Path(__file__).resolve().parents[2] / ".env"
+    if not percorso.exists():
+        return
+    for riga in percorso.read_text(encoding="utf-8").splitlines():
+        riga = riga.strip()
+        if not riga or riga.startswith("#") or "=" not in riga:
+            continue
+        chiave, valore = riga.split("=", 1)
+        os.environ.setdefault(chiave.strip(), valore.strip().strip('"').strip("'"))
+
+
+_carica_env()
 
 MODELLO_DEFAULT = os.environ.get("OPENAI_MODEL", "gpt-5-mini")
 

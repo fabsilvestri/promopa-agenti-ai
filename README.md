@@ -48,7 +48,7 @@ cd src && python -m helpdesk_agent.importa_docx "../data/reali/Richieste a Promo
 
 Lo script separa le richieste sui paragrafi numerati del documento e scrive
 `data/reali/richieste_reali.jsonl` (ignorato da git, come il docx). Il canale
-è una prima ipotesi da parole chiave e il mittente non c'e': vanno controllati
+è una prima ipotesi da parole chiave e il mittente non c'è: vanno controllati
 a mano prima di unire le richieste a `data/richieste.jsonl` e le etichette a
 `data/etichette_oro.jsonl`.
 
