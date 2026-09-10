@@ -193,8 +193,10 @@ print("ok")
 # Coppia di colori per i grafici a due categorie: passa i controlli sul
 # daltonismo (deutan e protan sopra deltaE 15), a differenza di bordeaux
 # contro verde che e' la coppia sbagliata piu' comune nei deck.
-ROSSO = "#A82F44"
-BLU = "#2E6E9E"
+# Coppia validata per i grafici a due categorie. Nome diverso da BLU per non
+# coprirlo: BLU e' il blu dei titoli e dei diagrammi, questo e' il blu dei dati.
+ROSSO_DATI = "#A82F44"
+BLU_DATI = "#2E6E9E"
 VALUTAZIONE = json.loads(Path("demo/output_esempio/valutazione.json").read_text(encoding="utf-8"))
 
 
@@ -293,7 +295,7 @@ voci = [("corso", acc["corso"]), ("tipologia", acc["tipologia"]),
         ("tutti e quattro", VALUTAZIONE["tutti_i_campi_corretti"])]
 voci.sort(key=lambda v: v[1])
 y = range(len(voci))
-ax.barh(list(y), [v * 100 for _, v in voci], height=0.55, color=BLU, zorder=3)
+ax.barh(list(y), [v * 100 for _, v in voci], height=0.55, color=BLU_DATI, zorder=3)
 ax.axvline(80, color=GRIG, lw=1.4, ls="--", zorder=4)
 ax.text(80.8, len(voci) - 0.35, "soglia 80%", fontsize=10, color=GRIG)
 for i, (nome, v) in enumerate(voci):
@@ -320,10 +322,10 @@ storte = [r["confidenza"] for r in per_r if r["campi_sbagliati"]]
 import random
 random.seed(7)
 ax.scatter(giuste, [1 + random.uniform(-0.13, 0.13) for _ in giuste], s=110,
-           color=BLU, alpha=0.85, edgecolor="white", linewidth=1.2, zorder=3,
+           color=BLU_DATI, alpha=0.85, edgecolor="white", linewidth=1.2, zorder=3,
            label=f"tutti i campi corretti ({len(giuste)})")
 ax.scatter(storte, [0 + random.uniform(-0.13, 0.13) for _ in storte], s=110,
-           color=ROSSO, alpha=0.85, edgecolor="white", linewidth=1.2, zorder=3,
+           color=ROSSO_DATI, alpha=0.85, edgecolor="white", linewidth=1.2, zorder=3,
            marker="X", label=f"almeno un campo sbagliato ({len(storte)})")
 ax.axvline(0.7, color=NERO, lw=1.8, zorder=4)
 ax.text(0.697, 1.42, "soglia 0,7: sotto qui\nla richiesta va a un umano",
@@ -345,7 +347,7 @@ fig, ax = plt.subplots(figsize=(9, 3.2), dpi=200)
 errori = VALUTAZIONE["errori"]
 ordine = ["urgenza", "tipologia", "operatore", "corso"]
 conteggi = [len(errori.get(c, [])) for c in ordine]
-ax.bar(ordine, conteggi, width=0.5, color=BLU, zorder=3)
+ax.bar(ordine, conteggi, width=0.5, color=BLU_DATI, zorder=3)
 for i, c in enumerate(conteggi):
     ax.text(i, c + 0.25, str(c), ha="center", fontsize=13, color=NERO, fontweight="bold")
 ax.set_ylim(0, max(conteggi) + 2)

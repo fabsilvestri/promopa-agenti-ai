@@ -399,11 +399,6 @@ FOTO: dict[str, str] = {
         "perfettamente perpendicolare, superficie vuota e uniforme, nessuna "
         "scritta, riflesso morbido di una finestra sul lato sinistro."
     ),
-    "sch_calendario": (
-        "Quattro strisce di nastro adesivo di carta beige, di lunghezze "
-        "diverse, attaccate orizzontalmente e sfalsate su una lavagna bianca "
-        "pulita, vista frontale, nessuna scritta."
-    ),
 }
 
 

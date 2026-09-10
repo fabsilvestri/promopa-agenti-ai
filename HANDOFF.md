@@ -1,6 +1,6 @@
 # Handoff per Claude Code
 
-Stato al 10 settembre 2026, sera. La lezione è il 15 settembre.
+Stato all'11 settembre 2026. La lezione è il 15 settembre.
 
 ## Fatto in questa sessione
 
@@ -33,11 +33,26 @@ I sei punti dell'handoff precedente sono chiusi.
 
 ## Poi, su richiesta
 
-Il deck è passato da 41 a 97 slide con 62 immagini: 18 diagrammi e 44
-fotografie generate con gpt-image-1, dodici delle quali servono a far
-sorridere. Contenuto aggiunto, non riempitivo: il glossario per leggere
-un'offerta, i canali e gli stati, cosa hanno insegnato i dodici esempi reali,
-il quadro normativo in quattro slide, i quattro passi del pilota uno per slide.
+Il deck è passato da 41 a 97 slide con 86 immagini: 78 fotografie generate con
+gpt-image-1 e 8 fra tabelle e grafici fatti con matplotlib. Contenuto aggiunto,
+non riempitivo: il glossario per leggere un'offerta, i canali e gli stati, cosa
+hanno insegnato i dodici esempi reali, i quattro passi del pilota uno per slide.
+
+Poi una seconda passata sullo stile:
+
+- Titoli in blu notte invece del bordeaux del template. Il filetto del footer e
+  il logo Sapienza restano bordeaux e fanno da accento.
+- Corpo dei bullet più grande su tutti i layout.
+- Nessuna slide è più di soli bullet: le ventiquattro che sembravano vuote
+  hanno una fotografia scelta sul contenuto.
+- I diagrammi a riquadri sono diventati fotografie con le etichette vere
+  sopra. Il modello non sa scrivere testo leggibile, quindi la disposizione la
+  dà la foto e le parole le mette PowerPoint. Le targhette dei passi con un
+  modello dentro si accendono in blu pieno.
+- Tabelle e grafici restano matplotlib, ristilizzati: intestazione blu piena,
+  niente righe verticali, righe alternate.
+- Dissolvenza fra le slide, più lenta sui cambi di blocco. Comparsa
+  progressiva dei bullet su sedici slide, quelle dove ogni riga è un passo.
 
 Il materiale non presuppone più un DPO, che la Fondazione non ha, e non lo
 dichiara neppure come mancanza: la slide chiede chi risponde delle decisioni sui
@@ -106,8 +121,18 @@ python slides/tools/build_deck.py  # deck
 python -m pytest -q
 ```
 
-Le fotografie non si rigenerano a ogni build: sono versionate. Per rifarle
-serve `OPENAI_API_KEY` e `python slides/tools/foto.py --tutte`.
+Le fotografie non si rigenerano a ogni build: sono versionate. Per rifarne una
+serve `OPENAI_API_KEY` e `python slides/tools/foto.py --solo <nome>`; per
+rifarle tutte, `--tutte`.
+
+Se PowerPoint dovesse lamentarsi delle animazioni, in fondo a
+`slides/tools/build_deck.py` si tolgono le due righe che chiamano
+`_costruzione` e `_transizione`: il deck resta identico, senza effetti.
+
+Le etichette sopra le fotografie degli schemi hanno coordinate da 0 a 1 dentro
+il riquadro della foto. Se una foto viene rigenerata, gli oggetti si spostano e
+le etichette vanno rimisurate: si rende il PDF, si ritaglia la fascia e ci si
+mette sopra una griglia.
 
 Push, da eseguire dopo aver creato il repository su GitHub:
 
