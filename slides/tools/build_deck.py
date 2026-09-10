@@ -304,9 +304,11 @@ def _foto_riquadro(slide, percorso, x, y, w, h, sx=(0.0, 1.0)):
     return pic
 
 
-def _posa_etichette(slide, x0, y0, w, h, etichette, frecce, size):
+def _posa_etichette(slide, x0, y0, w, h, etichette, frecce, size, frecce_chiare=False):
+    colore = BIANCO if frecce_chiare else BLU
     for x1, y1, x2, y2 in frecce:
-        _freccia(slide, x0 + x1 * w, y0 + y1 * h, x0 + x2 * w, y0 + y2 * h)
+        _freccia(slide, x0 + x1 * w, y0 + y1 * h, x0 + x2 * w, y0 + y2 * h,
+                 colore=colore, spessore=2.5 if frecce_chiare else 2.0)
     for testo, rx, ry in etichette:
         attiva = testo.startswith("*")
         _etichetta(slide, x0 + rx * w, y0 + ry * h, testo.lstrip("*"), size=size,
@@ -333,7 +335,7 @@ def _barra(slide, x, y, w, h, testo, fondo=BLU, colore=BIANCO, size=12, opacita=
 
 
 def schema_foto(title, foto, etichette, notes="", caption="", frecce=(), barre=(), sx=(0.0, 1.0),
-                alto=1160000, basso=3980000, larghezza=8784000, size=13):
+                alto=1160000, basso=3980000, larghezza=8784000, size=13, frecce_chiare=False):
     """Schema costruito su una fotografia, a tutta pagina.
 
     La foto da' la disposizione, le etichette e le frecce sono oggetti veri
@@ -348,7 +350,7 @@ def schema_foto(title, foto, etichette, notes="", caption="", frecce=(), barre=(
     for bx1, bx2, by, bh, testo in barre:
         _barra(s, x0 + bx1 * larghezza, alto + by * h,
                (bx2 - bx1) * larghezza, bh * h, testo, size=size)
-    _posa_etichette(s, x0, alto, larghezza, h, etichette, frecce, size)
+    _posa_etichette(s, x0, alto, larghezza, h, etichette, frecce, size, frecce_chiare)
     if caption:
         _textbox(s, 180000, basso + 90000, 8784000, 300000, caption, size=12, color=GRIG, italic=True)
     _notes(s, notes)
@@ -356,7 +358,7 @@ def schema_foto(title, foto, etichette, notes="", caption="", frecce=(), barre=(
 
 
 def schema_bullets(title, foto, etichette, items, notes="", frecce=(), sx=(0.0, 1.0),
-                   alto=1150000, basso=3200000, size=12, corpo=18):
+                   alto=1150000, basso=3200000, size=12, corpo=18, frecce_chiare=False):
     """Fascia panoramica con etichette in alto, bullet sotto."""
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
@@ -367,7 +369,7 @@ def schema_bullets(title, foto, etichette, items, notes="", frecce=(), sx=(0.0, 
     basso = min(basso, BASSO_UTILE - alto_testo - 160000)
     h = basso - alto
     _foto_riquadro(s, foto, x0, alto, w, h, sx=sx)
-    _posa_etichette(s, x0, alto, w, h, etichette, frecce, size)
+    _posa_etichette(s, x0, alto, w, h, etichette, frecce, size, frecce_chiare)
     tb = s.shapes.add_textbox(Emu(180000), Emu(basso + 160000), Emu(w), Emu(1000000))
     tb.text_frame.margin_left = Emu(0)
     _bullets(tb.text_frame, items, size=corpo, space=8)
@@ -376,7 +378,7 @@ def schema_bullets(title, foto, etichette, items, notes="", frecce=(), sx=(0.0, 
 
 
 def bullets_schema(title, items, foto, etichette, notes="", frecce=(), sx=(0.0, 1.0),
-                   size=17, foto_frac=0.44, size_etichette=11):
+                   size=17, foto_frac=0.44, size_etichette=11, frecce_chiare=False):
     """Bullet a sinistra, fotografia con etichette a destra.
 
     Per gli schemi che non stanno in una fascia: quelli con un centro e dei
@@ -392,7 +394,7 @@ def bullets_schema(title, items, foto, etichette, notes="", frecce=(), sx=(0.0, 
     fw = 8964000 - fx
     fh = int(fw / 1.28)
     _foto_riquadro(s, foto, fx, 1200000, fw, fh, sx=sx)
-    _posa_etichette(s, fx, 1200000, fw, fh, etichette, frecce, size_etichette)
+    _posa_etichette(s, fx, 1200000, fw, fh, etichette, frecce, size_etichette, frecce_chiare)
     _notes(s, notes)
     return s
 
@@ -670,7 +672,10 @@ schema_bullets("La scaletta di oggi", FOTO + "sch_scaletta.jpg", [
     "Prima il vocabolario, poi il vostro caso, poi i limiti",
     "L'ultima mezz'ora è vostra: si lavora in gruppi su un processo della Fondazione",
     "Molte slide sono immagini: interrompete quando volete, le domande valgono di più",
-], sx=(0.02, 0.81), size=11,
+], sx=(0.02, 0.81), size=11, frecce_chiare=True,
+    frecce=[(0.200, 0.60, 0.240, 0.60), (0.360, 0.60, 0.412, 0.60),
+            (0.525, 0.60, 0.578, 0.60), (0.685, 0.60, 0.738, 0.60),
+            (0.842, 0.60, 0.876, 0.60)],
     notes="Dichiarare il patto: si può interrompere. Le slide sono tante ma molte durano dieci secondi.")
 
 schema_bullets("Chatbot, workflow, agente", FOTO + "sch_tre_tipi.jpg", [
@@ -679,8 +684,9 @@ schema_bullets("Chatbot, workflow, agente", FOTO + "sch_tre_tipi.jpg", [
     "Un chatbot risponde. Non agisce",
     "Un workflow segue passi decisi da noi; l'AI sta dentro alcuni passi",
     "Un agente decide da solo i passi. Serve raramente, costa controllo",
-], sx=(0.03, 0.78), size=14,
-    notes="Tesi provocatoria ma vera: la maggior parte dei 'processi ripetitivi' vuole un workflow con AI dentro, non un agente autonomo. L'autonomia si compra con la prevedibilità.")
+], sx=(0.03, 0.78), size=14, frecce_chiare=True,
+    frecce=[(0.30, 0.52, 0.49, 0.52), (0.61, 0.52, 0.79, 0.52)],
+    notes="Le due frecce dicono la cosa che conta: da sinistra a destra cresce l'autonomia e cala il controllo. Tesi provocatoria ma vera: la maggior parte dei 'processi ripetitivi' vuole un workflow con AI dentro, non un agente autonomo. L'autonomia si compra con la prevedibilità.")
 
 foto_piena("L'agente autonomo che vi immaginate", FOTO + "gag_robot.jpg",
            caption="Autonomo davvero: decide da solo, e non arriva alla tastiera.",
@@ -711,8 +717,9 @@ bullets_schema("I cinque pezzi 1/2", [
 ], FOTO + "sch_anatomia.jpg", [
     ("Modello", 0.50, 0.47), ("Strumenti", 0.16, 0.19), ("Memoria", 0.84, 0.19),
     ("Ciclo", 0.16, 0.73), ("Controllo", 0.84, 0.73),
-], sx=(0.05, 0.95), size_etichette=10,
-    notes="Il modello è la parte più famosa e la meno importante dal punto di vista del processo: cambia ogni sei mesi. Tassonomia e strumenti restano.")
+], sx=(0.05, 0.95), size_etichette=10, frecce=[(0.27, 0.27, 0.40, 0.39), (0.73, 0.27, 0.60, 0.39),
+            (0.27, 0.65, 0.40, 0.55), (0.73, 0.65, 0.60, 0.55)], frecce_chiare=True,
+    notes="Le quattro frecce puntano tutte al centro: strumenti, memoria, ciclo e controllo servono il modello, non il contrario. Il modello è la parte più famosa e la meno importante dal punto di vista del processo: cambia ogni sei mesi. Tassonomia e strumenti restano.")
 
 bullets_schema("I cinque pezzi 2/2", [
     "Ciclo di azione: leggi, decidi, agisci, verifica. Poi ricomincia",
@@ -721,7 +728,8 @@ bullets_schema("I cinque pezzi 2/2", [
 ], FOTO + "sch_anatomia.jpg", [
     ("Modello", 0.50, 0.47), ("Strumenti", 0.16, 0.19), ("Memoria", 0.84, 0.19),
     ("Ciclo", 0.16, 0.73), ("Controllo", 0.84, 0.73),
-], sx=(0.05, 0.95), size_etichette=10,
+], sx=(0.05, 0.95), size_etichette=10, frecce=[(0.27, 0.27, 0.40, 0.39), (0.73, 0.27, 0.60, 0.39),
+            (0.27, 0.65, 0.40, 0.55), (0.73, 0.65, 0.60, 0.55)], frecce_chiare=True,
     notes="Il punto di controllo è progettato, non aggiunto dopo. Se il fornitore non sa dirvi dove sta, la risposta è 'da nessuna parte'.")
 
 bullets_foto("Il modello: cosa sa e cosa non sa", [
@@ -752,8 +760,10 @@ bullets_schema("Il ciclo di azione", [
 ], FOTO + "sch_ciclo.jpg", [
     ("Leggi", 0.58, 0.19), ("Decidi", 0.85, 0.47),
     ("Agisci", 0.58, 0.74), ("Verifica", 0.28, 0.47),
-], sx=(0.13, 0.98), size_etichette=10,
-    notes="Nel nostro caso la verifica è doppia: la soglia di confidenza automatica, e l'operatore che rilegge la bozza prima di inviare.")
+], sx=(0.13, 0.98), size_etichette=10, frecce_chiare=True,
+    frecce=[(0.70, 0.26, 0.80, 0.38), (0.82, 0.58, 0.70, 0.68),
+            (0.46, 0.68, 0.35, 0.58), (0.33, 0.36, 0.45, 0.26)],
+    notes="Le frecce chiudono il cerchio: e' quello il punto. Nel nostro caso la verifica è doppia: la soglia di confidenza automatica, e l'operatore che rilegge la bozza prima di inviare.")
 
 bullets_foto("Il punto di controllo umano", [
     "Si progetta prima, non si aggiunge dopo che qualcosa è andato storto",
@@ -768,7 +778,8 @@ bullets_schema("Pattern utili 1/2", [
     "Sono i due pattern che coprono il vostro caso quasi per intero",
 ], FOTO + "sch_pattern.jpg", [
     ("Routing", 0.44, 0.28), ("Estrazione", 0.42, 0.70),
-], sx=(0.05, 0.95), size_etichette=11,
+], sx=(0.05, 0.95), size_etichette=11, frecce_chiare=False,
+    frecce=[(0.12, 0.30, 0.30, 0.30), (0.12, 0.72, 0.28, 0.72)],
     notes="Anthropic e OpenAI usano nomi diversi per gli stessi pattern; l'idea è la stessa: dare al modello un compito piccolo e un formato di uscita rigido. In alto il ventaglio: una richiesta, quattro destinatari possibili. In basso le due file diritte: testo che entra, campi che escono.")
 
 bullets_foto("Pattern utili 2/2", [
@@ -993,7 +1004,9 @@ schema_foto("L'architettura, tutta insieme", FOTO + "sch_pipeline.jpg", [
     ("Fonti", 0.07, 0.38), ("Repository", 0.21, 0.38), ("*Estrazione", 0.36, 0.38),
     ("*Classifica", 0.51, 0.38), ("Coda", 0.64, 0.38), ("*Bozza", 0.78, 0.38),
     ("Invio", 0.93, 0.38),
-], sx=(0.07, 0.79), size=11,
+    ("Sotto soglia:\nva a un umano", 0.51, 0.92),
+], sx=(0.07, 0.79), size=11, frecce_chiare=True,
+    frecce=[(0.05, 0.66, 0.96, 0.66), (0.51, 0.70, 0.51, 0.82)],
     caption="I tre passi accesi sono quelli con un modello dentro. Gli altri quattro sono idraulica.",
     notes="Contare i passi con AI: tre su sette. Il resto è idraulica. È il messaggio centrale della lezione. Le targhette accese in blu pieno sono i passi con il modello.")
 
@@ -1188,6 +1201,7 @@ schema_bullets("Passo 1: audit del flusso attuale", FOTO + "sch_passi.jpg", [
     "Cronometrare il tempo dalla ricezione alla prima risposta, per tipologia",
     "Costo: un foglio e la costanza di compilarlo. Nessuna tecnologia",
 ], sx=(0.05, 0.86), size=12,
+    frecce=[(0.20, 0.50, 0.29, 0.50), (0.45, 0.50, 0.55, 0.50), (0.70, 0.50, 0.79, 0.50)],
     notes="Una o due settimane. Il lavoro e' della segreteria, non di un consulente. Senza questi numeri, dopo non saprete dire se e' migliorato.")
 
 schema_bullets("Passo 2: tassonomia e dati etichettati", FOTO + "sch_passi.jpg", [
@@ -1200,6 +1214,7 @@ schema_bullets("Passo 2: tassonomia e dati etichettati", FOTO + "sch_passi.jpg",
     "Etichettare a mano 100-200 richieste storiche, due persone in parallelo",
     "Dove le due persone non concordano, si riscrive la voce. È il lavoro vero",
 ], sx=(0.05, 0.86), size=12,
+    frecce=[(0.20, 0.50, 0.29, 0.50), (0.45, 0.50, 0.55, 0.50), (0.70, 0.50, 0.79, 0.50)],
     notes="Due settimane. E' il passo che tutti vogliono saltare ed e' quello che decide se il resto funziona. Oggi ne abbiamo etichettate 40 e gia' si vede dove la tassonomia scricchiola.")
 
 schema_bullets("Passo 3: prototipo a basso codice", FOTO + "sch_passi.jpg", [
@@ -1212,6 +1227,7 @@ schema_bullets("Passo 3: prototipo a basso codice", FOTO + "sch_passi.jpg", [
     "Un GPT personalizzato basta per cominciare: il codice serve quando volete misurare",
     "L'invio resta umano per tutto il pilota, senza eccezioni",
 ], sx=(0.05, 0.86), size=12,
+    frecce=[(0.20, 0.50, 0.29, 0.50), (0.45, 0.50, 0.55, 0.50), (0.70, 0.50, 0.79, 0.50)],
     notes="Due-quattro settimane. Chi lo fa: qualcuno in Fondazione che sappia gia' usare lo strumento scelto. Se non c'e', il pilota va rimandato o va comprata la competenza.")
 
 schema_bullets("Passo 4: misurare un mese, poi decidere", FOTO + "sch_passi.jpg", [
@@ -1224,6 +1240,7 @@ schema_bullets("Passo 4: misurare un mese, poi decidere", FOTO + "sch_passi.jpg"
     "Tre esiti possibili: estendere, correggere, fermare. Tutti e tre legittimi",
     "La decisione la prende la direzione, con i numeri davanti",
 ], sx=(0.05, 0.86), size=12,
+    frecce=[(0.20, 0.50, 0.29, 0.50), (0.45, 0.50, 0.55, 0.50), (0.70, 0.50, 0.79, 0.50)],
     notes="Un mese. La cosa piu' importante e' aver deciso le soglie prima, altrimenti si guarda il risultato e si decide che va bene comunque.")
 
 image_full("Chi fa cosa", FIG + "ruoli.png",
