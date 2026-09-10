@@ -368,3 +368,286 @@ Poi aprire `demo/output_esempio/coda_per_operatore.md` e
 58 e 60 mostrano già quegli stessi numeri, quindi il discorso regge intero.
 
 ---
+
+# Blocco 1. Riaggancio e tesi (0:00 - 0:10)
+
+## Slide 1. Agenti AI per i processi interni
+
+**Fare:** condividere lo schermo con la slide già aperta. Aspettare che il
+contatore dei collegati si fermi.
+
+**Dire:** "Buongiorno. Sono Fabrizio Silvestri, insegno alla Sapienza, e ci
+siamo già visti a giugno. Oggi due ore su una cosa diversa: non più l'AI come
+strumento personale, ma l'AI dentro un vostro processo."
+
+**Dire, subito dopo:** "Una cosa in dieci secondi, prima di cominciare. Tutte
+le fotografie di queste slide sono generate con l'intelligenza artificiale.
+Non c'è nessun obbligo che mi imponga di dirvelo. Ve lo dico perché è buona
+educazione, ed è l'esempio più corto che ho di cosa vuol dire dichiararlo."
+
+**Note.**
+- Non aggiungere altro sulle fotografie: se qualcuno chiede, si riprende nel blocco 4.
+- Se qualcuno arriva tardi, non ricominciare.
+
+## Slide 2. Sezione 1
+
+**Dire:** "Primo blocco, dieci minuti. Riprendiamo il filo da giugno e vi dico
+qual è la tesi della giornata, così sapete dove andiamo a parare."
+
+## Slide 3. Da giugno a oggi
+
+**Dire:** "A giugno abbiamo visto ChatGPT come un collega: gli scrivete, vi
+risponde, gli date dei documenti. Oggi cambiamo scala. Non più una persona che
+usa uno strumento, ma un processo che ne contiene uno."
+
+**Dire, sul terzo bullet:** "Il caso di studio non me lo sono inventato: è il
+vostro helpdesk formazione, con i vostri numeri e, da metà mattina, con dodici
+richieste vere che mi avete mandato."
+
+**Fare:** chiedere in chat. "Prima domanda, una parola a testa in chat: da
+giugno, chi ha provato a creare un Progetto o un GPT personalizzato?"
+
+**Note.**
+- Due minuti, non di più. Da remoto conviene la chat al giro di tavolo.
+- ChatGPT Business è già in uso in Fondazione: tutto quello che vediamo oggi si può provare lì senza comprare niente.
+
+## Slide 4. Che cosa sapete già fare
+
+**Dire:** "Do per acquisite tre cose. Se una di queste vi manca, mettetevi in
+coppia con qualcuno che ce l'ha, perché oggi partiamo da qui."
+
+**Dire, sul terzo bullet:** "La terza è la più importante e la meno praticata:
+accorgersi quando il modello sta inventando. Torna alla fine, quando parliamo
+di allucinazioni."
+
+## Slide 5. La scaletta di oggi
+
+**Dire:** "Sei blocchi, due ore. Il primo terzo è vocabolario, il secondo è il
+vostro caso, il terzo è cosa non funziona e cosa fare lunedì."
+
+**Dire, indicando il blocco 6:** "L'ultima mezz'ora è vostra. Non farò lezione:
+lavorate voi su un processo della Fondazione."
+
+**Dire:** "Ultima cosa sul metodo. Le slide sono cento, ma molte durano dieci
+secondi perché sono immagini. Interrompete quando volete: da remoto è più
+difficile, quindi scrivete in chat anche solo un punto interrogativo e mi
+fermo."
+
+## Slide 6. Chatbot, workflow, agente
+
+**Dire:** "Tre parole che nelle offerte vengono usate come sinonimi e non lo
+sono. Da sinistra a destra cresce l'autonomia e cala il controllo."
+
+**Dire:** "Un chatbot risponde e finisce lì. Un workflow è una sequenza di
+passi che decidete voi, e l'AI sta dentro uno o due di quei passi. Un agente
+decide da solo quali passi fare e quando fermarsi."
+
+**Dire, con calma:** "Quasi tutto quello che vi verrà proposto come agente è,
+o dovrebbe essere, un workflow. Non è una critica ai fornitori: è che
+l'autonomia si paga in prevedibilità, e voi la prevedibilità la volete."
+
+## Slide 7. L'agente autonomo che vi immaginate
+
+**Dire:** "Questo è l'agente autonomo." Pausa di due secondi. "Decide da solo,
+e non arriva alla tastiera."
+
+**Note.**
+- Slide per ridere. Dieci secondi, non spiegarla.
+- Il punto serio: quando un fornitore dice agente autonomo, chiedere cosa sa fare da solo davvero.
+
+## Slide 8. I tre tipi, con un esempio ciascuno
+
+**Dire:** "Un esempio per ciascuno, presi da casa vostra."
+
+**[clic]** "Chatbot: chiedete a ChatGPT come si scrive una convocazione. Vi
+risponde. Fine."
+
+**[clic]** "Workflow: arriva una richiesta, il modello la classifica, una
+regola la manda all'ufficio giusto, una persona rilegge e invia. Quattro passi,
+di cui uno solo con AI dentro. È quello che costruiamo oggi."
+
+**[clic]** "Agente: gli dite sistema l'helpdesk e decide lui i passi. Non è
+fantascienza, si può fare. Oggi non lo vogliamo, e alla fine capirete perché."
+
+## Slide 9. La tesi in tre righe
+
+**Dire:** "Se oggi vi addormentate, svegliatevi qui. Tre righe."
+
+**[clic]** "Prima si scompone il processo, poi si decide cosa automatizzare.
+Non il contrario."
+
+**[clic]** "Dove serve giudizio o dove c'è una responsabilità, resta una
+persona. Non per prudenza: per progetto."
+
+**[clic]** "Si misura prima di automatizzare, e si rimisura dopo. Altrimenti
+funziona bene è un'opinione."
+
+**Dire:** "Queste tre righe tornano alla fine, girate al contrario, come i tre
+errori da evitare."
+
+---
+
+# Blocco 2. Anatomia di un sistema agentico (0:10 - 0:30)
+
+## Slide 10. Sezione 2
+
+**Dire:** "Venti minuti di vocabolario. Non per farvi diventare tecnici: per
+farvi capire quando qualcuno vi sta vendendo un agente e a voi serve una
+regola."
+
+## Slide 11. I cinque pezzi 1/2
+
+**Dire:** "Qualunque sistema di questo tipo ha cinque pezzi. Al centro c'è il
+modello, e le quattro frecce puntano tutte verso di lui: gli altri quattro
+pezzi servono il modello, non il contrario."
+
+**Dire:** "Modello: legge testo e produce testo, o meglio produce dati.
+Strumenti: la casella, Zoom, Moodle. Memoria: la tassonomia e le regole, cioè
+un file che scrivete voi."
+
+## Slide 12. I cinque pezzi 2/2
+
+**Dire:** "Gli altri due. Il ciclo di azione: leggi, decidi, agisci, verifica.
+E il punto di controllo umano."
+
+**Dire, scandendo:** "Un sistema senza punto di controllo non è coraggioso, è
+incompleto. Se in un'offerta non riuscite a trovarlo, non c'è."
+
+## Slide 13. Il modello: cosa sa e cosa non sa
+
+**Dire:** "Il modello sa la lingua e sa che forma ha una determina. Non sa i
+vostri corsi, non sa chi è la vostra segreteria didattica, non sa che il corso
+del 18 settembre è pieno."
+
+**Dire:** "E qui c'è la cosa che sorprende tutti: non se lo ricorda. Ogni volta
+che gli parlate, glielo dovete ridire. Sembra un difetto, in realtà è la
+ragione per cui il sistema resta vostro: quello che sa, glielo date voi, in un
+file che potete cambiare."
+
+## Slide 14. Gli strumenti: il modello non possiede niente
+
+**Dire:** "Il modello non ha una casella di posta. Legge la vostra se qualcuno
+gliela collega, e smette di leggerla nel minuto in cui gli togliete il
+permesso."
+
+**Fare:** chiedere in chat. "Domanda: quali permessi dareste, e quali no?"
+
+**Dire, dopo le risposte:** "La risposta che arriva quasi sempre è: leggere sì,
+scrivere forse, inviare mai. È esattamente il disegno che vi propongo."
+
+## Slide 15. La memoria: la tassonomia siete voi
+
+**Dire:** "Quando si parla di memoria si pensa al fatto che si ricordi la
+conversazione. Non è quella che conta. La memoria che conta è un file, scritto
+da voi, con dentro le vostre categorie e le vostre regole."
+
+**Dire:** "Cambiare un corso vuol dire cambiare una riga di quel file. Non
+riscrivere il sistema, non richiamare il fornitore, non aprire un ticket."
+
+## Slide 16. Il ciclo di azione
+
+**Dire:** "Quattro passi in cerchio: leggi, decidi, agisci, verifica. Poi da
+capo."
+
+**Dire:** "Il quarto è quello che sparisce dalle offerte. Se togliete verifica,
+non avete più un ciclo: avete una freccia dritta che va da qualche parte e non
+torna."
+
+## Slide 17. Il punto di controllo umano
+
+**Dire:** "Tre forme: una soglia di confidenza, una coda da verificare, l'invio
+manuale. Si progettano prima, non si aggiungono dopo che è successo qualcosa."
+
+**Dire:** "Segnatevi il terzo bullet, perché è una promessa che mantengo fra
+mezz'ora: la soglia di confidenza, da sola, non basta. Ve lo dimostro con i
+numeri di questo repository."
+
+## Slide 18. Pattern utili 1/2
+
+**Dire:** "Due schemi ricorrenti, e sono quelli che coprono il vostro caso
+quasi per intero."
+
+**Dire:** "Routing: entra una richiesta, esce un destinatario. Se il sistema
+non è sicuro, invece del destinatario esce una coda umana."
+
+**Dire:** "Estrazione strutturata: entra testo libero, escono campi fissi. Chi,
+cosa, quando."
+
+## Slide 19. Pattern utili 2/2
+
+**Dire:** "Altri due, che vi servono solo per riconoscerli in un'offerta.
+Orchestratore e worker: un modello spezza un compito lungo e altri lo
+eseguono. Valutatore: un secondo passaggio che controlla il primo."
+
+**Dire, rallentando:** "La regola d'oro è la riga in fondo. Compito piccolo,
+formato di uscita rigido, una persona dove costa sbagliare. Se un'offerta
+rispetta queste tre cose, potete anche non capire come è fatta dentro."
+
+## Slide 20. Parole da riconoscere in un'offerta 1/3
+
+**Dire:** "Tre slide di glossario. Non per sapere cosa vuol dire: per sapere
+quando qualcuno le sta usando a sproposito."
+
+**Dire:** "RAG: il modello cerca nei vostri documenti prima di rispondere.
+Utile, non magico, e non risolve il problema di documenti scritti male."
+
+**Dire:** "Fine tuning: si riaddestra il modello sui vostri dati. Caro, lento,
+e per trecento richieste al mese quasi certamente inutile. Se ve lo propongono
+per questo caso, è un campanello."
+
+## Slide 21. Parole da riconoscere in un'offerta 2/3
+
+**Dire:** "Output strutturato: il modello restituisce campi fissi invece di
+prosa. Chiedetelo sempre, perché è la differenza fra una cosa misurabile e un
+tema di italiano."
+
+**Dire:** "Guardrail: controlli che bloccano le uscite fuori regola. Fateveli
+mostrare sullo schermo, non descrivere a parole."
+
+**Dire:** "Human in the loop. Se un fornitore ve la dice senza aggiungere in
+quale passo, è una formula vuota. Chiedete: in quale schermata, e cosa vede
+quella persona."
+
+## Slide 22. Parole da riconoscere in un'offerta 3/3
+
+**Dire:** "Allucinazione: il modello inventa con sicurezza. Non si elimina, si
+contiene. Chi vi dice che il suo sistema non allucina o non sa di cosa parla o
+spera che non ve ne accorgiate."
+
+**Dire:** "Token: è l'unità con cui si paga, e nessuno sa stimarli a occhio.
+La domanda giusta non è quanto costa un token, è quanto costano mille
+richieste come le nostre."
+
+## Slide 23. Quando NON usare un agente
+
+**Dire:** "Tre casi in cui la risposta è no, e ve li dico io che sono venuto a
+parlarvi di AI."
+
+**[clic]** "Se la regola si scrive in un se allora, è una regola. Assegna
+all'amministrazione tutto quello che contiene la parola fattura: quella è una
+riga di codice, non serve un modello."
+
+**[clic]** "Se un errore costa più del tempo che risparmiate, serve una
+persona."
+
+**[clic]** "Se non avete dati per misurarlo, non saprete mai se funziona.
+Prima i dati."
+
+## Slide 24. Tre domande da fare a un fornitore
+
+**Dire:** "Chiudo il blocco con tre domande. Si fanno in due minuti e separano
+un fornitore serio da un venditore."
+
+**[clic]** "Su quali dati avete misurato l'accuratezza, e posso vedere il
+campione? Se la risposta è un numero senza campione, il numero non vale."
+
+**[clic]** "In quale passo esatto interviene una persona, e cosa vede sullo
+schermo?"
+
+**[clic]** "Se cambio la tassonomia, cosa devo toccare, quanto costa e chi lo
+fa? Se la risposta è apriamo un ticket, avete comprato un vestito che non
+potete più modificare."
+
+**Fare:** incollare le tre domande in chat, così le hanno scritte.
+
+---
