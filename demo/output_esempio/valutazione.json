@@ -1,0 +1,417 @@
+{
+  "modello": "gpt-5-mini",
+  "data": "2026-09-10",
+  "richieste_valutate": 40,
+  "accuratezza": {
+    "corso": 1.0,
+    "tipologia": 0.85,
+    "urgenza": 0.725,
+    "operatore": 0.85
+  },
+  "tutti_i_campi_corretti": 0.6,
+  "quota_assegnazione_automatica": 1.0,
+  "errori": {
+    "urgenza": [
+      [
+        "R002",
+        "media",
+        "alta"
+      ],
+      [
+        "R013",
+        "media",
+        "bassa"
+      ],
+      [
+        "R014",
+        "media",
+        "bassa"
+      ],
+      [
+        "R018",
+        "media",
+        "alta"
+      ],
+      [
+        "RE02",
+        "alta",
+        "bassa"
+      ],
+      [
+        "RE06",
+        "media",
+        "bassa"
+      ],
+      [
+        "RE08",
+        "media",
+        "bassa"
+      ],
+      [
+        "RE10",
+        "alta",
+        "media"
+      ],
+      [
+        "Z-1011",
+        "bassa",
+        "alta"
+      ],
+      [
+        "Q03",
+        "media",
+        "bassa"
+      ],
+      [
+        "Q08",
+        "media",
+        "bassa"
+      ]
+    ],
+    "tipologia": [
+      [
+        "R015",
+        "altro",
+        "informazioni"
+      ],
+      [
+        "R017",
+        "accesso-piattaforma",
+        "contenuti"
+      ],
+      [
+        "RE01",
+        "accesso-piattaforma",
+        "attestato"
+      ],
+      [
+        "RE08",
+        "fatturazione",
+        "informazioni"
+      ],
+      [
+        "RE12",
+        "altro",
+        "informazioni"
+      ],
+      [
+        "Z-1220",
+        "feedback",
+        "contenuti"
+      ]
+    ],
+    "operatore": [
+      [
+        "R015",
+        "da-assegnare",
+        "segreteria-didattica"
+      ],
+      [
+        "R017",
+        "tutor-piattaforma",
+        "coordinamento-docenti"
+      ],
+      [
+        "RE01",
+        "tutor-piattaforma",
+        "segreteria-didattica"
+      ],
+      [
+        "RE08",
+        "amministrazione",
+        "segreteria-didattica"
+      ],
+      [
+        "RE12",
+        "da-assegnare",
+        "segreteria-didattica"
+      ],
+      [
+        "Z-1220",
+        "direzione",
+        "coordinamento-docenti"
+      ]
+    ]
+  },
+  "per_richiesta": [
+    {
+      "id": "R001",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R002",
+      "confidenza": 0.93,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "R003",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R004",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R005",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R006",
+      "confidenza": 0.88,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R007",
+      "confidenza": 0.88,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R008",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R009",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R010",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R011",
+      "confidenza": 0.8,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R012",
+      "confidenza": 0.92,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R013",
+      "confidenza": 0.85,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "R014",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "R015",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": [
+        "tipologia",
+        "operatore"
+      ]
+    },
+    {
+      "id": "R016",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "R017",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": [
+        "tipologia",
+        "operatore"
+      ]
+    },
+    {
+      "id": "R018",
+      "confidenza": 0.8,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "R019",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE01",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": [
+        "tipologia",
+        "operatore"
+      ]
+    },
+    {
+      "id": "RE02",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "RE03",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE04",
+      "confidenza": 0.82,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE05",
+      "confidenza": 0.88,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE06",
+      "confidenza": 0.75,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "RE07",
+      "confidenza": 0.8,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE08",
+      "confidenza": 0.85,
+      "automatica": true,
+      "campi_sbagliati": [
+        "tipologia",
+        "urgenza",
+        "operatore"
+      ]
+    },
+    {
+      "id": "RE09",
+      "confidenza": 0.86,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE10",
+      "confidenza": 0.85,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "RE11",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "RE12",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": [
+        "tipologia",
+        "operatore"
+      ]
+    },
+    {
+      "id": "Z-1011",
+      "confidenza": 0.85,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "Z-1048",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "Z-1141",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "Z-1220",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": [
+        "tipologia",
+        "operatore"
+      ]
+    },
+    {
+      "id": "Q02",
+      "confidenza": 0.92,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "Q03",
+      "confidenza": 0.95,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    },
+    {
+      "id": "Q05",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "Q06",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": []
+    },
+    {
+      "id": "Q08",
+      "confidenza": 0.9,
+      "automatica": true,
+      "campi_sbagliati": [
+        "urgenza"
+      ]
+    }
+  ]
+}

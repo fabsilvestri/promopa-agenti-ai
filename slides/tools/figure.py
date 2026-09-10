@@ -110,7 +110,12 @@ arrow(ax, 0.50, 0.45, 0.50, 0.21, color=GRIG)
 salva(fig, "pipeline.png")
 
 # 6. tabella demo
-righe = [json.loads(r) for r in open("demo/output_esempio/richieste_classificate.jsonl", encoding="utf-8")]
+_tutte = [json.loads(r) for r in open("demo/output_esempio/richieste_classificate.jsonl", encoding="utf-8")]
+# Sulla slide ci stanno dieci righe: si scelgono per coprire tutti i canali,
+# tenendo dentro le urgenze alte e qualche esempio reale della Fondazione.
+_scelti = ["R001", "R003", "R004", "R007", "RE01", "RE05", "RE10", "Z-1048", "Q03", "Q06"]
+_per_id = {r["id"]: r for r in _tutte}
+righe = [_per_id[i] for i in _scelti if i in _per_id] or _tutte[:10]
 fig, ax = plt.subplots(figsize=(11, 4.4), dpi=200); ax.axis("off")
 cols = ["id", "canale", "corso", "tipologia", "urgenza", "operatore", "conf."]
 cells = [[r["id"], r["canale"], r["corso"], r["tipologia"], r["urgenza"],
@@ -164,3 +169,189 @@ salva(fig, "griglia.png")
 
 # 9. numeri: nessuna figura, si fanno con shape in pptx
 print("ok")
+
+
+# =====================================================================
+# Figure aggiunte: scaletta, ciclo, canali, stati, griglia vuota,
+# ruoli, calendario, e i tre grafici sui numeri veri della pipeline.
+# =====================================================================
+# Coppia di colori per i grafici a due categorie: passa i controlli sul
+# daltonismo (deutan e protan sopra deltaE 15), a differenza di bordeaux
+# contro verde che e' la coppia sbagliata piu' comune nei deck.
+ROSSO = "#A82F44"
+BLU = "#2E6E9E"
+VALUTAZIONE = json.loads(Path("demo/output_esempio/valutazione.json").read_text(encoding="utf-8"))
+
+
+# 10. scaletta della giornata
+fig, ax = fresh(11, 3.2)
+blocchi = [("1\nRiaggancio", "10'"), ("2\nAnatomia", "20'"), ("3\nIl caso", "30'"),
+           ("4\nLimiti", "15'"), ("5\nPilota", "15'"), ("6\nEsercitazione", "30'")]
+n = len(blocchi); gap = 0.012; w = (1 - gap * (n - 1)) / n
+for i, (t, m) in enumerate(blocchi):
+    x = i * (w + gap)
+    box(ax, x, 0.42, w, 0.40, t, fc=AZZ if i % 2 == 0 else "#DCE8DC", fs=12, bold=True, tc=BORD)
+    ax.text(x + w / 2, 0.33, m, ha="center", va="top", fontsize=13, color=GRIG)
+ax.annotate("", xy=(1.0, 0.13), xytext=(0.0, 0.13), arrowprops=dict(arrowstyle="-|>", color=GRIG, lw=1.4))
+ax.text(0.5, 0.03, "due ore, con una pausa dentro il blocco 3", ha="center", fontsize=10.5, color=GRIG, style="italic")
+salva(fig, "scaletta.png")
+
+# 11. ciclo di azione
+fig, ax = fresh(8, 4.2)
+passi = [("Leggi", 0.50, 0.80), ("Decidi", 0.82, 0.50), ("Agisci", 0.50, 0.20), ("Verifica", 0.18, 0.50)]
+for t, cx, cy in passi:
+    box(ax, cx - 0.15, cy - 0.09, 0.30, 0.18, t, fc=AZZ, fs=14, bold=True, tc=BORD)
+for i in range(4):
+    _, x1, y1 = passi[i]
+    _, x2, y2 = passi[(i + 1) % 4]
+    dx, dy = x2 - x1, y2 - y1
+    arrow(ax, x1 + dx * 0.30, y1 + dy * 0.30, x2 - dx * 0.30, y2 - dy * 0.30)
+ax.text(0.50, 0.50, "e poi\nda capo", ha="center", va="center", fontsize=12, color=GRIG, style="italic")
+salva(fig, "ciclo_azione.png")
+
+# 12. i canali in ingresso
+fig, ax = fresh(11, 4.0)
+fonti = [("5 caselle\ne-mail", AZZ), ("Moduli\ndel sito", AZZ), ("Messaggi\nMoodle", AZZ),
+         ("Questionari\nMoodle", "#F6E7D8"), ("Chat\nZoom", "#F6E7D8")]
+n = len(fonti); gap = 0.03; w = (1 - gap * (n - 1)) / n
+for i, (t, fc) in enumerate(fonti):
+    x = i * (w + gap)
+    box(ax, x, 0.68, w, 0.24, t, fc=fc, fs=12)
+    arrow(ax, x + w / 2, 0.66, 0.44, 0.50)
+box(ax, 0.33, 0.26, 0.22, 0.22, "Contenitore\nunico", fc="#DCE8DC", fs=14, bold=True)
+arrow(ax, 0.56, 0.37, 0.66, 0.37)
+box(ax, 0.67, 0.26, 0.22, 0.22, "Coda per\noperatore", fc=AZZ, fs=13)
+ax.text(0.5, 0.08, "azzurro: oggi arriva a qualcuno   ·   arancio: oggi si perde",
+        ha="center", fontsize=12, color=GRIG, style="italic")
+salva(fig, "canali.png")
+
+# 13. stati di una richiesta
+fig, ax = fresh(11, 2.8)
+stati = ["nuova", "presa in carico", "in attesa utente", "chiusa"]
+n = len(stati); gap = 0.05; w = (1 - gap * (n - 1)) / n
+for i, t in enumerate(stati):
+    x = i * (w + gap)
+    box(ax, x, 0.45, w, 0.32, t, fc=AZZ, fs=13, bold=True, tc=BORD)
+    if i < n - 1:
+        arrow(ax, x + w, 0.61, x + w + gap, 0.61)
+# il ritorno da "in attesa utente" a "presa in carico", disegnato sotto i box
+ax.annotate("", xy=(0.36, 0.43), xytext=(0.64, 0.43),
+            arrowprops=dict(arrowstyle="-|>", color=GRIG, lw=1.4, connectionstyle="arc3,rad=0.45"))
+ax.text(0.5, 0.10, "nessuna AI: sono regole e date", ha="center", fontsize=12, color=VERDE)
+salva(fig, "stati.png")
+
+# 14. griglia vuota da compilare
+fig, ax = plt.subplots(figsize=(11, 3.6), dpi=200); ax.axis("off")
+cols = ["#", "Passo", "Chi lo fa oggi", "Input", "Decisione", "Output", "Tipo"]
+cells = [[str(i), "", "", "", "", "", ""] for i in range(1, 7)]
+tab = ax.table(cellText=cells, colLabels=cols, loc="center", cellLoc="left", colLoc="left")
+tab.auto_set_font_size(False); tab.set_fontsize(11); tab.scale(1, 1.9)
+for (i, j), c in tab.get_celld().items():
+    c.set_edgecolor("#C8C8C8")
+    if i == 0:
+        c.set_facecolor(BORD); c.set_text_props(color="white", fontweight="bold")
+tab.auto_set_column_width(col=list(range(len(cols))))
+salva(fig, "griglia_vuota.png")
+
+# 15. chi fa cosa nel pilota
+fig, ax = plt.subplots(figsize=(11, 3.4), dpi=200); ax.axis("off")
+cols = ["Passo", "Chi lo guida", "Chi partecipa", "Quanto tempo"]
+cells = [["1. Audit", "Segreteria", "Chi risponde oggi", "1-2 settimane"],
+         ["2. Tassonomia e dati", "Segreteria", "Due persone che etichettano", "2 settimane"],
+         ["3. Prototipo", "Chi sa usare lo strumento", "Segreteria", "2-4 settimane"],
+         ["4. Misura e decidi", "Direzione", "Tutti", "1 mese"]]
+tab = ax.table(cellText=cells, colLabels=cols, loc="center", cellLoc="left", colLoc="left")
+tab.auto_set_font_size(False); tab.set_fontsize(11); tab.scale(1, 1.8)
+for (i, j), c in tab.get_celld().items():
+    c.set_edgecolor("#D0D0D0")
+    if i == 0:
+        c.set_facecolor(BORD); c.set_text_props(color="white", fontweight="bold")
+    elif j == 0:
+        c.set_facecolor(AZZ)
+tab.auto_set_column_width(col=list(range(len(cols))))
+salva(fig, "ruoli.png")
+
+# 16. calendario del pilota
+fig, ax = fresh(11, 3.0)
+barre = [("1. Audit", 0.00, 0.18, AZZ), ("2. Tassonomia e dati", 0.18, 0.22, "#DCE8DC"),
+         ("3. Prototipo", 0.40, 0.30, "#F6E7D8"), ("4. Misura", 0.70, 0.28, AZZ)]
+for i, (t, x, w, fc) in enumerate(barre):
+    y = 0.72 - i * 0.17
+    box(ax, x, y, w, 0.13, t, fc=fc, fs=10.5, r=0.01)
+for k, etichetta in enumerate(["oggi", "+1 mese", "+2 mesi", "+3 mesi"]):
+    ax.text(k / 3.2, 0.05, etichetta, ha="center", fontsize=10, color=GRIG)
+    ax.plot([k / 3.2, k / 3.2], [0.10, 0.92], color="#DDDDDD", lw=1, zorder=0)
+salva(fig, "calendario.png")
+
+# 17. accuratezza per campo, numeri veri
+fig, ax = plt.subplots(figsize=(9, 3.6), dpi=200)
+acc = VALUTAZIONE["accuratezza"]
+voci = [("corso", acc["corso"]), ("tipologia", acc["tipologia"]),
+        ("operatore", acc["operatore"]), ("urgenza", acc["urgenza"]),
+        ("tutti e quattro", VALUTAZIONE["tutti_i_campi_corretti"])]
+voci.sort(key=lambda v: v[1])
+y = range(len(voci))
+ax.barh(list(y), [v * 100 for _, v in voci], height=0.55, color=BORD, zorder=3)
+ax.axvline(80, color=GRIG, lw=1.4, ls="--", zorder=4)
+ax.text(80.8, len(voci) - 0.35, "soglia 80%", fontsize=10, color=GRIG)
+for i, (nome, v) in enumerate(voci):
+    etichetta = f"{v * 100:.0f}%" if abs(v * 100 - round(v * 100)) < 0.05 else f"{v * 100:.1f}%".replace(".", ",")
+    ax.text(v * 100 - 1.5, i, etichetta, va="center", ha="right",
+            fontsize=12, color="white", fontweight="bold", zorder=5)
+ax.set_yticks(list(y)); ax.set_yticklabels([n for n, _ in voci], fontsize=12)
+ax.set_xlim(0, 105); ax.set_xlabel("richieste classificate correttamente", fontsize=10.5, color=GRIG)
+ax.xaxis.set_major_formatter(lambda v, p: f"{v:.0f}%")
+for lato in ("top", "right", "left"):
+    ax.spines[lato].set_visible(False)
+ax.spines["bottom"].set_color("#CCCCCC")
+ax.tick_params(colors=GRIG, length=0)
+ax.grid(axis="x", color="#EEEEEE", zorder=0)
+ax.set_axisbelow(True)
+fig.tight_layout()
+salva(fig, "accuratezza.png")
+
+# 18. confidenza dichiarata contro correttezza: il grafico che fa il punto
+fig, ax = plt.subplots(figsize=(10, 3.4), dpi=200)
+per_r = VALUTAZIONE["per_richiesta"]
+giuste = [r["confidenza"] for r in per_r if not r["campi_sbagliati"]]
+storte = [r["confidenza"] for r in per_r if r["campi_sbagliati"]]
+import random
+random.seed(7)
+ax.scatter(giuste, [1 + random.uniform(-0.13, 0.13) for _ in giuste], s=110,
+           color=BLU, alpha=0.85, edgecolor="white", linewidth=1.2, zorder=3,
+           label=f"tutti i campi corretti ({len(giuste)})")
+ax.scatter(storte, [0 + random.uniform(-0.13, 0.13) for _ in storte], s=110,
+           color=ROSSO, alpha=0.85, edgecolor="white", linewidth=1.2, zorder=3,
+           marker="X", label=f"almeno un campo sbagliato ({len(storte)})")
+ax.axvline(0.7, color=NERO, lw=1.8, zorder=4)
+ax.text(0.697, 1.42, "soglia 0,7: sotto qui\nla richiesta va a un umano",
+        ha="right", va="top", fontsize=10.5, color=NERO)
+ax.set_xlim(0.55, 1.0); ax.set_ylim(-0.5, 1.5)
+ax.set_yticks([0, 1]); ax.set_yticklabels(["sbagliate", "corrette"], fontsize=12)
+ax.set_xlabel("confidenza dichiarata dal modello", fontsize=10.5, color=GRIG)
+for lato in ("top", "right", "left"):
+    ax.spines[lato].set_visible(False)
+ax.spines["bottom"].set_color("#CCCCCC")
+ax.tick_params(colors=GRIG, length=0)
+ax.grid(axis="x", color="#EEEEEE", zorder=0); ax.set_axisbelow(True)
+ax.legend(loc="center left", frameon=False, fontsize=10.5)
+fig.tight_layout()
+salva(fig, "confidenza.png")
+
+# 19. dove si concentrano gli errori
+fig, ax = plt.subplots(figsize=(9, 3.2), dpi=200)
+errori = VALUTAZIONE["errori"]
+ordine = ["urgenza", "tipologia", "operatore", "corso"]
+conteggi = [len(errori.get(c, [])) for c in ordine]
+ax.bar(ordine, conteggi, width=0.5, color=BORD, zorder=3)
+for i, c in enumerate(conteggi):
+    ax.text(i, c + 0.25, str(c), ha="center", fontsize=13, color=NERO, fontweight="bold")
+ax.set_ylim(0, max(conteggi) + 2)
+ax.set_ylabel("richieste sbagliate su 40", fontsize=10.5, color=GRIG)
+for lato in ("top", "right"):
+    ax.spines[lato].set_visible(False)
+ax.spines["left"].set_color("#CCCCCC"); ax.spines["bottom"].set_color("#CCCCCC")
+ax.tick_params(colors=GRIG, length=0, labelsize=12)
+ax.grid(axis="y", color="#EEEEEE", zorder=0); ax.set_axisbelow(True)
+fig.tight_layout()
+salva(fig, "errori_campi.png")

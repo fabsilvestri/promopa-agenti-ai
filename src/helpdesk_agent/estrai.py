@@ -8,6 +8,7 @@ dell'utente, senza riscriverla.
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 
 from .llm import chiama
@@ -30,15 +31,41 @@ Regole:
 - Se una riga si associa a una richiesta precedente ("mi associo"), non
   creare una nuova richiesta.
 - Per ogni richiesta spiega in una frase perché è una richiesta.
+- In `id_origine` scrivi SOLO l'identificativo della riga: per la chat
+  l'orario nella forma hh:mm, per il questionario l'id della risposta.
+  Niente nome del mittente, niente parentesi quadre, niente altro testo.
 """
 
+ORARIO = re.compile(r"(\d{1,2}):(\d{2})")
+NON_ALFANUMERICI = re.compile(r"[^0-9A-Za-z]")
 
-def estrai_da_testo(testo: str, canale: str, sorgente: str, prefisso_id: str) -> list[Richiesta]:
+
+def _id_chat(grezzo: str) -> str:
+    """Dall'id_origine ricava l'orario, in forma hhmm.
+
+    Il modello tende a riportare l'intera riga, "[10:11] Comune di Pisa - L.R.",
+    anche quando il prompt chiede solo l'orario. L'identificativo di una
+    richiesta non può dipendere da come il modello si sente quel giorno:
+    lo ricostruiamo noi.
+    """
+    trovato = ORARIO.search(grezzo)
+    if trovato:
+        return f"{int(trovato.group(1)):02d}{trovato.group(2)}"
+    return NON_ALFANUMERICI.sub("", grezzo)[:12] or "ignoto"
+
+
+def _id_questionario(grezzo: str) -> str:
+    """Per il questionario l'id della risposta è già univoco."""
+    return NON_ALFANUMERICI.sub("", grezzo)[:12] or "ignoto"
+
+
+def estrai_da_testo(testo: str, canale: str, sorgente: str, prefisso_id: str,
+                    pulisci_id=_id_chat) -> list[Richiesta]:
     utente = f"TESTO ({sorgente}):\n{testo}"
     risultato = chiama(SISTEMA, utente, EstrazioneRisultato)
     return [
         Richiesta(
-            id=f"{prefisso_id}-{r.id_origine.replace(':', '')}",
+            id=f"{prefisso_id}-{pulisci_id(r.id_origine)}",
             canale=canale,
             sorgente=sorgente,
             mittente=r.mittente,
@@ -56,8 +83,9 @@ def estrai_moodle_questionario(percorso: Path, sorgente: str) -> list[Richiesta]
     with percorso.open(encoding="utf-8") as f:
         righe = list(csv.DictReader(f, delimiter=";"))
     testo = "\n".join(f"{r['id']};{r['risposta_aperta']}" for r in righe)
-    richieste = estrai_da_testo(testo, "moodle_questionario", sorgente, "Q")
-    # Gli id delle risposte sono già univoci: togliamo il prefisso doppio.
+    richieste = estrai_da_testo(testo, "moodle_questionario", sorgente, "Q",
+                                pulisci_id=_id_questionario)
+    # Gli id delle risposte portano già la Q: "Q-Q02" diventa "Q02".
     for r in richieste:
         r.id = r.id.replace("Q-Q", "Q")
     return richieste

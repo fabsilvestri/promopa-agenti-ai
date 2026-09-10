@@ -1,9 +1,15 @@
 # Quadro normativo per il blocco 4 (note del docente)
 
-Non è un parere legale. Serve a dire in aula cosa vale e cosa va verificato
-con il DPO della Fondazione prima di partire con un pilota.
+Non è un parere legale. Serve a dire in aula cosa vale e cosa va deciso
+dalla Fondazione prima di partire con un pilota.
 Aggiornato al 10 settembre 2026. I punti marcati [VERIFICARE] restano
-decisioni che spettano al DPO, non domande sul testo delle norme.
+decisioni organizzative, non domande sul testo delle norme.
+
+La Fondazione oggi non ha un responsabile della protezione dei dati. Il primo
+passo del pilota, quindi, è stabilire chi risponde di queste decisioni: se
+serva nominarne uno, se basti un consulente esterno per il pilota, o se il
+punto di riferimento sia il legale che segue la Fondazione. Finché la casella
+è vuota, i punti qui sotto restano aperti e nessuno li chiude per inerzia.
 
 ## AI Act (Reg. UE 2024/1689), come modificato dall'AI Omnibus (Reg. UE 2026/1744)
 
@@ -77,7 +83,11 @@ in vigore dal 27 luglio 2026. È la prima modifica sostanziale all'AI Act.
   del mittente. La pipeline in questo repository passa solo il testo.
 - DPIA: probabilmente non obbligatoria per lo smistamento, ma consigliata se
   si aggiungono profilazione del mittente o risposte automatiche
-  [VERIFICARE con il DPO].
+  [VERIFICARE, e prima ancora decidere chi la firma].
+- Se serva o no nominare un responsabile della protezione dei dati non è una
+  domanda a cui rispondo qui: dipende da attività principale e scala del
+  trattamento. È la prima cosa da chiedere a un legale, prima del pilota
+  e indipendentemente da questo progetto.
 
 ## Cosa dire in aula, in tre frasi
 
@@ -85,7 +95,8 @@ in vigore dal 27 luglio 2026. È la prima modifica sostanziale all'AI Act.
    questo caso non lo è.
 2. Finché l'invio resta umano, siete nel perimetro più semplice.
 3. Il registro dei trattamenti e il DPA con il fornitore sono i due documenti
-   da sistemare prima del pilota, non dopo.
+   da sistemare prima del pilota, non dopo. E prima ancora serve una persona
+   che se ne prenda la responsabilità: oggi in Fondazione non c'è.
 
 ## Fonti consultate il 10 settembre 2026
 

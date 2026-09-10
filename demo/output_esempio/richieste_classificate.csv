@@ -1,0 +1,218 @@
+id;canale;mittente;corso;tipologia;urgenza;operatore;stato;confidenza;assegnazione_automatica;riassunto;testo;bozza_risposta
+R001;email;Comune di Cascina, Ufficio Personale;contratti-pubblici;iscrizione;media;segreteria-didattica;nuova;0.9;True;"Iscrizione di due dipendenti al corso Codice dei contratti del 18/9; confermare posti e inviare modulo.";Buongiorno, vorremmo iscrivere due dipendenti al corso sul nuovo Codice dei contratti del 18 settembre. Potete confermare la disponibilità dei posti e inviarci il modulo? Grazie.;"Gentile Ufficio Personale,
+
+Per procedere con la verifica della disponibilità e l'invio del modulo per il corso sul nuovo Codice dei contratti del 18/9, Le chiediamo gentilmente di fornirci i nomi completi e gli indirizzi email dei due dipendenti e un eventuale riferimento d'ordine o partita IVA per la fatturazione. Verificheremo i posti e Le invieremo il modulo al più presto.
+
+Cordiali saluti,
+Segreteria Promo PA"
+R002;email;Dott.ssa R. (Provincia);anticorruzione;attestato;alta;segreteria-didattica;nuova;0.93;True;"Richiesta reinvio attestato corso Anticorruzione 25/06; necessario per fascicolo formativo entro fine mese.";Ho partecipato al corso Anticorruzione del 25 giugno ma non ho mai ricevuto l'attestato. Mi serve per il fascicolo formativo entro fine mese.;"Gentile Dott.ssa R.,
+
+Ci dispiace per il disagio. Per procedere al reinvio dell’attestato relativo al corso Anticorruzione del 25 giugno, La preghiamo di confermare l’indirizzo email a cui desidera riceverlo o indicarci un indirizzo alternativo. Provvederemo all’invio non appena riceveremo la conferma.
+
+Cordiali saluti,
+Segreteria Promo PA"
+R003;email;Ragioneria Comune di Empoli;bilancio-enti-locali;fatturazione;media;amministrazione;nuova;0.9;True;"Ragioneria segnala fattura 2026/311 per Bilancio enti locali senza CIG; pagamento bloccato.";Con riferimento alla fattura n. 2026/311 relativa al corso Bilancio enti locali, segnaliamo che manca il CIG. Senza CIG non possiamo procedere al pagamento.;"Spett.le Ragioneria del Comune di Empoli,
+
+abbiamo preso nota che la fattura n. 2026/311 (corso Bilancio enti locali) è priva di CIG e che il pagamento è bloccato. Per procedere, preferisce che noi: 1) le comunichiamo il CIG non appena verificato; oppure 2) emettiamo una fattura/nota di rettifica contenente il CIG? Ci indichi la soluzione preferita e l’eventuale indirizzo a cui inviarla.
+
+Segreteria Promo PA"
+R004;email;Unione Comuni Valdera;privacy-gdpr;accesso-piattaforma;alta;tutor-piattaforma;nuova;0.9;True;Corso Privacy domani: conferma presenza e invio link Zoom non ricevuto.;Salve, il corso Privacy e GDPR di domani mattina è confermato? Non abbiamo ricevuto il link Zoom.;"Buongiorno,
+per verificare la conferma di partecipazione e reinviare il link Zoom del corso “Privacy e GDPR” di domani mattina, può cortesemente indicarci l’indirizzo email usato per l’iscrizione, il numero d’ordine o il nome del partecipante? Non appena riceviamo questi dati provvederemo a controllare l’iscrizione e a inviare il link.
+
+Segreteria Promo PA"
+R005;email;Privato cittadino;digitalizzazione-pnrr;informazioni;bassa;segreteria-didattica;nuova;0.9;True;Privato chiede se liberi professionisti possono partecipare a corsi sul PNRR.;Organizzate corsi anche per liberi professionisti che lavorano con la PA? Sono interessato al tema PNRR.;"Gentile Professionista,
+
+Sì, organizziamo anche corsi rivolti a liberi professionisti che collaborano con la PA, inclusi temi relativi al PNRR. Per inviarLe informazioni sulle prossime edizioni e sulle modalità di partecipazione, può indicarci se preferisce formazione in presenza o online e il livello di approfondimento desiderato (base/avanzato)?
+
+Segreteria Promo PA"
+R006;email;Segretario comunale;ia-pa;contenuti;bassa;coordinamento-docenti;nuova;0.88;True;Chiede riferimento preciso della circolare AgID sui modelli generativi citata nel corso IA.;Durante il corso IA nella PA il docente ha citato una circolare AgID sull'uso dei modelli generativi. Potreste inviarmi il riferimento preciso? Non lo trovo nelle slide.;"Gentile Segretario comunale,
+
+La ringraziamo per la segnalazione. Per individuare il riferimento preciso alla circolare AgID ci servirebbero alcuni dettagli: data o sessione della lezione, numero della slide o la frase esatta citata dal docente. In alternativa, se preferisce, possiamo contattare direttamente il docente per richiederne il riferimento: ci autorizza a farlo?
+
+Cordiali saluti
+Segreteria Promo PA"
+R007;email;Ufficio Tributi, Comune di Pontedera;bilancio-enti-locali;reclamo;alta;direzione;nuova;0.88;True;"Terzo sollecito per attestato corso Bilancio; minaccia segnalazione al dirigente se non ricevuto entro venerdì.";È la terza volta che scrivo per l'attestato del corso Bilancio. Nessuna risposta. Se non arriva entro venerdì dovrò segnalarlo al mio dirigente.;"Gentile Ufficio Tributi,
+
+Ci scusiamo per il disagio arrecato a seguito dei precedenti solleciti. Ho provveduto a inoltrare immediatamente la segnalazione alla Direzione e avvieremo la verifica sul rilascio dell'attestato del corso ""Bilancio""; Le invieremo l'attestato entro [data] e La informeremo tempestivamente di ogni aggiornamento.
+
+Cordiali saluti,
+Segreteria Promo PA"
+R008;email;Comune di Lucca;contratti-pubblici;iscrizione;media;segreteria-didattica;nuova;0.9;True;Richiesta di sostituzione partecipante per corso Contratti del 18/9 (collega in malattia).;Il collega iscritto al corso Contratti del 18/9 è in malattia. Possiamo sostituirlo con un altro dipendente?;"Per poter valutare la richiesta di sostituzione ci invii cortesemente: nome e cognome del partecipante attualmente iscritto, nome, cognome, ruolo e indirizzo email del dipendente che subentrerebbe, e la conferma che la sostituzione riguarda il corso “Contratti” del 18/9. Se è presente un riferimento di iscrizione o fattura, lo indichi pure. Le comunicheremo l’esito e le eventuali istruzioni per procedere.
+
+Cordiali saluti,
+Segreteria Promo PA"
+R009;email;Azienda sanitaria;digitalizzazione-pnrr;fatturazione;bassa;amministrazione;nuova;0.95;True;Richiesta fattura in split payment per Digitalizzazione e PNRR, intestazione sede legale anziché presidio.;Chiediamo se per il corso Digitalizzazione e PNRR sia possibile emettere fattura in split payment intestata alla nostra sede legale anziché al presidio.;"Gentile referente,
+
+Per verificare la possibilità di emettere la fattura in split payment intestata alla sede legale per il corso Digitalizzazione e PNRR, ci occorrono: 1) dati fiscali completi (ragione sociale, P.IVA/C.F.), 2) indirizzo sede legale completo, 3) codice destinatario o PEC per fatturazione elettronica, 4) riferimento iscrizione/ordine o numero fattura da rettificare, 5) indicazione se si tratta di nuova emissione o di rettifica. La preghiamo di inviare le informazioni rispondendo a questa email.
+
+Segreteria Promo PA"
+R010;email;Ordine professionale;anticorruzione;feedback;bassa;direzione;nuova;0.95;True;"Complimenti per il corso anticorruzione di ieri; ordine professionale lo segnalerà agli iscritti.";Complimenti per il corso di ieri sull'anticorruzione: chiaro e concreto. Lo segnaleremo ai nostri iscritti.;"La ringraziamo per i gentili complimenti. Siamo lieti che il corso di ieri sull’anticorruzione sia risultato chiaro e concreto e apprezziamo la segnalazione ai vostri iscritti. Restiamo a disposizione per inviare materiale informativo o approfondimenti, se lo desidera. Cordiali saluti
+Segreteria Promo PA"
+R011;email;Dipendente comunale;nessuno;accesso-piattaforma;alta;tutor-piattaforma;nuova;0.8;True;"Utente non riesce ad accedere a Moodle, password errata dopo reset; corso inizia tra un'ora.";Non riesco a entrare su Moodle, mi dice password errata anche dopo il reset. Il corso inizia tra un'ora.;"Buongiorno, ci dispiace per il problema. Per intervenire subito e segnalarlo al tutor-piattaforma La preghiamo di inviarci: 1) nome utente o email usata per Moodle; 2) screenshot o testo esatto del messaggio di errore; 3) recapito telefonico per contatto urgente. Se ha già effettuato il reset, indichi anche l'orario del reset. Provvedo immediatamente alla segnalazione.
+
+Cordiali saluti
+Segreteria Promo PA"
+R012;email;Responsabile formazione ente;nessuno;informazioni;bassa;segreteria-didattica;nuova;0.92;True;Richiesta calendario corsi ultimo trimestre 2026 da condividere con gli uffici.;Avete un calendario dei corsi dell'ultimo trimestre 2026 da condividere con i nostri uffici?;"Gentile Responsabile,
+
+Potrebbe indicarci se desidera il calendario di tutti i corsi Promo PA relativi all’ultimo trimestre 2026 o soltanto quelli rivolti al suo ente? Inoltre, ci fornisca l’indirizzo email per l’invio e il formato preferito (PDF/Excel).
+
+Cordiali saluti,
+Segreteria Promo PA"
+R013;form_sito;Comune di Capannori;contratti-pubblici;iscrizione;bassa;segreteria-didattica;nuova;0.85;True;Comune di Capannori: partecipa solo alla seconda giornata, chiede se è previsto uno sconto.;Nome: M. Bianchi. Ente: Comune di Capannori. Note: partecipo solo alla seconda giornata, è previsto uno sconto?;"Gentile M. Bianchi,
+La ringraziamo per la richiesta. Per poter verificare la possibilità di uno sconto per la partecipazione alla sola seconda giornata, ci occorrono: titolo/edizione del corso o la data prevista, e se l’iscrizione è già stata registrata a nome del Comune di Capannori. Conferma che parteciperà esclusivamente alla seconda giornata?
+Attendiamo i dettagli per procedere.
+Segreteria Promo PA"
+R014;form_sito;Comune di Viareggio;ia-pa;informazioni;bassa;segreteria-didattica;nuova;0.95;True;Comune di Viareggio chiede tariffa per gruppo (6 persone) e se il corso dà crediti formativi riconosciuti.;Note: siamo in 6, chiediamo tariffa per gruppo e se il corso dà crediti formativi riconosciuti.;"Gentile referente,
+
+La ringraziamo per la richiesta. Per poterLe comunicare la tariffa per gruppo (6 persone) e verificare se il corso prevede crediti formativi riconosciuti, ci occorre il titolo o il codice del corso e, se applicabile, l’edizione o la data/modalità (in presenza/remoto). Può cortesemente fornirci queste informazioni?
+
+Segreteria Promo PA"
+R015;form_sito;Sconosciuto;nessuno;informazioni;bassa;segreteria-didattica;nuova;0.95;True;Richiesta di iscrizione alla newsletter dei corsi.;Vorrei ricevere la newsletter dei corsi.;"Gentile Utente,
+
+per procedere con l'iscrizione alla newsletter dei corsi La preghiamo di fornirci l'indirizzo e-mail al quale desidera riceverla. Può rispondere direttamente a questo messaggio indicando l'e-mail.
+
+Rimaniamo a disposizione per qualsiasi chiarimento.
+
+Segreteria Promo PA"
+R016;form_sito;Comune di Massarosa;privacy-gdpr;iscrizione;media;segreteria-didattica;nuova;0.9;True;Comune di Massarosa chiede annullamento iscrizione doppia al corso Privacy e GDPR.;Note: iscrizione inviata due volte per errore, annullare il doppione.;"Gentile referente del Comune di Massarosa,
+
+Possiamo procedere con l’annullamento dell’iscrizione duplicata al corso Privacy e GDPR. Per favore ci indichi uno dei seguenti elementi per individuare il doppione: nome partecipante, email usata, codice/iscrizione o data/ora dell’invio. In alternativa confermi se desidera annullare la registrazione più recente.
+
+Attendiamo le informazioni per procedere e inviarLe conferma dell’avvenuta cancellazione.
+
+Segreteria Promo PA"
+R017;moodle_messaggio;Partecipante;bilancio-enti-locali;contenuti;media;coordinamento-docenti;nuova;0.9;True;Slide lezione 3 risultano corrotte, partecipante non riesce ad aprirle.;Le slide della lezione 3 non si aprono, il file risulta corrotto.;"Ci scusiamo per il disagio. Abbiamo segnalato il problema al coordinamento docenti e provvederemo a sostituire il file. Per procedere, preferisce che Le inviamo la slide via email o che la ricarichiamo su Moodle? Se sceglie l’email, ci comunichi l’indirizzo; in alternativa ci può inviare uno screenshot dell’errore che compare. Restiamo a disposizione per ulteriori dettagli.
+
+Segreteria Promo PA"
+R018;moodle_messaggio;Partecipante;anticorruzione;accesso-piattaforma;alta;tutor-piattaforma;nuova;0.8;True;"Partecipante bloccato sul questionario finale ('tentativi esauriti'); chiede se serve per ottenere l'attestato.";Il questionario finale mi dà 'tentativi esauriti' ma non l'ho mai completato. Senza questionario niente attestato?;"Ci dispiace per il disagio. Per poter verificare se il completamento del questionario finale è requisito per il rilascio dell’attestato e per controllare/ripristinare i tentativi, ci servono: 1) il Suo username o indirizzo email; 2) il codice o titolo del corso; 3) uno screenshot dell’errore “tentativi esauriti”. Vuole inviarci questi dati così procediamo con la verifica e la risoluzione? Cordiali saluti
+
+Segreteria Promo PA"
+R019;moodle_messaggio;Partecipante;ia-pa;contenuti;bassa;coordinamento-docenti;nuova;0.9;True;Dove trovare l'esempio di regolamento interno pubblicato dal docente sulla lezione sui prompt.;Nella lezione sui prompt il docente ha detto che pubblicherà un esempio di regolamento interno. Dove lo trovo?;"Gentile Partecipante,
+
+per poterle indicare con precisione dove trovare l’esempio di regolamento interno, può cortesemente comunicare la data della lezione o il nome del docente (o inviare uno screenshot della slide/messaggio)? Con queste informazioni verificheremo la posizione del file e le invieremo il link.
+
+Cordiali saluti
+Segreteria Promo PA"
+RE01;email;Partecipante di un ente (anonimizzato);contratti-pubblici;attestato;media;segreteria-didattica;nuova;0.9;True;"Ha superato il test del corso Contratti Pubblici ma non riesce a scaricare l'attestato; verificare.";"Buongiorno ho concluso il corso dei Contratti
+Pubblici in PromoPa, ho superato il test, ma non mi fa scaricare l’attestato.
+Potete verificare il problema? L’ufficio personale non mi ha dato risposta, grazie";"Buongiorno, per poter verificare il problema ci servono cortesemente: 1) l’indirizzo email o username con cui ha effettuato l’accesso; 2) uno screenshot o il testo esatto dell’errore che appare al momento del download; 3) la data di completamento del corso (se disponibile) e il browser/dispositivo utilizzato. Inviandoci queste informazioni procederemo alla verifica con la segreteria didattica e le daremo riscontro. Cordiali saluti
+Segreteria Promo PA"
+RE02;email;Ufficio di un ente (anonimizzato);nessuno;accesso-piattaforma;bassa;tutor-piattaforma;nuova;0.9;True;Richiesta credenziali e-learning per corso 'Il Lavoro Agile' per Moduli 1 e 2.;"Buongiorno,
+si richiedono cortesemente le Credenziali di Accesso alla Piattaforma e-Learning per il Corso di Formazione ""IL Lavoro Agile nella Pubblica Amministrazione"" per espletare i MODULI 1 e 2.";"Buongiorno, per poter inviare le credenziali di accesso alla piattaforma e‑learning per il corso “Il Lavoro Agile nella Pubblica Amministrazione” (Moduli 1 e 2) La preghiamo di fornirci: 1) nome e cognome del partecipante; 2) indirizzo e‑mail da utilizzare per l’accesso; 3) eventuale codice di iscrizione o ente di appartenenza. Alla ricezione dei dati provvederemo a inviare le credenziali. Cordiali saluti
+Segreteria Promo PA"
+RE03;email;Non indicato (anonimizzato);nessuno;accesso-piattaforma;alta;tutor-piattaforma;nuova;0.9;True;"Richiesta recupero password per accedere ai corsi; mittente anonimo.";"Buongiorno,
+con la presente si richiede cortesemente il recupero password per poter procedere con i corsi.
+Attendo vs";"Buongiorno, abbiamo ricevuto la richiesta di recupero password per l’accesso ai corsi. Per poter procedere La preghiamo di comunicarci l’indirizzo e-mail o il nome utente associato al Suo account. Appena riceveremo queste informazioni Le invieremo le istruzioni per il reset della password. Cordiali saluti
+Segreteria Promo PA"
+RE04;form_sito;Non indicato (modulo anonimizzato);nessuno;accesso-piattaforma;media;tutor-piattaforma;nuova;0.82;True;"Segnalazione: audio dei video assente; utente richiede assistenza tecnica.";"OGGETTO: non sento l'audio
+NOME
+X X
+INDIRIZZO EMAIL
+xxxxxxxxxxxxxxx
+DESCRIZIONE
+non sento l'audio dei video";"Gentile X X,
+
+grazie per la segnalazione. Per risolvere provi a: 1) verificare volume del dispositivo e del lettore video; 2) cambiare browser o aggiornare quello in uso; 3) svuotare cache/riavviare il dispositivo; 4) provare con cuffie o altro dispositivo; 5) verificare se il problema riguarda tutti i video o solo alcuni.
+
+Ci invii browser e versione, sistema operativo, tipo di dispositivo e il corso/lezione coinvolta e, se possibile, uno screenshot. Così procediamo con assistenza mirata.
+
+Segreteria Promo PA"
+RE05;email;Notifica automatica di ordine (MEPA);nessuno;fatturazione;media;amministrazione;nuova;0.88;True;Notifica MEPA ordine per webinar del 25/09/2026, invio dettagli per gestione amministrativa;"Gentile utente,
+hai ricevuto un nuovo ordine con il seguente identificativo: xxxxxxxxxxxxxx
+DETTAGLIO ORDINE RICEVUTO
+Data invio ordine: x/x/x
+Descrizione ordine: WEBINAR La nuova valutazione della performance dopo la Legge 119/2026: novità, metodologie e strumenti del 25 SETTEMBRE 2026 ore 9:30-13:30 - Ordine
+Denominazione Amministrazione acquirente: xxxxxxxxxxxxxxxxx
+CF Amministrazione acquirente: xxxxxxxxxxxxxxxxxx
+Nome ufficio: xxxxxxxxxxxxx
+Nome e cognome PO: xxxxxxxxxxxxxxx
+Strumento di acquisto: Mepa
+Codice Sigef: Non presente per lo strumento utilizzato
+Soggetto Contraente: Promo PA Fondazione
+Identificativo della procedura: Xxxxxxxxx
+Numero ordine: xxxxxxxxxxxxxx
+Bando/categoria: Servizi - Servizi di formazione";"Gentile referente,
+
+confermiamo ricezione della notifica d’ordine per il webinar del 25/09/2026 (numero ordine: [numero ordine]). Per procedere con la gestione amministrativa La preghiamo di inviarci i seguenti elementi: 1) dati di fatturazione (intestatario, C.F./P.IVA, indirizzo), 2) modalità di ricezione fattura (PEC [indirizzo] o SDI [codice]), 3) referente amministrativo con contatto e-mail/telefono, 4) eventuale documento di accettazione o atto autorizzativo.
+
+Se ha già inviato tali informazioni, indichi per favore quali e la data di invio.
+
+Cordiali saluti
+Segreteria Promo PA"
+RE06;email;Ente acquirente (anonimizzato);nessuno;fatturazione;bassa;amministrazione;nuova;0.75;True;Richiesta codice MEPA per acquisto webinar Cyber Security, X partecipanti, costo XXX ciascuno, esente IVA.;"Buongiorno,
+Come anticipato telefonicamente, saremmo interesati a partecipare al vostro Webinar inerente la Cyber Security nella Publica Amministrazione, pertanto vi chiediamo gentilmente di poter avere il codice MEPA inerente il corso al fine di procedere alla formalizzazione dell'acquisto.
+Le persone che si iscriveranno al corso sono X al costo di XXX cadauno, esente iva.
+Cordiali saluti";"Buongiorno, per fornirLe il codice MEPA relativo al Webinar Cyber Security abbiamo bisogno di alcuni dati: 1) indicare la data o il codice del webinar a cui intende iscrivere i partecipanti; 2) numero effettivo di partecipanti; 3) dati per la fatturazione (ragione sociale, partita IVA/Codice Fiscale, indirizzo, PEC o email per fatture); 4) conferma che l’operazione è esente IVA e, se necessario, il riferimento normativo. Rimaniamo in attesa. Cordiali saluti
+Segreteria Promo PA"
+RE07;email;Iscritto all'elenco OIV (anonimizzato);nessuno;informazioni;bassa;segreteria-didattica;nuova;0.8;True;Chiede se, essendo iscritto all'elenco OIV, può partecipare al corso e procedere al pagamento.;"Non sono un ex partecipante ai corsi OIV promo PA.
+Sono iscritto nell'elenco OIV e sono interessato a conseguire i crediti formativi.
+Posso partecipare al Vs corso?
+In caso di conferma effettuerò il pagamento.";"Gentile, 
+
+per poter verificare la Sua eleggibilità abbiamo bisogno di sapere a quale corso/sessione è interessato e i dati con cui risulta nell’elenco OIV (nome completo e ente). Inviandoci tali informazioni Le confermeremo la possibilità di partecipare e, se positivo, Le forniremo le modalità per procedere al pagamento.
+
+Cordiali saluti
+Segreteria Promo PA"
+RE08;email;Ente acquirente (anonimizzato);nessuno;informazioni;bassa;segreteria-didattica;nuova;0.85;True;Ente chiede sconto ulteriore e modalità acquisto (MEPA) per 2 corsi, 8 posti.;"Buon pomeriggio,
+con riferimento all’oggetto, rappresento l’interesse dell’ente all’acquisto dei seguenti corsi di formazione:
+LA NUOVA VALUTAZIONE SULLA PERFORMANCE DOPO LA LEGGE N.  119/2026, per n. 5 DIPENDENTI
+LA GOVERNANCE DELLE SOCIETA’ PARTECIPATE per n. 3 DIPENDENTI
+A tal proposito, si chiede cortesemente la possibilità di concordare una agevolazione % di prezzo ulteriore rispetto a quella già prevista, in considerazione dell’elevato numero di utenze richieste.
+Inoltre, si chiede di indicare le modalità per effettuare l’acquisto. C’è un codice MEPA?";"Buon pomeriggio, La ringraziamo per l’interesse. Per verificare la possibile ulteriore agevolazione e le modalità d’acquisto (inclusa la verifica della disponibilità su MePA), ci può cortesemente fornire: 1) ragione sociale e partita IVA dell’ente; 2) indirizzo di fatturazione e referente con recapito telefonico/PEC; 3) modalità di erogazione desiderata (online/in presenza) e eventuali date o priorità. Dopo ricezione provvederemo a inviarle un preventivo dettagliato e le istruzioni per l’acquisto. Cordiali saluti, Segreteria Promo PA"
+RE09;email;Ente (anonimizzato);nessuno;informazioni;bassa;segreteria-didattica;nuova;0.86;True;Richiesta se ci sono altre edizioni oltre al corso e-learning del 29 settembre.;"Buongiorno,
+in riferimento al corso di formazione in oggetto, previsto in modalità e-learning per il 29 settembre, si chiede gentilmente se siano previste ulteriori date o se quella del 29 settembre sia l’unica edizione in programma.
+Ringraziando per la disponibilità, restiamo in attesa di un cortese riscontro.";"Buongiorno, per verificare se sono previste ulteriori edizioni oltre a quella del 29 settembre, La preghiamo di indicarci il titolo del corso o il codice/numero di riferimento. In assenza di tali informazioni non possiamo confermare altre date. Restiamo in attesa del dettaglio per fornirLe la risposta.
+
+Cordiali saluti,
+Segreteria Promo PA"
+RE10;email;Partecipante (anonimizzato);anticorruzione;attestato;media;segreteria-didattica;nuova;0.85;True;Partecipante chiede invio o link/credenziali per scaricare attestato corso Trasparenza e Anticorruzione.;"Buongiorno, avrei urgentemente bisogno di recuperare l'attestato del corso asincrono ""Trasparenza e Anticorruzione (L. 190/2012, D. Lgs. 33/2013 e D.lgs. 97/2016) _ Anno 2023"". Purtroppo non riesco a reperirlo autonomamente. Chiedo se potete inviarmelo o se potete inviarmi il link al sito con le credenziali di accesso per poterlo scaricare in autonomia";"Gentile Partecipante,
+
+per poter recuperare e inviarLe l’attestato del corso “Trasparenza e Anticorruzione … _ Anno 2023” ci occorrono alcuni dati per identificare la Sua pratica: nome e cognome completi, indirizzo email utilizzato per la registrazione e, se disponibile, codice fiscale o numero di iscrizione. Indichi inoltre se preferisce ricevere l’attestato via email o le credenziali/link per scaricarlo autonomamente.
+
+In attesa delle informazioni, cordiali saluti.
+
+Segreteria Promo PA"
+RE11;email;Non indicato (anonimizzato);nessuno;informazioni;bassa;segreteria-didattica;nuova;0.9;True;Richiesta informazioni su formazione OIV per riconoscimento 40 crediti e modalità.;Buona sera, vorrei sapere se vi occupate ancora di formazione per OIV ai fini del riconoscimento dei 40 crediti ed, eventualmente, le modalità;"Buonasera, la ringraziamo per la richiesta. Per fornirle informazioni precise sul riconoscimento dei 40 crediti e sulle modalità formative, può indicare: conferma che si riferisce all’Organismo indipendente di valutazione (OIV); l’ente di appartenenza e il suo ruolo; eventuale normativa o anno di riferimento; un recapito email per l’invio del programma e delle modalità pratiche. In assenza di questi dati non possiamo procedere con dettagli concreti. Cordiali saluti
+
+Segreteria Promo PA"
+RE12;email;Casella istituzionale, risposta automatica;nessuno;informazioni;bassa;segreteria-didattica;nuova;0.95;True;"Email automatica: cambiamento indirizzi caselle comunali; indicati nuovi contatti per vari uffici.";"Si informa che la casella postale tecnico@comune.t.it è in fase di dismissione.
+Per contattare l’ufficio Tecnico scrivere a tecnico@comune.it
+Per contattare l’ufficio Amministrativo, Finanziario e Tributi scrivere a ragioneria@comune.it
+Per contattare l’ufficio Servizi Demografici (Anagrafe, Stato civile, Scuola e Asilo Nido) scrivere a demografici@comune.it
+Per appuntamenti o richieste rivolte al Sindaco scrivere a sindaco@comune.it
+Per contattare la Biblioteca scrivere a biblioteca@comune.it";"Gentile referente,
+La ringraziamo per la comunicazione relativa alla dismissione della casella tecnico@comune.t.it e ai nuovi indirizzi indicati. Abbiamo preso nota e provvederemo ad aggiornare i nostri archivi.
+Cordiali saluti
+Segreteria Promo PA"
+Z-1011;zoom_chat;Comune di Pisa - L.R.;contratti-pubblici;contenuti;alta;coordinamento-docenti;nuova;0.85;True;Partecipante chiede se le slide del corso verranno inviate dopo.;le slide verranno inviate dopo?;"La ringraziamo per la richiesta. Per poter verificare se le slide del corso saranno inviate, può cortesemente indicarci il titolo e la data dell’evento (o il nome del relatore) e l’indirizzo email a cui inviarle? Cordiali saluti
+
+Segreteria Promo PA"
+Z-1048;zoom_chat;Comune di Livorno - A.F.;contratti-pubblici;contenuti;bassa;coordinamento-docenti;nuova;0.9;True;Comune di Livorno: domanda al docente se la soglia per l’affidamento diretto vale per servizi di ingegneria.;domanda per il docente: la soglia per l'affidamento diretto vale anche per i servizi di ingegneria?;"Gentile docente,
+
+Il Comune di Livorno chiede se la soglia per l’affidamento diretto si applica anche ai servizi di ingegneria. Può cortesemente fornire una risposta breve e, se possibile, indicare il riferimento normativo o eventuali precisazioni operative da comunicare al richiedente?
+
+Grazie e cordiali saluti,
+Segreteria Promo PA"
+Z-1141;zoom_chat;Comune di Lucca - P.D.;contratti-pubblici;attestato;bassa;segreteria-didattica;nuova;0.95;True;Partecipante chiede se attestato viene rilasciato automaticamente o va richiesto;scusate, l'attestato viene rilasciato automaticamente o dobbiamo richiederlo?;"Gentile, per verificare se l’attestato viene rilasciato automaticamente o deve essere richiesto, ci occorrono: a quale edizione del corso “Contratti pubblici” si riferisce e il nome (o l’email) del partecipante. Se rilevante, indichi anche se ha completato eventuali obblighi (es. compilazione questionario). Ci invii questi dati e le confermeremo la procedura. Cordiali saluti
+Segreteria Promo PA"
+Z-1220;zoom_chat;Provincia - G.M.;contratti-pubblici;contenuti;bassa;coordinamento-docenti;nuova;0.9;True;Proposta di corso di approfondimento sulla parte di esecuzione del contratto (Codice contratti).;sarebbe utile un corso di approfondimento solo sulla parte esecuzione del contratto;"La ringraziamo per la proposta di corso sull’esecuzione del contratto. Per poterla valutare e inoltrare al coordinamento docenti, può indicarci: 1) gli argomenti specifici da approfondire; 2) il pubblico destinatario (ruoli); 3) la durata e la modalità preferita (online/in presenza); 4) eventuali vincoli di date o docenti suggeriti. Restiamo in attesa delle informazioni. Cordiali saluti
+Segreteria Promo PA"
+Q02;moodle_questionario;Partecipante;privacy-gdpr;feedback;bassa;direzione;nuova;0.92;True;"Partecipante segnala parte su valutazioni d'impatto troppo veloce; chiede modulo dedicato.";Troppo veloce la parte sulle valutazioni d'impatto. Servirebbe un modulo dedicato.;"La ringraziamo per il feedback. Prendiamo atto che la parte sulle valutazioni d'impatto è risultata troppo veloce; inoltreremo la richiesta alla Direzione per valutare l’attivazione di un modulo dedicato. Desidera essere informato/a nel caso venga attivato? In tal caso ci indichi l’indirizzo email da utilizzare o confermi quello registrato. 
+
+Segreteria Promo PA"
+Q03;moodle_questionario;Partecipante;privacy-gdpr;contenuti;bassa;coordinamento-docenti;nuova;0.95;True;Richiesta materiale integrativo (modello registro trattamenti) non ricevuto, richiede invio.;Non ho ricevuto il materiale integrativo promesso a lezione (il modello di registro trattamenti).;"Gentile Partecipante,
+
+Per poterLe inviare il modello di registro dei trattamenti, può cortesemente confermare l'indirizzo e‑mail a cui desidera riceverlo o indicare se preferisce che lo carichiamo nella sezione Materiali del corso su Moodle?
+
+Cordiali saluti,
+Segreteria Promo PA"
+Q05;moodle_questionario;Partecipante;privacy-gdpr;informazioni;bassa;segreteria-didattica;nuova;0.9;True;"Richiesta edizione in presenza a Lucca per circa 15 partecipanti; informazioni su organizzazione e costi.";Ci sarebbe interesse nel nostro ente per un'edizione in presenza a Lucca, siamo circa 15 persone.;"La ringraziamo per l’interesse per un’edizione in presenza a Lucca per circa 15 partecipanti. Per fornirLe informazioni su organizzazione e costi, ci servono: 1) data o periodo preferito e durata (mezza giornata/giornata); 2) conferma del numero partecipanti e eventuali esigenze (audiovisivi, catering, accessibilità); 3) se dispongono già di una sede o devono essere proposte soluzioni; 4) eventuali contenuti o personalizzazioni richieste; 5) ente intestatario e referente con email/telefono per il preventivo. Non appena avremo queste informazioni Le invieremo un preventivo dettagliato. Segreteria Promo PA"
+Q06;moodle_questionario;Partecipante;privacy-gdpr;reclamo;media;direzione;nuova;0.9;True;Partecipante segnala pessima qualità audio seconda giornata e chiede registrazione.;L'audio della seconda giornata era pessimo, ho perso metà lezione. Chiedo se esiste la registrazione.;"Ci scusiamo per il disagio causato dalla pessima qualità audio della seconda giornata. Provvederemo a verificare la disponibilità della registrazione e Le comunicheremo entro [data] se il file è reperibile e come accedervi. Qualora la registrazione non fosse disponibile, Le segnaleremo le risorse alternative (slide, materiali). Per ulteriori dettagli o esigenze particolari, ci indichi pure.
+
+Segreteria Promo PA"
+Q08;moodle_questionario;Partecipante;privacy-gdpr;attestato;bassa;segreteria-didattica;nuova;0.9;True;Richiesta invio attestato con numero di ore per piano formativo.;Avrei bisogno dell'attestato con il numero di ore indicato, per il nostro piano formativo.;"Gentile Partecipante,
+
+per procedere con l'emissione dell'attestato con l'indicazione del numero di ore, La preghiamo di fornirci: 1) nome e cognome come da iscrizione; 2) corso (privacy-gdpr) e data/edizione [data]; 3) numero di ore da riportare [numero ore]; 4) indirizzo email per l'invio. Se l'attestato deve essere intestato a un ente, indichi anche la ragione sociale.
+
+Cordiali saluti,
+Segreteria Promo PA"
