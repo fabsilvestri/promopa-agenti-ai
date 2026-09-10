@@ -96,7 +96,14 @@ serve `OPENAI_API_KEY` e `python slides/tools/foto.py --tutte`.
 
 Push, da eseguire dopo aver creato il repository su GitHub:
 
+Il branch locale si chiama `master`. GitHub oggi usa `main` come predefinito,
+quindi conviene rinominarlo prima del primo push.
+
 ```bash
+git branch -m master main
 git remote add origin git@github.com:<utente>/promopa-agenti-ai.git
 git push -u origin main
 ```
+
+Se preferite tenere `master`, saltate la prima riga e usate
+`git push -u origin master`.
