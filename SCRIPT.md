@@ -936,3 +936,381 @@ segreteria."
 per buttare via, e serve qualcuno che possa dire questa non è una richiesta."
 
 ---
+
+# Blocco 4. Limiti e rischi (1:00 - 1:15)
+
+Quindici minuti. È il blocco che serve a evitare che qualcuno compri qualcosa a
+ottobre sull'onda dell'entusiasmo. Le slide 57 e 58 sono le più importanti
+della giornata.
+
+## Slide 55. Sezione 4
+
+**Dire:** "Quindici minuti su cosa non funziona. Senza giri di parole, perché
+è la parte che vi serve di più."
+
+## Slide 56. L'accuratezza si misura, non si stima
+
+**Dire:** "Per sapere se un sistema del genere funziona serve un campione
+etichettato a mano. Cento, duecento richieste storiche, classificate da due
+persone in parallelo, poi confrontate."
+
+**Dire:** "E qui c'è la frase che vi porterete a casa: dove le due persone non
+concordano, il problema non è il modello, è la tassonomia."
+
+**Dire:** "Quello che vi mostro adesso non è un caso di scuola. È misurato su
+questo repository, giovedì scorso, su quaranta richieste: diciannove inventate
+da me, dodici vostre, nove estratte dalle chat."
+
+## Slide 57. I numeri di questa esecuzione
+
+**Dire:** "Cinque barre. Il corso al cento per cento, tipologia e operatore
+all'ottantacinque, l'urgenza al settantadue e mezzo."
+
+**Dire, onestamente:** "Il cento per cento sul corso è meno bello di quanto
+sembri: dieci richieste su dodici avevano corso nessuno, ed è facile
+indovinare quando la risposta giusta è nessuno."
+
+**Dire, indicando la barra in fondo:** "Ma la barra che conta è l'ultima.
+Sessanta per cento di richieste con tutti e quattro i campi giusti. Vuol dire
+che quattro su dieci hanno almeno un campo sbagliato."
+
+**Dire:** "Per confronto, le regole a parole chiave che avete visto in demo
+stavano al trentotto e mezzo. Il modello raddoppia, e non basta ancora."
+
+## Slide 58. Il modello è sicuro anche quando sbaglia
+
+Questa è la slide più importante. **Fermarsi. Non parlare per tre secondi.**
+
+**Dire:** "Guardate questo grafico. In alto le richieste classificate bene, in
+basso quelle con almeno un campo sbagliato. Sull'asse orizzontale c'è la
+confidenza che il modello si è dato da solo."
+
+**Dire, indicando la linea nera:** "Questa è la soglia: zero virgola sette.
+Sotto quella linea il sistema non assegna e manda la richiesta a una persona."
+
+**Dire, con calma:** "Non c'è niente a sinistra della linea. Nessuna richiesta,
+su quaranta, è mai scesa sotto la soglia. La confidenza più bassa dichiarata è
+stata zero virgola settantacinque."
+
+**Dire:** "Quindi la coda umana non si è mai riempita. Tutte e quaranta sono
+state assegnate in automatico, comprese le sedici sbagliate."
+
+**Dire:** "Il punto di controllo che avevo progettato con tanta cura, da solo,
+non ha fermato niente."
+
+## Slide 59. Cosa dice quel grafico
+
+**[clic]** "La confidenza dichiarata non è una probabilità. È un numero che il
+modello sceglie, e lo sceglie ottimista."
+
+**[clic]** "Le crocette rosse stanno a destra della soglia esattamente quanto i
+pallini blu. Non sono separabili."
+
+**[clic]** "Quindi la coda umana va tarata sui dati, non sul numero che il
+modello si autoassegna."
+
+**Dire:** "Come si tara davvero: prendete il campione etichettato, ordinate per
+confidenza, e guardate a che punto gli errori si diradano. Se non si diradano
+mai, la confidenza non serve e il controllo deve essere un altro, per esempio
+tutte le richieste di un certo tipo passano da una persona."
+
+## Slide 60. Dove si concentrano gli errori
+
+**Dire:** "Undici errori su quaranta sul campo urgenza. Sei su tipologia, sei
+su operatore, zero sul corso."
+
+**Dire:** "L'urgenza è il campo più soggettivo, ed è quello sbagliato di più.
+Non è un caso."
+
+## Slide 61. Urgenza: perché è il campo peggiore
+
+**[clic]** "La regola che ho scritto io dice: urgenza alta solo se c'è un
+vincolo di tempo esplicito o un blocco di accesso."
+
+**[clic]** "Ma avrei urgentemente bisogno è un vincolo esplicito, o è solo un
+tono?"
+
+**[clic]** "Finché non lo decidete voi, decide il modello, e decide ogni volta
+in modo diverso."
+
+**Dire:** "C'è una richiesta vera, RE10, che dice proprio avrei urgentemente
+bisogno. Io l'ho etichettata alta, il modello media. Nessuno dei due ha torto:
+manca la regola."
+
+## Slide 62. Quando sbaglia il modello e quando la tassonomia
+
+**Dire:** "Questa è la diagnosi più utile che vi portate a casa, ed è un bivio."
+
+**[clic]** "Se due persone della vostra segreteria darebbero risposte diverse,
+non è colpa del modello. È la tassonomia che è ambigua."
+
+**[clic]** "Se tutti darebbero la stessa risposta e il modello no, allora sì, è
+colpa del modello."
+
+**[clic]** "Il test costa venti minuti su venti richieste, e si fa prima di
+comprare qualsiasi cosa."
+
+**Fare:** scriverla in chat, così resta.
+
+## Slide 63. La coda umana, in pratica
+
+**Dire:** "Tre cose sulla coda, perché è l'unica difesa che vi resta."
+
+**Dire:** "Qualcuno la apre ogni mattina, oppure non è un controllo: è un
+secondo arretrato."
+
+**Dire, sul secondo bullet:** "E c'è un vantaggio che nessuno sfrutta: ogni
+richiesta che una persona rivede è un'etichetta gratis. Rientra nel campione e
+migliora la misura. La coda è una macchina che produce dati mentre lavora."
+
+## Slide 64. Cosa può andare storto
+
+**Dire:** "Tre modi di fallire, in ordine di probabilità crescente."
+
+**Dire:** "Il modello cambia versione e i numeri si spostano senza che nessuno
+se ne accorga. Un caso nuovo entra in una categoria vecchia perché non ce n'è
+una giusta."
+
+**Dire:** "E il terzo, che è il più comune e il meno raccontato: la coda umana
+si riempie, nessuno la guarda, e diventa il posto dove le richieste vanno a
+morire."
+
+## Slide 65. Da qui in poi non parlo io
+
+**Fare:** rallentare. Guardare la telecamera, non lo schermo.
+
+**Dire:** "Trenta secondi di premessa, e servono a voi quanto a me."
+
+**[clic]** "Sono un informatico, non un avvocato. Quello che segue è contesto,
+non un parere."
+
+**[clic]** "Nessuna slide di oggi vi dice se una norma si applica al vostro
+caso. Quella è una qualificazione giuridica e la fa un giurista, per iscritto."
+
+**[clic]** "Quello che posso darvi sono le domande giuste e dove andare a
+cercare."
+
+**Note.**
+- Se in aula arriva "quindi possiamo farlo?", la risposta è sempre: è esattamente la domanda da mettere per iscritto a chi vi segue sul legale.
+- Non lasciarsi tirare dentro. Vale anche se insistono.
+
+## Slide 66. Dati personali: quello che riguarda il progetto
+
+**Dire:** "Questa slide parla di progettazione, non di conformità."
+
+**Dire:** "Le richieste contengono nomi, enti, e a volte situazioni personali:
+una malattia, un contenzioso."
+
+**Dire, sul secondo bullet:** "E c'è un fatto tecnico da mettere sul tavolo: il
+testo di una richiesta esce dalla Fondazione e arriva a un fornitore esterno.
+È una scelta, si può fare o non fare, ma va decisa da qualcuno."
+
+**Dire:** "Sul terzo: al modello passiamo solo il testo della singola
+richiesta. Non lo storico del mittente, non le altre richieste, non archivi.
+Questa è minimizzazione, ed è una scelta di progetto che è già dentro il
+codice."
+
+## Slide 67. Chi risponde delle decisioni sui dati
+
+**Dire:** "Prima della tecnologia serve una persona che decida se quel testo
+può uscire. Se oggi quella casella è vuota, riempirla è il passo zero."
+
+**Dire:** "Chi debba riempirla, e con quale titolo formale, non lo decido io in
+una slide."
+
+## Slide 68. Il perimetro, senza conclusioni
+
+**Dire:** "Tre testi di cui sentirete parlare: l'AI Act europeo, la legge
+italiana sull'intelligenza artificiale, le linee guida AgID."
+
+**Dire:** "Nel 2026 le date si sono mosse più di una volta. Qualunque cosa vi
+dica oggi va riverificata sul testo ufficiale, e se leggete un articolo di
+giornale del 2025 le scadenze che riporta sono probabilmente vecchie."
+
+**Dire:** "Nessuno di questi testi nomina l'helpdesk di una fondazione
+formativa. La qualificazione la fa un giurista."
+
+**Note.**
+- Non leggere numeri di articolo dalla slide. Non ce ne sono, ed è voluto.
+- Se li chiedono: stanno in docs/domande_legali.md con i link e la data di consultazione.
+
+## Slide 69. Le sei domande da mettere per iscritto 1/2
+
+**Dire:** "Sei domande. Mandatele per e-mail a chi le deve firmare, perché una
+domanda scritta produce una risposta scritta, e una risposta scritta protegge
+chi la riceve."
+
+**[clic]** "Il sistema che vogliamo costruire rientra fra quelli soggetti a
+obblighi rafforzati, e su quale base?"
+
+**[clic]** "Dobbiamo dire a chi ci scrive che una parte del processo usa AI? In
+quale momento e con quali parole?"
+
+**[clic]** "Con quale base giuridica trattiamo il testo delle richieste, e dove
+va scritta?"
+
+## Slide 70. Le sei domande da mettere per iscritto 2/2
+
+**[clic]** "Il fornitore del modello che ruolo assume rispetto ai nostri dati, e
+cosa dobbiamo firmare con lui?"
+
+**[clic]** "Serve una valutazione d'impatto prima di partire? Se sì, chi la
+redige e chi la firma?"
+
+**[clic]** "E l'ultima, che è la più operativa: ogni umano che togliete dal
+ciclo allunga questa lista. Cosa cambierebbe se la risposta partisse da sola?"
+
+**Dire:** "Ecco perché l'invio umano non è solo una scelta di qualità. È anche
+quello che tiene corta questa lista."
+
+## Slide 71. Quanto costa davvero
+
+**Dire:** "Le chiamate al modello, su questi volumi, sono la voce più piccola
+del conto. Non ve la do in euro perché cambia ogni pochi mesi e non voglio
+darvi un numero che fra tre mesi è falso."
+
+**Dire:** "Il costo vero è la persona che ogni trimestre guarda gli errori e
+aggiorna il file. Quella non è una licenza, è tempo di qualcuno che avete già."
+
+## Slide 72. Manutenzione
+
+**Dire:** "La pianta secca accanto alla scrivania ordinata: è esattamente cosa
+succede a una tassonomia che non è di nessuno."
+
+**Dire:** "Tre regole. Qualcuno la possiede. A ogni cambio di versione del
+modello si rimisura sul campione. E se la coda umana supera il trenta per
+cento, si rivede la tassonomia, non il modello."
+
+---
+
+# Blocco 5. Dal caso d'uso al pilota (1:15 - 1:30)
+
+Quindici minuti. Da qui in poi si parla solo di cose da fare lunedì.
+
+## Slide 73. Sezione 5
+
+**Dire:** "Quindici minuti su come si parte davvero. Quattro passi, tre mesi,
+e la possibilità di fermarsi."
+
+## Slide 74. Passo 1: audit del flusso attuale
+
+**Dire:** "Una o due settimane. Contare le richieste per canale per quattro
+settimane, telefonate comprese. Cronometrare quanto passa dalla ricezione alla
+prima risposta."
+
+**Dire:** "Costo: un foglio e la costanza di compilarlo. Nessuna tecnologia. E
+senza questi numeri, fra sei mesi non saprete dire se è migliorato."
+
+## Slide 75. Passo 2: tassonomia e dati etichettati
+
+**Dire:** "Due settimane, ed è il passo che tutti vogliono saltare. È anche
+quello che decide se il resto funziona."
+
+**Dire:** "Scrivere il file con i corsi veri, non quelli che ho inventato io.
+Poi etichettare cento, duecento richieste storiche, due persone in parallelo, e
+dove non concordano si riscrive la voce."
+
+**Dire:** "Oggi ne abbiamo etichettate quaranta e già si vede dove la
+tassonomia scricchiola. Con duecento lo saprete con precisione."
+
+## Slide 76. Passo 3: prototipo a basso codice
+
+**Dire:** "Due-quattro settimane. Contenitore unico, connettori, classificatore,
+coda da verificare."
+
+**Dire:** "E un GPT personalizzato basta per cominciare. Il codice serve quando
+volete misurare sul serio, non prima."
+
+**Dire, fermandosi:** "L'invio resta umano per tutto il pilota. Senza
+eccezioni, nemmeno per le richieste facili."
+
+## Slide 77. Passo 4: misurare un mese, poi decidere
+
+**Dire:** "Un mese con le stesse metriche del passo uno, sugli stessi canali."
+
+**Dire:** "Tre esiti possibili: estendere, correggere, fermare. Tutti e tre
+legittimi. La decisione la prende la direzione, con i numeri davanti."
+
+## Slide 78. Chi fa cosa
+
+**Dire:** "Quattro righe. Guardate cosa non c'è: non c'è nessuna riga che dice
+consulente esterno."
+
+**Dire:** "Se scoprite che per il passo tre non avete nessuno in Fondazione, è
+un'informazione preziosa: comprate quel pezzo lì, non tutto il progetto."
+
+## Slide 79. Il calendario
+
+**Dire:** "Tre mesi dall'inizio alla decisione, ed è realistico solo se nessuno
+ci lavora a tempo pieno, che è la vostra situazione."
+
+**Dire:** "I passi si sovrappongono poco, ed è voluto. Comprimere il secondo è
+l'errore classico."
+
+## Slide 80. Metriche decise prima di partire
+
+**Dire:** "Tre metriche, e vanno fissate prima. Se le fissate dopo aver visto i
+risultati, deciderete che vanno bene comunque."
+
+**Dire, sul terzo bullet:** "Notate come è scritto il terzo: non solo quante
+richieste finiscono in coda umana, ma quante di quelle vengono davvero riviste.
+Nasce dall'errore che abbiamo visto prima."
+
+## Slide 81. Le tre soglie, spiegate
+
+**[clic]** "Sotto l'ottanta per cento su tipologia e operatore il sistema vi fa
+perdere tempo invece di darvene. Oggi siamo all'ottantacinque, con quaranta
+richieste."
+
+**[clic]** "Sopra il trenta per cento di coda umana la tassonomia è ambigua.
+Non è il modello che è scarso."
+
+**[clic]** "E se il tempo alla prima risposta non scende, il collo di bottiglia
+era altrove, e l'avete scoperto spendendo poco."
+
+## Slide 82. Strumenti a basso codice
+
+**Dire:** "ChatGPT Business ce l'avete già. I connettori si fanno con Make,
+Zapier, n8n, o con le automazioni di Microsoft 365 e Google Workspace che già
+pagate."
+
+**Dire:** "Il criterio non è quale sia il migliore. È quale sa già usare
+qualcuno in Fondazione."
+
+## Slide 83. Il report che nessuno legge
+
+**Dire:** "Una metrica che non cambia una decisione è carta."
+
+**Dire:** "Regola pratica: per ogni numero che decidete di misurare, dite in
+anticipo quale decisione cambierebbe. Se non ce n'è una, non misuratelo."
+
+## Slide 84. Quello che il piano non prevede
+
+**Dire:** "Due cose che succedono sempre. Una persona chiave in ferie proprio
+nelle due settimane di etichettatura. E il fornitore che cambia versione del
+modello mentre state misurando."
+
+**Dire:** "Mettete due settimane di margine e decidete in anticipo chi
+sostituisce chi. Nessun piano di tre mesi regge senza margine."
+
+## Slide 85. Cosa mettere per iscritto prima di partire
+
+**Dire:** "Tre righe, non un documento. Chi possiede la tassonomia e ogni
+quanto la rivede. Chi guarda la coda, quando, e cosa fa se cresce. E le
+risposte scritte alle sei domande di prima."
+
+**Dire:** "Senza queste tre righe il pilota dipende dalla buona volontà di una
+persona, e finisce quando quella persona cambia ufficio."
+
+## Slide 86. Fermarsi è un esito legittimo
+
+**Dire:** "Un binario che finisce. Il pilota serve a scoprire a basso costo se
+conviene, non a dimostrare che conviene."
+
+**Dire:** "Se dopo un mese i numeri non si muovono, si ferma, e avete imparato
+qualcosa spendendo tre mesi invece di una piattaforma."
+
+**Dire, guardando la telecamera:** "Ve lo dico adesso perché dopo, quando ci
+avrete messo dentro tre mesi di lavoro, sarà più difficile dirlo."
+
+---
