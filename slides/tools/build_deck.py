@@ -359,6 +359,10 @@ def schema_bullets(title, foto, etichette, items, notes="", frecce=(), sx=(0.0, 
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
     x0, w = 180000, 8784000
+    # come per image_top_bullets: se i bullet non ci stanno, si abbassa la foto
+    righe_stimate = sum(1 + len(str(i)) // 84 for i in items)
+    alto_testo = int(righe_stimate * (corpo * 1.35 + 8) * 12700)
+    basso = min(basso, BASSO_UTILE - alto_testo - 160000)
     h = basso - alto
     _foto_riquadro(s, foto, x0, alto, w, h, sx=sx)
     _posa_etichette(s, x0, alto, w, h, etichette, frecce, size)
@@ -512,6 +516,26 @@ def numbers(title, stats, items, notes=""):
     _bullets(tb.text_frame, items, size=18)
     _notes(s, notes)
     return s
+
+
+def _transizione(slide, lenta=False):
+    """Dissolvenza fra le slide. python-pptx non la espone: si scrive a mano.
+
+    Niente tendine ne' cubi che ruotano: una dissolvenza breve, un po' piu'
+    lunga sulle slide di sezione, che segna il cambio di blocco.
+    """
+    sld = slide._element
+    for vecchia in sld.findall(qn("p:transition")):
+        sld.remove(vecchia)
+    tr = etree.SubElement(sld, qn("p:transition"))
+    tr.set("spd", "slow" if lenta else "med")
+    tr.set("advClick", "1")
+    etree.SubElement(tr, qn("p:fade"))
+    # l'ordine degli elementi dentro p:sld conta: transition va dopo clrMapOvr
+    clr = sld.find(qn("p:clrMapOvr"))
+    if clr is not None:
+        clr.addnext(tr)
+    return tr
 
 
 # =====================================================================
@@ -1110,7 +1134,7 @@ image_full("Chi fa cosa", FIG + "ruoli.png",
            notes="Se la Fondazione non ha nessuno per il passo 3, e' un'informazione preziosa: si compra quel pezzo, non tutto il progetto.")
 
 schema_foto("Il calendario", FOTO + "sch_lavagna.jpg", [
-    ("oggi", 0.05, 0.94), ("+1 mese", 0.36, 0.94), ("+2 mesi", 0.67, 0.94), ("+3 mesi", 0.95, 0.94),
+    ("oggi", 0.06, 0.93), ("+1 mese", 0.36, 0.93), ("+2 mesi", 0.66, 0.93), ("+3 mesi", 0.93, 0.93),
 ], barre=[
     (0.03, 0.27, 0.10, 0.15, "1. Audit"),
     (0.22, 0.52, 0.31, 0.15, "2. Tassonomia e dati"),
@@ -1225,6 +1249,10 @@ bullets_foto("Materiali e contatti", [
     notes="ATTENZIONE: il repository non è ancora pubblicato. Sostituire <da completare> con l'account GitHub prima della lezione, poi rigenerare il deck. Il comando di push è in HANDOFF.md.")
 
 section("Grazie", "Domande?", foto=FOTO + "sez7_grazie.jpg", notes="")
+
+for _s in prs.slides:
+    _sezione = _s.slide_layout == L_SECTION or _s.slide_layout == L_TITLE
+    _transizione(_s, lenta=_sezione)
 
 prs.save(OUT)
 print("salvato", OUT, "slide:", len(prs.slides))
