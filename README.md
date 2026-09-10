@@ -12,7 +12,7 @@ Docente: Fabrizio Silvestri (Sapienza, DIAG). Caso di studio: helpdesk formazion
 | `src/helpdesk_agent/` | Pipeline: estrazione, classificazione con output strutturato, bozze, valutazione |
 | `demo/` | Istruzioni per il GPT personalizzato, sequenza della demo, output di esempio |
 | `esercitazione/` | Griglia di scomposizione e processi candidati |
-| `docs/` | Pilota in quattro passi, note normative |
+| `docs/` | Pilota in quattro passi, domande da girare a un legale |
 | `tests/` | Test sul backend mock (nessuna chiamata di rete) |
 
 ## Avvio rapido

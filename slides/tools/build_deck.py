@@ -358,7 +358,7 @@ def numbers(title, stats, items, notes=""):
 title_slide("Agenti AI per i processi interni",
             "Dal caso helpdesk formazione a un pilota misurabile\nPromo PA Fondazione, 15 settembre 2026",
             foto=FOTO + "copertina.jpg",
-            notes="Le fotografie di questo deck sono generate con AI: dirlo qui, in dieci secondi, e riprenderlo nel blocco 4 quando si parla di trasparenza. E' l'esempio piu' corto che avete. Seconda lezione dopo quella del 22 giugno su ChatGPT.")
+            notes="Le fotografie di questo deck sono generate con AI: dirlo qui, in dieci secondi. Non e' un adempimento, e' buona educazione, ed e' l'esempio piu' corto che avete di cosa vuol dire dichiararlo. Seconda lezione dopo quella del 22 giugno su ChatGPT.")
 
 # ---------- 1. Riaggancio ----------
 section("1. Riaggancio e tesi della giornata", "10 minuti", foto=FOTO + "sez1_riaggancio.jpg",
@@ -789,43 +789,47 @@ bullets_foto("Cosa può andare storto", [
 ], FOTO + "li_storto.jpg",
     notes="Il terzo e' il fallimento piu' comune e il meno raccontato: la coda da verificare che diventa il posto dove le richieste vanno a morire.")
 
-bullets_foto("Dati personali", [
+bullets_foto("Da qui in poi non parlo io", [
+    "Sono un informatico, non un avvocato. Quello che segue è contesto, non un parere",
+    "Nessuna slide di oggi dice se una norma si applica a voi: quella è una qualificazione giuridica",
+    "Quello che posso darvi sono le domande giuste, e dove andare a cercare",
+], FOTO + "pi_scritto.jpg", size=16,
+    notes="Trenta secondi, detti guardando la sala. Serve a voi e serve a me. Da qui in avanti il registro cambia: non 'ecco cosa vale', ma 'ecco cosa chiedere a chi di dovere'. Se in aula arriva una domanda del tipo 'quindi possiamo farlo?', la risposta e' sempre la stessa: e' esattamente la domanda da mettere per iscritto a chi vi segue sul legale.")
+
+bullets_foto("Dati personali: quello che riguarda il progetto", [
     "Le richieste contengono nomi, enti e a volte situazioni personali (malattia, contenziosi)",
-    "Al modello serve il testo della richiesta, non lo storico del mittente: minimizzazione",
-    "Due documenti prima del pilota: registro dei trattamenti e DPA con il fornitore",
-], FOTO + "gag_timbri.jpg",
-    notes="Il documento dei dodici esempi era gia' anonimizzato: nomi e codici sostituiti da X. E' una buona pratica, e vale la pena dire che l'avete fatta bene.")
+    "Il testo di una richiesta esce dalla Fondazione e arriva a un fornitore esterno: è una scelta, e va decisa",
+    "Al modello serve il testo della richiesta, non lo storico del mittente: la pipeline passa solo il testo",
+], FOTO + "gag_timbri.jpg", size=16,
+    notes="Questa slide parla di progettazione, non di conformita'. Il terzo punto e' una scelta tecnica che avete gia' fatta bene nel documento dei dodici esempi: nomi e codici sostituiti da X. Vale la pena dirlo.")
 
-bullets_foto("Non avete un responsabile della protezione dei dati", [
-    "È il primo passo del pilota, prima della tecnologia: chi risponde di queste decisioni?",
-    "Tre strade: nominarlo, prendere un consulente per il pilota, o chiedere al legale",
-    "Se la casella resta vuota, i documenti non li firma nessuno e il pilota si ferma lì",
-], FOTO + "pi_scritto.jpg",
-    notes="Detto senza drammi: non e' un adempimento formale, e' la persona che decide se si puo' mandare il testo di una richiesta a un fornitore esterno. Se serva nominarne uno per legge e' domanda da legale, non da questa lezione.")
+bullets_foto("Chi risponde delle decisioni sui dati", [
+    "Prima della tecnologia serve una persona che decida se quel testo può uscire dalla Fondazione",
+    "Se oggi quella casella è vuota, riempirla è il passo zero del pilota",
+    "Chi debba riempirla, e con quale titolo, non lo decido io in questa slide",
+], FOTO + "an_fornitore.jpg", size=16,
+    notes="Detto senza drammi e senza diagnosi: non sto dicendo che siete inadempienti, sto dicendo che serve un nome accanto a una decisione. Se poi quel nome debba essere un responsabile della protezione dei dati e' una domanda per un legale.")
 
-bullets("Quadro normativo 1/4: alfabetizzazione", [
-    "AI Act, art. 4: si applica dal 2 febbraio 2025 e la data non è cambiata",
-    "L'AI Omnibus lo ha riscritto: da garantire un livello a adottare misure proporzionate",
-    "Questa lezione è una di quelle misure. Verbalizzatela",
-], notes="Reg. UE 2024/1689 come modificato dal Reg. UE 2026/1744, in vigore dal 27 luglio 2026. In pratica e' passato da obbligo di risultato a obbligo di mezzi. Fonti in docs/normativa.md.")
+bullets("Il perimetro, senza conclusioni", [
+    "Ci sono tre testi di cui sentirete parlare: l'AI Act europeo, la legge italiana sull'IA, le linee guida AgID",
+    "Nel 2026 le date si sono mosse più di una volta: qualunque cosa vi dica oggi va riverificata sul testo ufficiale",
+    "Nessuno di questi testi nomina l'helpdesk di una fondazione formativa: la qualificazione la fa un giurista",
+], size=18,
+    notes="Non leggere numeri di articolo dalla slide. Se qualcuno li chiede, stanno in docs/domande_legali.md con i link alle fonti e la data di consultazione, e con scritto che il consolidato non e' stato letto direttamente. Il messaggio della slide e' uno solo: il perimetro esiste, non lo traccio io.")
 
-bullets("Quadro normativo 2/4: trasparenza", [
-    "AI Act, art. 50: in vigore dal 2 agosto 2026, non rinviato dall'Omnibus",
-    "Se un sistema di AI interagisce con le persone, va detto",
-    "Finché la bozza la invia un operatore, l'interazione resta umana e non scatta",
-], notes="Se un domani attivate la risposta automatica, scatta. Collegarsi qui alle fotografie di questo deck: sono generate con AI, e ve l'ho detto in apertura. E' lo stesso principio, in piccolo.")
+bullets("Le sei domande da mettere per iscritto 1/2", [
+    "Il sistema che vogliamo costruire rientra fra quelli soggetti a obblighi rafforzati? Su quale base?",
+    "Dobbiamo dire a chi ci scrive che una parte del processo usa AI? In quale momento e con quali parole?",
+    "Con quale base giuridica trattiamo il testo delle richieste, e dove va scritta?",
+], size=17,
+    notes="Sono domande, non risposte. Suggerire di mandarle via e-mail a chi le deve firmare: una domanda scritta produce una risposta scritta, e una risposta scritta protegge chi la riceve.")
 
-bullets("Quadro normativo 3/4: alto rischio", [
-    "Allegato III: obblighi slittati dal 2 agosto 2026 al 2 dicembre 2027",
-    "Il punto 3 riguarda l'accesso agli studi, la valutazione dell'apprendimento, gli esami",
-    "Smistare una richiesta amministrativa non è nessuno di quei casi",
-], notes="L'unica voce dell'Allegato III che assomiglia a una classificazione di richieste in arrivo e' il punto 5 lettera d, ma riguarda le chiamate di emergenza. Per i sistemi integrati in prodotti la data e' il 2 agosto 2028.")
-
-bullets("Quadro normativo 4/4: Italia", [
-    "Legge 132/2025, art. 14: l'AI è di supporto, la responsabilità resta alla persona",
-    "Vincola le PA, non la Fondazione. È il metro con cui i vostri enti clienti vi guarderanno",
-    "Linee guida AgID: analisi, rischi, progettazione, monitoraggio. Il pilota le ricalca",
-], notes="L'art. 14 chiede conoscibilita' del funzionamento e tracciabilita' dell'utilizzo, e al comma 3 misure anche formative. Linee guida approvate in Conferenza Unificata il 10 settembre 2025.")
+bullets("Le sei domande da mettere per iscritto 2/2", [
+    "Il fornitore del modello che ruolo assume rispetto ai nostri dati, e cosa dobbiamo firmare con lui?",
+    "Serve una valutazione d'impatto prima di partire? Se sì, chi la redige e chi la firma?",
+    "Ogni umano che togliete dal ciclo allunga questa lista: cosa cambierebbe se la risposta partisse da sola?",
+], size=17,
+    notes="L'ultimo punto e' il ponte con il resto della lezione: l'invio umano non e' solo una scelta di qualita', e' anche quello che tiene corta la lista delle domande. Non dire perche', dire solo che la lista si allunga.")
 
 bullets_foto("Quanto costa davvero", [
     "Le chiamate al modello, su questi volumi, sono la voce più piccola del conto",
@@ -907,7 +911,7 @@ foto_piena("Il report che nessuno legge", FOTO + "gag_stampante.jpg",
 bullets_foto("Cosa mettere per iscritto prima di partire", [
     "Chi possiede la tassonomia e ogni quanto la rivede",
     "Chi guarda la coda umana, quando, e cosa fa se cresce",
-    "Registro dei trattamenti e DPA con il fornitore, firmati da qualcuno",
+    "Le risposte alle sei domande del blocco 4, date per iscritto da chi ha titolo per darle",
 ], FOTO + "gag_pulsante.jpg",
     notes="Sono tre righe, non un documento. Ma senza queste tre righe il pilota dipende dalla buona volonta' di una persona, e finisce quando quella persona cambia ufficio.")
 

@@ -21,8 +21,13 @@ I sei punti dell'handoff precedente sono chiusi.
    L'esecuzione è congelata in `demo/output_esempio/`, valutazione compresa.
 4. **URL del repository**: segnaposto esplicito `<da completare>` sulla slide
    "Materiali e contatti", con nota del relatore.
-5. **Normativa verificata** su fonti reali. Resta un solo `[VERIFICARE]`, sulla
-   DPIA, che è una decisione organizzativa.
+5. **Blocco normativo riscritto per non esporre il docente.** Le conclusioni
+   giuridiche sono state tolte tutte: il materiale non dice più se una norma si
+   applica al caso della Fondazione, non cita articoli sulle slide e non
+   prescrive adempimenti. Al loro posto ci sono una slide di premessa esplicita
+   ("sono un informatico, non un avvocato") e sei domande da girare per iscritto
+   a chi ha titolo per rispondere. `docs/normativa.md` è diventato
+   `docs/domande_legali.md` e ha la stessa impostazione.
 6. **Repository git ricostruito** (il `.git` era dentro lo zip, non nella
    cartella). Quattro commit nuovi. Il push non è stato fatto.
 
@@ -34,7 +39,9 @@ sorridere. Contenuto aggiunto, non riempitivo: il glossario per leggere
 un'offerta, i canali e gli stati, cosa hanno insegnato i dodici esempi reali,
 il quadro normativo in quattro slide, i quattro passi del pilota uno per slide.
 
-Il materiale non presuppone più un DPO, che la Fondazione non ha.
+Il materiale non presuppone più un DPO, che la Fondazione non ha, e non lo
+dichiara neppure come mancanza: la slide chiede chi risponde delle decisioni sui
+dati, in forma condizionale.
 
 ## Da fare
 
@@ -49,7 +56,10 @@ Il materiale non presuppone più un DPO, che la Fondazione non ha.
 4. **Provare i tempi.** 97 slide in due ore, di cui trenta minuti di
    esercitazione, fanno circa un minuto a slide. Molte sono immagini da dieci
    secondi, ma vale la pena cronometrare almeno i blocchi 2 e 3.
-5. Facoltativo: un costo per mille richieste da citare in aula. Nella slide
+5. **Far leggere il blocco 4 a un legale**, se ne avete uno a disposizione.
+   Non per farlo correggere, ma per sapere se anche in forma di domanda c'è
+   qualcosa che conviene togliere.
+6. Facoltativo: un costo per mille richieste da citare in aula. Nella slide
    "Quanto costa davvero" c'è un `[NEEDS SOURCE]` nelle note.
 
 ## Numeri da citare, misurati e non stimati
@@ -77,6 +87,11 @@ parole chiave si ferma al 38,5%.
   con un assert: non rimuoverlo.
 - Gli operatori nella tassonomia sono ruoli, non persone.
 - Non inventare numeri, fonti o articoli di legge: segnaposto o `[NEEDS SOURCE]`.
+- **Niente conclusioni giuridiche, mai.** Non scrivere su una slide se una norma
+  si applica, se un obbligo scatta, se un adempimento è dovuto o se un caso
+  rientra in una categoria. Il docente è un informatico e quelle frasi, dette in
+  aula davanti a dipendenti pubblici, diventano sue. Le norme si nominano, le
+  domande si formulano, le risposte le dà un giurista.
 - Il deck si rigenera con `python slides/tools/build_deck.py`, mai a mano.
 - `data/reali/` resta fuori dal repository pubblico.
 - Le fotografie sono sintetiche: la nota della prima slide dice di dirlo in aula.
