@@ -122,7 +122,7 @@ def title_slide(title, subtitle, notes=""):
     for ph in list(s.placeholders):
         if ph.placeholder_format.idx in (2, 3, 4, 5):
             ph._element.getparent().remove(ph._element)
-    _textbox(s, 2700000, 3760000, 6200000, 420000, "Fabrizio Silvestri  |  Sapienza Università di Roma, DIAG", size=14, color=GRIG, anchor=MSO_ANCHOR.MIDDLE)
+    _textbox(s, 2700000, 3835000, 6200000, 420000, "Fabrizio Silvestri  |  Sapienza Università di Roma, DIAG", size=14, color=GRIG, anchor=MSO_ANCHOR.MIDDLE)
     _notes(s, notes)
     return s
 
@@ -218,7 +218,7 @@ def bullets_code(title, items, code, notes="", code_frac=0.55, size=16, code_siz
     tb.text_frame.margin_left = Emu(0)
     _bullets(tb.text_frame, items, size=size)
     cx = 180000 + left_w + 180000
-    _code(s, cx, 1150000, 8964000 - cx, 3380000, code, size=code_size)
+    _code(s, cx, 1150000, 8964000 - cx, 3200000, code, size=code_size)
     _notes(s, notes)
     return s
 
@@ -226,7 +226,7 @@ def bullets_code(title, items, code, notes="", code_frac=0.55, size=16, code_siz
 def code_full(title, code, notes="", size=11):
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
-    _code(s, 180000, 1150000, 8784000, 3400000, code, size=size)
+    _code(s, 180000, 1150000, 8784000, 3200000, code, size=size)
     _notes(s, notes)
     return s
 
@@ -328,7 +328,7 @@ numbers("I vostri numeri", [("~300", "richieste al mese"), ("5", "caselle e-mail
 bullets_image("Le quattro esigenze", [
     "Solo due delle quattro hanno bisogno di un modello",
     "Le altre due sono integrazione e workflow: si risolvono senza AI, e vanno risolte prima",
-    "Ordine consigliato: 1, 3, 4, poi 2",
+    "Ordine consigliato: prima 1, 3 e 4, poi la 2",
 ], FIG + "mappa_esigenze.png", img_w_frac=0.62,
     notes="L'ordine è controintuitivo: la 2 (Zoom e Moodle) è la più affascinante e la meno urgente. Senza il contenitore unico, le richieste estratte non hanno dove andare.")
 
@@ -392,7 +392,7 @@ bullets_code("Esigenza 3: classificazione 2/2", [
   "campo_meno_sicuro": "urgenza",
   "riassunto": "Pontedera: terzo sollecito
     per l'attestato, minaccia escalation
-    entro venerdi"
+    entro venerdì"
 }""", code_frac=0.48,
     notes="Esempio R007. Il reclamo prevale sull'oggetto (attestato): regola scritta nel prompt di sistema, non dedotta dal modello.")
 
@@ -457,7 +457,7 @@ bullets("Quadro normativo 2/2", [
 ], notes="Non fare l'avvocato. Il messaggio è: il caso è nel perimetro semplice, a condizione che invio e decisioni restino umani e che i due documenti esistano.")
 
 bullets("Manutenzione", [
-    "La tassonomia invecchia: nuovi corsi, nuovi ruoli. Qualcuno la possiede e la aggiorna",
+    "La tassonomia invecchia: nuovi corsi, nuovi ruoli. Qualcuno la possiede e l'aggiorna",
     "Il modello cambia: ogni cambio di versione si rimisura sul campione etichettato",
     "La coda umana è il termometro: se supera il 30%, si rivede la tassonomia, non il modello",
 ], notes="Il costo vero non è la licenza: è la persona che ogni trimestre guarda gli errori e aggiorna il file.")
