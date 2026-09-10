@@ -217,7 +217,7 @@ def section(title, subtitle="", notes="", foto=None):
     return s
 
 
-def bullets_foto(title, items, foto, notes="", size=19, foto_frac=0.40):
+def bullets_foto(title, items, foto, notes="", size=19, foto_frac=0.40, costruisci=False):
     """Bullet a sinistra, fotografia a destra. Per le slide con spazio vuoto."""
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
@@ -225,6 +225,8 @@ def bullets_foto(title, items, foto, notes="", size=19, foto_frac=0.40):
     tb = s.shapes.add_textbox(Emu(180000), Emu(1200000), Emu(left_w), Emu(3100000))
     tb.text_frame.margin_left = Emu(0)
     _bullets(tb.text_frame, items, size=size, space=12)
+    if costruisci:
+        DA_COSTRUIRE.append((s, tb))
     fx = 180000 + left_w + 180000
     fw = 8964000 - fx
     _foto_riempi(s, foto, fx, 1250000, fw, int(fw / 1.5))
@@ -407,13 +409,15 @@ def foto_piena(title, foto, caption="", notes=""):
     return s
 
 
-def bullets(title, items, notes="", size=22):
+def bullets(title, items, notes="", size=22, costruisci=False):
     s = prs.slides.add_slide(L_BODY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
     body = [ph for ph in s.placeholders if ph.placeholder_format.idx == 1][0]
     body.text_frame.vertical_anchor = MSO_ANCHOR.TOP
     body.top = Emu(1250000)
     _bullets(body.text_frame, items, size=size, space=14)
+    if costruisci:
+        DA_COSTRUIRE.append((s, body))
     _notes(s, notes)
     return s
 
@@ -518,6 +522,99 @@ def numbers(title, stats, items, notes=""):
     return s
 
 
+DA_COSTRUIRE = []  # (slide, forma) a cui applicare la comparsa progressiva
+
+_BLOCCO_CLIC = """
+<p:par>
+  <p:cTn id="{a}" fill="hold">
+    <p:stCondLst><p:cond delay="indefinite"/></p:stCondLst>
+    <p:childTnLst>
+      <p:par>
+        <p:cTn id="{b}" fill="hold">
+          <p:stCondLst><p:cond delay="0"/></p:stCondLst>
+          <p:childTnLst>
+            <p:par>
+              <p:cTn id="{c}" presetID="10" presetClass="entr" presetSubtype="0"
+                     fill="hold" grpId="0" nodeType="{tipo}">
+                <p:stCondLst><p:cond delay="0"/></p:stCondLst>
+                <p:childTnLst>
+                  <p:set>
+                    <p:cBhvr>
+                      <p:cTn id="{d}" dur="1" fill="hold">
+                        <p:stCondLst><p:cond delay="0"/></p:stCondLst>
+                      </p:cTn>
+                      <p:tgtEl><p:spTgt spid="{spid}"><p:txEl><p:pRg st="{k}" end="{k}"/></p:txEl></p:spTgt></p:tgtEl>
+                      <p:attrNameLst><p:attrName>style.visibility</p:attrName></p:attrNameLst>
+                    </p:cBhvr>
+                    <p:to><p:strVal val="visible"/></p:to>
+                  </p:set>
+                  <p:animEffect transition="in" filter="fade">
+                    <p:cBhvr>
+                      <p:cTn id="{e}" dur="400"/>
+                      <p:tgtEl><p:spTgt spid="{spid}"><p:txEl><p:pRg st="{k}" end="{k}"/></p:txEl></p:spTgt></p:tgtEl>
+                    </p:cBhvr>
+                  </p:animEffect>
+                </p:childTnLst>
+              </p:cTn>
+            </p:par>
+          </p:childTnLst>
+        </p:cTn>
+      </p:par>
+    </p:childTnLst>
+  </p:cTn>
+</p:par>"""
+
+_TIMING = """<p:timing xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"
+           xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+  <p:tnLst>
+    <p:par>
+      <p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot">
+        <p:childTnLst>
+          <p:seq concurrent="1" nextAc="seek">
+            <p:cTn id="2" dur="indefinite" nodeType="mainSeq">
+              <p:childTnLst>{blocchi}</p:childTnLst>
+            </p:cTn>
+            <p:prevCondLst>
+              <p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond>
+            </p:prevCondLst>
+            <p:nextCondLst>
+              <p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond>
+            </p:nextCondLst>
+          </p:seq>
+        </p:childTnLst>
+      </p:cTn>
+    </p:par>
+  </p:tnLst>
+  <p:bldLst><p:bldP spid="{spid}" grpId="0" build="p"/></p:bldLst>
+</p:timing>"""
+
+
+def _costruzione(slide, forma):
+    """Fa comparire i bullet uno alla volta, in dissolvenza, a ogni clic.
+
+    Il primo bullet compare gia' al passaggio di slide: chi presenta non deve
+    cliccare per far apparire la prima riga.
+    """
+    n = len(forma.text_frame.paragraphs)
+    if n < 2:
+        return
+    spid = forma.shape_id
+    blocchi, id_prossimo = [], 3
+    for k in range(n):
+        blocchi.append(_BLOCCO_CLIC.format(
+            a=id_prossimo, b=id_prossimo + 1, c=id_prossimo + 2,
+            d=id_prossimo + 3, e=id_prossimo + 4,
+            spid=spid, k=k, tipo="afterEffect" if k == 0 else "clickEffect"))
+        id_prossimo += 5
+    xml = _TIMING.format(blocchi="".join(blocchi), spid=spid)
+    timing = etree.fromstring(xml)
+    sld = slide._element
+    for vecchio in sld.findall(qn("p:timing")):
+        sld.remove(vecchio)
+    sld.append(timing)  # timing e' l'ultimo figlio di p:sld
+    return timing
+
+
 def _transizione(slide, lenta=False):
     """Dissolvenza fra le slide. python-pptx non la espone: si scrive a mano.
 
@@ -593,14 +690,14 @@ bullets_foto("I tre tipi, con un esempio ciascuno", [
     "Chatbot: chiedete a ChatGPT come si scrive una convocazione. Risponde, e finisce lì",
     "Workflow: la richiesta arriva, il modello la classifica, una regola la smista, un umano invia",
     "Agente: gli dite 'sistema l'helpdesk' e decide lui i passi. Oggi non lo vogliamo",
-], FOTO + "b08_tre_tipi.jpg", size=18,
+], FOTO + "b08_tre_tipi.jpg", size=18, costruisci=True,
     notes="Il secondo è quello che costruiremo. Vale la pena dirlo tre volte nella giornata.")
 
 bullets_foto("La tesi in tre righe", [
     "Prima si scompone il processo, poi si decide cosa automatizzare",
     "Dove serve giudizio o responsabilità, resta un punto di controllo umano",
     "Si misura prima di automatizzare, e si rimisura dopo",
-], FOTO + "c05_tesi.jpg",
+], FOTO + "c05_tesi.jpg", costruisci=True,
     notes="Queste tre righe tornano alla fine come 'tre errori da evitare', rovesciate.")
 
 # ---------- 2. Anatomia ----------
@@ -706,14 +803,14 @@ bullets_foto("Quando NON usare un agente", [
     "Se la regola si scrive in un 'se... allora', è una regola. Non serve un modello",
     "Se l'errore costa più del tempo risparmiato, serve un umano, non un agente",
     "Se non avete dati per misurarlo, non sapete se funziona. Prima i dati",
-], FOTO + "c11_regola.jpg",
+], FOTO + "c11_regola.jpg", costruisci=True,
     notes="Esempio: 'assegna all'amministrazione tutto ciò che è fatturazione' è una regola. 'Capisci se questa e-mail parla di fatturazione' è AI.")
 
 bullets_foto("Tre domande da fare a un fornitore", [
     "Su quali dati avete misurato l'accuratezza, e posso vedere il campione?",
     "In quale passo esatto interviene una persona, e che cosa vede sullo schermo?",
     "Se cambio la tassonomia, cosa devo toccare, quanto costa e chi lo fa?",
-], FOTO + "an_fornitore.jpg",
+], FOTO + "an_fornitore.jpg", costruisci=True,
     notes="Sono tre domande che si fanno in due minuti e che separano un fornitore serio da un venditore. Suggerire di scriverle sul quaderno.")
 
 # ---------- 3. Il caso ----------
@@ -915,7 +1012,7 @@ bullets_foto("Demo: le tre righe da guardare", [
     "R007: reclamo con sollecito. Il tono prevale sull'oggetto, e va alla direzione",
     "RE01: attestato bloccato dalla piattaforma. Due categorie plausibili, nessuna ovvia",
     "RE05: una notifica automatica di ordine MEPA. Non è nemmeno una domanda",
-], FOTO + "b48_segnalibri.jpg", size=18,
+], FOTO + "b48_segnalibri.jpg", size=18, costruisci=True,
     notes="Se resta tempo, aprire il file e cercare insieme una riga a caso. La forza della demo è che i dati sono i loro.")
 
 code_full("Demo: una bozza di risposta (R007)", """Gentile Ufficio Tributi,
@@ -946,21 +1043,21 @@ bullets_foto("Cosa ci hanno insegnato le dodici 1/3", [
     "Dieci su dodici hanno corso 'nessuno': il catalogo vero non è quello della tassonomia di prova",
     "Lavoro agile, cyber security, OIV, performance, società partecipate: non c'erano",
     "Non è un errore del modello. È la tassonomia che va riscritta sul catalogo vostro",
-], FOTO + "b52_scomparti.jpg", size=17,
+], FOTO + "b52_scomparti.jpg", size=17, costruisci=True,
     notes="Questo e' il risultato piu' utile della giornata e non era previsto. La tassonomia sintetica era plausibile e sbagliata.")
 
 bullets_foto("Cosa ci hanno insegnato le dodici 2/3", [
     "Tre richieste su dodici sono commerciali: preventivi, sconti, codici MEPA",
     "La tassonomia non ha una voce per il commerciale, e le abbiamo messe sotto fatturazione",
     "È l'approssimazione migliore disponibile, ed è comunque sbagliata",
-], FOTO + "b53_ricevute.jpg", size=17,
+], FOTO + "b53_ricevute.jpg", size=17, costruisci=True,
     notes="Domanda per la sala: chi risponde oggi a una richiesta di sconto? Se la risposta e' 'dipende', avete trovato la prossima voce della tassonomia.")
 
 bullets_foto("Cosa ci hanno insegnato le dodici 3/3", [
     "Una richiesta su dodici non è una richiesta: è l'avviso automatico di una casella dismessa",
     "Il modello l'ha classificata come 'informazioni' e l'ha mandata alla segreteria",
     "Un sistema che smista tutto smista anche il rumore. Serve una voce per buttare via",
-], FOTO + "b54_filtro.jpg", size=17,
+], FOTO + "b54_filtro.jpg", size=17, costruisci=True,
     notes="RE12. E' l'argomento migliore a favore della voce 'altro' e della coda umana: qualcuno deve poter dire 'questa non e' una richiesta'.")
 
 # ---------- 4. Limiti ----------
@@ -986,7 +1083,7 @@ bullets_foto("Cosa dice quel grafico", [
     "La confidenza dichiarata non è una probabilità: è un numero che il modello sceglie",
     "Le crocette rosse stanno a destra della soglia quanto i pallini blu",
     "La coda umana va tarata sui dati, non sul numero che il modello si autoassegna",
-], FOTO + "b59_bussola.jpg", size=18,
+], FOTO + "b59_bussola.jpg", size=18, costruisci=True,
     notes="Come si tara davvero: si prende il campione etichettato, si ordina per confidenza e si guarda dove gli errori si diradano. Se non si diradano mai, la confidenza non serve e il controllo deve essere un altro.")
 
 image_full("Dove si concentrano gli errori", FIG + "errori_campi.png",
@@ -997,14 +1094,14 @@ bullets_foto("Urgenza: perché è il campo peggiore", [
     "La regola dice: alta solo con vincolo di tempo esplicito o blocco di accesso",
     "Ma 'avrei urgentemente bisogno' è un vincolo esplicito o solo un tono?",
     "Finché non lo decidete voi, il modello sceglie, e sceglie ogni volta in modo diverso",
-], FOTO + "b61_sveglia.jpg", size=18,
+], FOTO + "b61_sveglia.jpg", size=18, costruisci=True,
     notes="RE10 dice 'avrei urgentemente bisogno': noi l'abbiamo etichettata alta, il modello media. Nessuno dei due ha torto. Manca la regola.")
 
 bullets_foto("Quando sbaglia il modello e quando la tassonomia", [
     "Se due persone della segreteria darebbero risposte diverse, non è colpa del modello",
     "Se tutti darebbero la stessa risposta e il modello no, è colpa del modello",
     "Il test costa venti minuti e si fa su venti richieste, prima di comprare qualsiasi cosa",
-], FOTO + "b62_bivio.jpg", size=17,
+], FOTO + "b62_bivio.jpg", size=17, costruisci=True,
     notes="E' la diagnosi differenziale piu' utile che si portano a casa oggi. Scriverla alla lavagna.")
 
 bullets_foto("La coda umana, in pratica", [
@@ -1053,14 +1150,14 @@ bullets_foto("Le sei domande da mettere per iscritto 1/2", [
     "Il sistema che vogliamo costruire rientra fra quelli soggetti a obblighi rafforzati? Su quale base?",
     "Dobbiamo dire a chi ci scrive che una parte del processo usa AI? In quale momento e con quali parole?",
     "Con quale base giuridica trattiamo il testo delle richieste, e dove va scritta?",
-], FOTO + "b69_macchina.jpg", size=16,
+], FOTO + "b69_macchina.jpg", size=16, costruisci=True,
     notes="Sono domande, non risposte. Suggerire di mandarle via e-mail a chi le deve firmare: una domanda scritta produce una risposta scritta, e una risposta scritta protegge chi la riceve.")
 
 bullets_foto("Le sei domande da mettere per iscritto 2/2", [
     "Il fornitore del modello che ruolo assume rispetto ai nostri dati, e cosa dobbiamo firmare con lui?",
     "Serve una valutazione d'impatto prima di partire? Se sì, chi la redige e chi la firma?",
     "Ogni umano che togliete dal ciclo allunga questa lista: cosa cambierebbe se la risposta partisse da sola?",
-], FOTO + "b70_cassetta.jpg", size=16,
+], FOTO + "b70_cassetta.jpg", size=16, costruisci=True,
     notes="L'ultimo punto e' il ponte con il resto della lezione: l'invio umano non e' solo una scelta di qualita', e' anche quello che tiene corta la lista delle domande. Non dire perche', dire solo che la lista si allunga.")
 
 bullets_foto("Quanto costa davvero", [
@@ -1155,7 +1252,7 @@ bullets_foto("Le tre soglie, spiegate", [
     "Sotto l'80% su tipologia e operatore il sistema fa perdere tempo invece di darne",
     "Sopra il 30% di coda umana la tassonomia è ambigua, non il modello è scarso",
     "Se il tempo alla prima risposta non scende, il collo di bottiglia era altrove",
-], FOTO + "b81_pesi.jpg", size=17,
+], FOTO + "b81_pesi.jpg", size=17, costruisci=True,
     notes="Sono punti di partenza, non standard: vanno fissati dalla Fondazione prima di vedere i risultati. Oggi, su 40 richieste, tipologia e operatore stanno all'85 per cento e i quattro campi insieme al 60.")
 
 bullets_foto("Strumenti a basso codice", [
@@ -1231,14 +1328,14 @@ bullets_foto("Tre errori da evitare", [
     "Automatizzare prima di misurare",
     "Togliere l'umano troppo presto",
     "Comprare la piattaforma prima di aver definito il processo",
-], FOTO + "c39_errori.jpg", size=19,
+], FOTO + "c39_errori.jpg", size=19, costruisci=True,
     notes="Chiusura. Sono le tre righe della tesi iniziale, al contrario.")
 
 bullets_foto("Che cosa vi portate a casa", [
     "Un repository con dati, codice, griglia e queste slide, che gira anche senza chiave API",
     "Tre domande da fare a un fornitore, e una diagnosi per capire chi ha sbagliato",
     "Una tassonomia da riscrivere sui vostri corsi veri: è il compito per lunedì",
-], FOTO + "b95_borsa.jpg", size=17,
+], FOTO + "b95_borsa.jpg", size=17, costruisci=True,
     notes="Il terzo punto e' il vero compito. Dieci minuti a settimana per un mese e il passo 2 e' fatto.")
 
 bullets_foto("Materiali e contatti", [
@@ -1253,6 +1350,10 @@ section("Grazie", "Domande?", foto=FOTO + "sez7_grazie.jpg", notes="")
 for _s in prs.slides:
     _sezione = _s.slide_layout == L_SECTION or _s.slide_layout == L_TITLE
     _transizione(_s, lenta=_sezione)
+
+for _s, _forma in DA_COSTRUIRE:
+    _costruzione(_s, _forma)
+print("slide con comparsa progressiva:", len(DA_COSTRUIRE))
 
 prs.save(OUT)
 print("salvato", OUT, "slide:", len(prs.slides))
