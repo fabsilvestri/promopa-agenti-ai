@@ -651,3 +651,288 @@ potete più modificare."
 **Fare:** incollare le tre domande in chat, così le hanno scritte.
 
 ---
+
+# Blocco 3. Il caso helpdesk formazione (0:30 - 1:00)
+
+Trenta minuti, la demo dentro. La demo ha la sua sezione dedicata più sopra:
+qui ci sono le slide che la circondano.
+
+## Slide 25. Sezione 3
+
+**Dire:** "Mezz'ora sul vostro caso. Nella prima metà scomponiamo, nella
+seconda ve lo faccio vedere che gira."
+
+## Slide 26. I vostri numeri
+
+**Dire:** "Tre numeri, che mi avete dato voi l'otto settembre. Circa
+trecento richieste al mese. Cinque caselle diverse. Zero strumenti di
+tracciamento."
+
+**Dire:** "Trecento al mese sono quindici al giorno lavorativo. Lo dico subito
+perché sgonfia l'ansia: nessuno qui ha un problema di scala. Avete un problema
+di ordine."
+
+## Slide 27. Quindici richieste al giorno
+
+**Dire:** "Non è un volume da piattaforma. È un volume da tabella e da regole."
+
+Dieci secondi, poi avanti.
+
+## Slide 28. Da dove arrivano le richieste
+
+**Dire:** "Cinque imbuti, un barattolo. Tre dei cinque canali oggi arrivano a
+qualcuno: le caselle, i moduli del sito, i messaggi Moodle. Due si perdono per
+strada: i questionari e le chat Zoom."
+
+**Dire:** "E sono proprio i due che si perdono quelli che contengono i
+suggerimenti su quali corsi fare."
+
+## Slide 29. Cinque caselle
+
+**Dire:** "Cinque caselle e-mail sono cinque telefoni sulla stessa scrivania.
+Il problema non è che siano cinque: è che nessuna sa cosa succede nelle altre
+quattro."
+
+## Slide 30. Il sistema di tracciamento attuale
+
+**Dire, con leggerezza:** "Questo funziona benissimo. Finché la persona che ha
+scritto i foglietti è in ufficio."
+
+**Note.**
+- Detto senza colpevolizzare nessuno: è così in quasi tutte le organizzazioni sotto una certa dimensione.
+
+## Slide 31. Cosa si perde per strada
+
+**Dire:** "Le chat Zoom nessuno le rilegge. I questionari: si contano le
+stelline e non si leggono le frasi."
+
+**Dire, sul terzo bullet:** "Le telefonate oggi sono fuori portata, ma vi lascio
+un compito che costa zero: un foglio accanto al telefono per quattro settimane,
+una riga per chiamata. Spesso cambia le priorità di tutto il progetto."
+
+## Slide 32. Le quattro esigenze
+
+**Dire:** "Dalla vostra e-mail ho ricavato quattro esigenze. Guardate la
+colonna in mezzo: solo due su quattro hanno bisogno di un modello. Le altre
+due sono integrazione e organizzazione."
+
+**Dire:** "E l'ordine che consiglio è controintuitivo: prima la uno, la tre e
+la quattro, e la due per ultima. La due, cioè Zoom e Moodle, è la più
+affascinante e la meno urgente."
+
+## Slide 33. Esigenza 1: repository unico
+
+**Dire:** "Un contenitore solo, più i connettori che ci portano dentro le cose.
+Non è AI, ed è la cosa che vi cambierà di più la giornata."
+
+**Dire:** "Va bene un foglio condiviso. Va bene un ticketing gratuito. Purché
+sia uno solo, e purché da lì in poi ogni richiesta abbia un identificativo, uno
+stato e un responsabile."
+
+## Slide 34. Il contenitore che oggi non c'è
+
+**Dire:** "Ecco perché la uno viene prima della due. Se estraete richieste
+dalle chat Zoom e non avete dove metterle, avete solo creato lavoro."
+
+## Slide 35. Come si costruisce il contenitore
+
+**Dire:** "Tecnicamente è un pomeriggio. I connettori dalle caselle si fanno a
+basso codice, senza scrivere una riga."
+
+**Dire, rallentando:** "La regola vera è l'ultima, ed è organizzativa: nessuno
+risponde più direttamente dalla propria casella. Quella non costa niente in
+tecnologia ed è il punto in cui questi progetti falliscono."
+
+## Slide 36. L'integrazione è idraulica, non intelligenza
+
+**Dire:** "Spostare dati da un posto a un altro senza interpretarli non
+richiede un modello. È noioso, è la maggior parte del lavoro, e non lo mette
+nessuno nelle presentazioni."
+
+**Dire:** "Regola pratica: se un'offerta è tutta AI e niente integrazione,
+manca il settanta per cento del progetto."
+
+## Slide 37. Esigenza 2: Zoom e Moodle
+
+**Dire:** "Questa è la chat vera di un vostro corso, diciassette righe. Dentro
+ci sono quattro richieste."
+
+**Fare:** con il puntatore, indicare le quattro righe mentre le si legge.
+
+**Dire:** "Le dieci e undici: le slide verranno inviate dopo. Le dieci e
+quarantotto: domanda per il docente. Le undici e quarantuno: l'attestato viene
+rilasciato automaticamente. Le dodici e venti: sarebbe utile un corso
+sull'esecuzione del contratto."
+
+**Dire:** "E adesso guardate le dieci e venticinque: non sento bene. Sembra una
+richiesta, non lo è, perché un minuto dopo la stessa persona scrive ok
+risolto. E le dodici e ventinove, grazie mille ottimo corso, non è un feedback
+azionabile: è educazione."
+
+## Slide 38. Esigenza 2: cosa esce dall'estrazione
+
+**Dire:** "Questo è quello che esce. Notate il campo motivazione: non serve al
+modello, serve a voi, per controllare a campione senza rileggere tutto."
+
+**Dire:** "Il terzo bullet nasce da un errore vero che ho fatto io. La prima
+volta ho lasciato che fosse il modello a decidere l'identificativo, e lui ci
+metteva dentro anche il nome del mittente. Risultato: quattro richieste su
+quaranta non erano più rintracciabili e la valutazione non tornava. Adesso
+l'orario lo estrae il codice con una regola fissa."
+
+## Slide 39. Esigenza 3: classificazione 1/2
+
+**Dire:** "Questa è la tassonomia, ed è un file di testo di quaranta righe. Lo
+scrivete voi, non il fornitore."
+
+**Dire:** "Guardate la parte in fondo: gli operatori sono ruoli. C'è scritto
+segreteria didattica, non il nome di chi ci lavora. E c'è la soglia di
+confidenza, zero virgola sette, che è un numero che decidete voi."
+
+## Slide 40. Esigenza 3: classificazione 2/2
+
+**Dire:** "E questo è quello che il modello deve restituire. Non un tema:
+questo oggetto, con questi campi, o un errore."
+
+**Dire:** "Due campi meritano attenzione. La confidenza, che decide se assegnare
+o fermarsi. E il campo meno sicuro, in cui il modello dichiara dove è più
+debole: in questo caso l'urgenza. Fra venti minuti scoprirete che aveva
+ragione."
+
+## Slide 41. La tassonomia si scrive così
+
+**Dire:** "Tre regole per scriverla. Ogni voce ha una descrizione, perché
+serve al modello quanto alla persona nuova che entra in segreteria."
+
+**Dire:** "Le voci sono poche e non si sovrappongono. Se due voci litigano fra
+loro, il modello sbaglia, e non è colpa sua."
+
+**Dire:** "E c'è sempre una voce altro. Non è una discarica, è un termometro:
+se supera il dieci per cento vi manca una categoria."
+
+## Slide 42. Gli operatori sono ruoli, non persone
+
+**Dire:** "Cinque sedie uguali. Nel file c'è il ruolo, non il nome. Se qualcuno
+cambia mansione o va in maternità, la tassonomia non invecchia."
+
+**Dire:** "C'è anche un motivo di riservatezza: in quel file non finiscono nomi
+di dipendenti."
+
+## Slide 43. Esigenza 4: tracciamento e follow-up
+
+**Dire:** "Stati e scadenze sono deterministici: nuova, presa in carico, in
+attesa, chiusa. Qui non c'è nessuna AI, e infatti non serve."
+
+**Dire:** "L'unica cosa che fa l'AI è scrivere la bozza. L'operatore la rilegge
+e la invia. Sempre."
+
+## Slide 44. Gli stati di una richiesta
+
+**Dire:** "Quattro stati, tre frecce avanti e una indietro. Da in attesa utente
+si torna a presa in carico, perché l'utente risponde."
+
+**Dire:** "Questa è la parte che si fa in mezza giornata con un foglio
+condiviso, ed è quella che dà il sollievo più immediato alla segreteria."
+
+## Slide 45. L'architettura, tutta insieme
+
+**Dire:** "Tutto insieme. Sette passi. Contate le targhette accese: tre."
+
+**Dire, scandendo:** "Tre passi su sette hanno un modello dentro. Gli altri
+quattro sono idraulica: spostare dati, applicare una regola, far rileggere a
+una persona. Se vi ricordate una sola slide di oggi, ricordatevi questa."
+
+**Dire, indicando la freccia che scende:** "E questa è la diramazione: quando
+la confidenza è sotto soglia, il sistema non assegna e la richiesta va a una
+persona."
+
+## Slide 46. Demo dal vivo: cosa vedrete
+
+**Dire:** "Adesso ve lo faccio vedere che gira. Tre cose: un GPT
+personalizzato che potete rifare voi stasera, la stessa logica in Python
+perché è l'unico modo per misurarla, e la chat Zoom che diventa righe di
+tabella."
+
+**Fare:** da qui in avanti seguire la sezione "La demo, parola per parola".
+Tornare alle slide alla 47.
+
+## Slide 47. Demo: il risultato
+
+**Dire:** "Questo è un estratto dell'esecuzione vera di giovedì scorso. Dieci
+righe su quaranta. Le righe gialle sono urgenza alta."
+
+## Slide 48. Demo: le tre righe da guardare
+
+**[clic]** "R007: reclamo con sollecito. Il tono prevale sull'oggetto. L'oggetto
+è un attestato, ma il modo in cui è scritto dice reclamo, e va alla direzione."
+
+**[clic]** "RE01: quella di prima, l'attestato bloccato dalla piattaforma. Due
+categorie plausibili, nessuna ovvia. Questa è la riga che vale la lezione."
+
+**[clic]** "RE05: non è nemmeno una domanda. È la notifica automatica di un
+ordine MEPA."
+
+## Slide 49. Demo: una bozza di risposta (R007)
+
+**Dire:** "La bozza per il reclamo. Leggete la prima frase: riconosce il
+disagio in una riga, senza giustificazioni. È una regola scritta nel prompt."
+
+**Dire:** "E poi le due parentesi quadre."
+
+## Slide 50. Demo: perché ci sono i segnaposto
+
+**Dire:** "Una data inventata è un danno. Un buco visibile è dieci secondi di
+lavoro per l'operatore."
+
+**Dire:** "La risposta pericolosa non è quella sbagliata: è quella verosimile.
+I segnaposto servono a rendere visibile l'ignoranza del sistema."
+
+## Slide 51. Dodici richieste vere
+
+**Dire, cambiando tono:** "Adesso cambio registro. Fino a qui i dati erano
+inventati da me. Da qui in poi sono i vostri: dodici richieste arrivate
+davvero alla Fondazione, che mi avete mandato anonimizzate."
+
+**Note.**
+- Dirlo esplicitamente: cambia l'attenzione della sala.
+- Il documento era già anonimizzato bene, nomi e codici sostituiti da X. Vale la pena dirlo.
+
+## Slide 52. Cosa ci hanno insegnato le dodici 1/3
+
+**[clic]** "Dieci su dodici hanno corso nessuno."
+
+**[clic]** "Lavoro agile, cyber security, OIV, valutazione della performance,
+società partecipate. Nessuno di questi era nella tassonomia che avevo scritto
+io."
+
+**[clic]** "Non è un errore del modello. È la tassonomia che va riscritta sul
+vostro catalogo vero. Questo è il risultato più utile della giornata, e non era
+previsto."
+
+## Slide 53. Cosa ci hanno insegnato le dodici 2/3
+
+**[clic]** "Tre su dodici sono richieste commerciali: preventivi, sconti,
+codici MEPA."
+
+**[clic]** "Nella tassonomia non c'è una voce per il commerciale, e le ho messe
+sotto fatturazione."
+
+**[clic]** "È l'approssimazione migliore disponibile, ed è comunque sbagliata."
+
+**Fare:** chiedere. "Domanda vera: chi risponde oggi a una richiesta di sconto?"
+
+**Dire, dopo le risposte:** "Se la risposta è dipende, avete appena trovato la
+prossima voce della vostra tassonomia."
+
+## Slide 54. Cosa ci hanno insegnato le dodici 3/3
+
+**[clic]** "Una su dodici non è una richiesta. È l'avviso automatico di una
+casella che viene dismessa."
+
+**[clic]** "Il modello l'ha classificata come informazioni e l'ha mandata alla
+segreteria."
+
+**[clic]** "Un sistema che smista tutto smista anche il rumore. Serve una voce
+per buttare via, e serve qualcuno che possa dire questa non è una richiesta."
+
+---
