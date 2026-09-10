@@ -232,6 +232,79 @@ def bullets_foto(title, items, foto, notes="", size=19, foto_frac=0.40):
     return s
 
 
+def _etichetta(slide, cx, cy, testo, size=13, fondo=BIANCO, colore=BLU, opacita=92):
+    """Targhetta di testo vero sopra la fotografia.
+
+    Le immagini generate non sanno scrivere: la disposizione la da' la foto,
+    le parole le mette PowerPoint. Cosi' restano leggibili e correggibili.
+    """
+    righe = testo.split("\n")
+    larghezza = int(max(len(r) for r in righe) * size * 6900) + 200000
+    altezza = int(len(righe) * size * 15200) + 110000
+    box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                 Emu(int(cx - larghezza / 2)), Emu(int(cy - altezza / 2)),
+                                 Emu(larghezza), Emu(altezza))
+    box.adjustments[0] = 0.18
+    box.fill.solid(); box.fill.fore_color.rgb = fondo
+    srgb = box._element.spPr.find(qn("a:solidFill")).find(qn("a:srgbClr"))
+    alpha = etree.SubElement(srgb, qn("a:alpha")); alpha.set("val", str(int(opacita * 1000)))
+    box.line.color.rgb = colore
+    box.line.width = Pt(0.75)
+    box.shadow.inherit = False
+    tf = box.text_frame
+    tf.word_wrap = False
+    tf.margin_left = tf.margin_right = Emu(60000)
+    tf.margin_top = tf.margin_bottom = Emu(20000)
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    for i, riga in enumerate(righe):
+        par = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+        par.alignment = PP_ALIGN.CENTER
+        r = par.add_run(); r.text = riga
+        r.font.size = Pt(size if i == 0 else size - 2)
+        r.font.bold = (i == 0)
+        r.font.color.rgb = colore
+        r.font.name = "Arial"
+    return box
+
+
+def _freccia(slide, x1, y1, x2, y2, colore=BLU, spessore=2.0):
+    """Connettore diritto con la punta, disegnato sopra la fotografia."""
+    from pptx.enum.shapes import MSO_CONNECTOR
+    c = slide.shapes.add_connector(MSO_CONNECTOR.STRAIGHT,
+                                   Emu(int(x1)), Emu(int(y1)), Emu(int(x2)), Emu(int(y2)))
+    c.line.color.rgb = colore
+    c.line.width = Pt(spessore)
+    linea = c._element.spPr.find(qn("a:ln"))
+    testa = etree.SubElement(linea, qn("a:tailEnd"))
+    testa.set("type", "triangle"); testa.set("w", "med"); testa.set("len", "med")
+    return c
+
+
+def schema_foto(title, foto, etichette, notes="", caption="", frecce=(),
+                alto=1160000, basso=3860000, size=13, velo=0):
+    """Schema costruito su una fotografia: la foto da' la disposizione,
+    le etichette e le frecce sono oggetti veri sopra di essa.
+
+    etichette: sequenza di (testo, x, y) con x e y relativi al riquadro
+    della foto, da 0 a 1. frecce: sequenza di (x1, y1, x2, y2), stesse unita'.
+    """
+    s = prs.slides.add_slide(L_TITLEONLY)
+    s.shapes.title.text = title; _style_title(s.shapes.title)
+    x0, w = 180000, 8784000
+    h = basso - alto
+    _foto_riempi(s, foto, x0, alto, w, h)
+    if velo:
+        _velo(s, x0, alto, w, h, colore=BIANCO, opacita=velo)
+    for x1, y1, x2, y2 in frecce:
+        _freccia(s, x0 + x1 * w, alto + y1 * h, x0 + x2 * w, alto + y2 * h)
+    for testo, rx, ry in etichette:
+        _etichetta(s, x0 + rx * w, alto + ry * h, testo, size=size)
+    if caption:
+        _textbox(s, 180000, basso + 80000, 8784000, 300000, caption, size=12, color=GRIG, italic=True)
+    _notes(s, notes)
+    return s
+
+
 def foto_piena(title, foto, caption="", notes=""):
     """Titolo in alto, fotografia sotto a tutta larghezza. Serve per parlarci sopra."""
     s = prs.slides.add_slide(L_TITLEONLY)
@@ -400,11 +473,12 @@ foto_piena("L'agente autonomo che vi immaginate", FOTO + "gag_robot.jpg",
            caption="Autonomo davvero: decide da solo, e non arriva alla tastiera.",
            notes="Slide per ridere, e per fissare un concetto: quando un fornitore dice 'agente autonomo', chiedete cosa sa fare da solo davvero. Spesso la risposta è: poco, e sotto sorveglianza.")
 
-bullets("I tre tipi, con un esempio ciascuno", [
+bullets_foto("I tre tipi, con un esempio ciascuno", [
     "Chatbot: chiedete a ChatGPT come si scrive una convocazione. Risponde, e finisce lì",
     "Workflow: la richiesta arriva, il modello la classifica, una regola la smista, un umano invia",
     "Agente: gli dite 'sistema l'helpdesk' e decide lui i passi. Oggi non lo vogliamo",
-], notes="Il secondo è quello che costruiremo. Vale la pena dirlo tre volte nella giornata.")
+], FOTO + "b08_tre_tipi.jpg", size=18,
+    notes="Il secondo è quello che costruiremo. Vale la pena dirlo tre volte nella giornata.")
 
 bullets_foto("La tesi in tre righe", [
     "Prima si scompone il processo, poi si decide cosa automatizzare",
@@ -473,29 +547,33 @@ bullets_image("Pattern utili 1/2", [
 ], FIG + "pattern.png", img_w_frac=0.58,
     notes="Anthropic e OpenAI usano nomi diversi per gli stessi pattern; l'idea è la stessa: dare al modello un compito piccolo e un formato di uscita rigido.")
 
-bullets("Pattern utili 2/2", [
+bullets_foto("Pattern utili 2/2", [
     "Orchestratore e worker: un modello spezza il compito, altri lo eseguono. Utile per rendicontazioni lunghe",
     "Valutatore: un secondo passaggio controlla il primo. Utile prima dell'invio",
     "Regola d'oro: compito piccolo, formato di uscita rigido, un umano dove costa sbagliare",
-], notes="Non entrare nei dettagli di orchestrazione: basta che riconoscano i nomi quando li leggono in un'offerta.")
+], FOTO + "b19_orchestra.jpg", size=17,
+    notes="Non entrare nei dettagli di orchestrazione: basta che riconoscano i nomi quando li leggono in un'offerta.")
 
-bullets("Parole da riconoscere in un'offerta 1/3", [
+bullets_foto("Parole da riconoscere in un'offerta 1/3", [
     "RAG: il modello cerca nei vostri documenti prima di rispondere. Utile, non magico",
     "Fine tuning: si riaddestra il modello sui vostri dati. Caro, lento, quasi mai necessario",
     "Prompt di sistema: le istruzioni fisse. È lì che vive il comportamento, chiedete di vederlo",
-], notes="Se un'offerta propone fine tuning per smistare 300 richieste al mese, è un campanello. Con quei volumi non c'è nulla da riaddestrare.")
+], FOTO + "b20_dizionario.jpg", size=16,
+    notes="Se un'offerta propone fine tuning per smistare 300 richieste al mese, è un campanello. Con quei volumi non c'è nulla da riaddestrare.")
 
-bullets("Parole da riconoscere in un'offerta 2/3", [
+bullets_foto("Parole da riconoscere in un'offerta 2/3", [
     "Output strutturato: il modello restituisce campi fissi, non prosa. Chiedetelo sempre",
     "Guardrail: controlli che bloccano le uscite fuori regola. Vanno mostrati, non promessi",
     "Human in the loop: la persona dentro il ciclo. Chiedete in quale passo, esattamente",
-], notes="'Human in the loop' senza il nome del passo è una formula vuota. Fatevi indicare la schermata che la persona vede.")
+], FOTO + "b21_occhiali.jpg", size=16,
+    notes="'Human in the loop' senza il nome del passo è una formula vuota. Fatevi indicare la schermata che la persona vede.")
 
-bullets("Parole da riconoscere in un'offerta 3/3", [
+bullets_foto("Parole da riconoscere in un'offerta 3/3", [
     "Orchestrazione: un modello che ne coordina altri. Serve per compiti lunghi, non per lo smistamento",
     "Allucinazione: il modello inventa con sicurezza. Non si elimina, si contiene",
     "Token: l'unità con cui si paga. Chiedete il costo per mille richieste, non per token",
-], notes="Sull'ultimo punto: nessuno sa stimare i token a occhio. Il costo per mille richieste è una domanda a cui un fornitore serio risponde subito.")
+], FOTO + "b22_bilancia.jpg", size=16,
+    notes="Sull'ultimo punto: nessuno sa stimare i token a occhio. Il costo per mille richieste è una domanda a cui un fornitore serio risponde subito.")
 
 bullets_foto("Quando NON usare un agente", [
     "Se la regola si scrive in un 'se... allora', è una regola. Non serve un modello",
@@ -565,11 +643,12 @@ foto_piena("Il contenitore che oggi non c'è", FOTO + "gag_faldoni.jpg",
            caption="Finché non c'è un posto solo, ogni richiesta trovata è una richiesta che non sa dove andare.",
            notes="E' la ragione per cui l'esigenza 1 viene prima della 2. Se estraete richieste dalle chat Zoom e non avete dove metterle, avete solo creato lavoro.")
 
-bullets("Come si costruisce il contenitore", [
+bullets_foto("Come si costruisce il contenitore", [
     "Un foglio condiviso basta, purché sia uno solo e ogni riga abbia un id",
     "I connettori dalle caselle si fanno a basso codice, in un pomeriggio",
     "La regola vera è organizzativa: nessuno risponde più direttamente dalla propria casella",
-], notes="Il terzo punto è il più difficile e non costa niente in tecnologia. È lì che i progetti falliscono.")
+], FOTO + "b35_imbuto.jpg", size=18,
+    notes="Il terzo punto è il più difficile e non costa niente in tecnologia. È lì che i progetti falliscono.")
 
 bullets_foto("L'integrazione è idraulica, non intelligenza", [
     "Spostare dati da un posto a un altro senza interpretarli non richiede un modello",
@@ -651,11 +730,12 @@ bullets_code("Esigenza 3: classificazione 2/2", [
 }""", code_frac=0.48,
     notes="Esempio R007. Il reclamo prevale sull'oggetto (attestato): regola scritta nel prompt di sistema, non dedotta dal modello.")
 
-bullets("La tassonomia si scrive così", [
+bullets_foto("La tassonomia si scrive così", [
     "Ogni voce ha una descrizione breve: serve al modello quanto agli operatori",
     "Le voci sono poche e non si sovrappongono. Se due voci litigano, il modello sbaglia",
     "C'è sempre una voce 'altro', ed è un termometro, non una discarica",
-], notes="Se 'altro' supera il dieci per cento, manca una categoria. Nel nostro caso reale manca una voce commerciale, e si vede.")
+], FOTO + "b41_caratteri.jpg", size=17,
+    notes="Se 'altro' supera il dieci per cento, manca una categoria. Nel nostro caso reale manca una voce commerciale, e si vede.")
 
 bullets_foto("Gli operatori sono ruoli, non persone", [
     "Nel file c'è 'segreteria didattica', non il nome di chi ci lavora oggi",
@@ -664,11 +744,12 @@ bullets_foto("Gli operatori sono ruoli, non persone", [
 ], FOTO + "hd_ruoli.jpg",
     notes="E' anche una scelta di privacy: nel file non finiscono nomi di dipendenti.")
 
-bullets("Esigenza 4: tracciamento e follow-up", [
+bullets_foto("Esigenza 4: tracciamento e follow-up", [
     "Stati e scadenze sono deterministici: nuova, presa in carico, in attesa, chiusa. Nessuna AI",
     "L'AI scrive la bozza di risposta; l'operatore la rivede e la invia",
     "Segnaposto obbligatori dove il sistema non sa: [data], [importo], [link]",
-], notes="La bozza con segnaposto è una scelta di progetto: preferiamo un buco visibile a una data inventata.")
+], FOTO + "b43_cartellini.jpg", size=17,
+    notes="La bozza con segnaposto è una scelta di progetto: preferiamo un buco visibile a una data inventata.")
 
 image_top_bullets("Gli stati di una richiesta", FIG + "stati.png", [
     "Quattro stati e due date: presa in carico e scadenza. Niente di più",
@@ -692,11 +773,12 @@ image_full("Demo: il risultato", FIG + "tabella_demo.png",
            caption="Dieci righe su quaranta. Righe gialle: urgenza alta. Le colonne sono quelle della tassonomia.",
            notes="Fermarsi su RE01, una richiesta vera: il partecipante ha finito il corso ma la piattaforma non gli fa scaricare l'attestato. E' un problema di attestato o di piattaforma? Il modello dice attestato, noi avevamo etichettato accesso-piattaforma. Non e' ovvio chi abbia ragione: e' esattamente il caso da portare a un umano.")
 
-bullets("Demo: le tre righe da guardare", [
+bullets_foto("Demo: le tre righe da guardare", [
     "R007: reclamo con sollecito. Il tono prevale sull'oggetto, e va alla direzione",
     "RE01: attestato bloccato dalla piattaforma. Due categorie plausibili, nessuna ovvia",
     "RE05: una notifica automatica di ordine MEPA. Non è nemmeno una domanda",
-], notes="Se resta tempo, aprire il file e cercare insieme una riga a caso. La forza della demo è che i dati sono i loro.")
+], FOTO + "b48_segnalibri.jpg", size=18,
+    notes="Se resta tempo, aprire il file e cercare insieme una riga a caso. La forza della demo è che i dati sono i loro.")
 
 code_full("Demo: una bozza di risposta (R007)", """Gentile Ufficio Tributi,
 
@@ -711,43 +793,48 @@ Cordiali saluti,
 Segreteria Promo PA""", size=13,
     notes="Due segnaposto: la data e il contatto. Il modello non li conosce e non li inventa. L'operatore li riempie in dieci secondi.")
 
-bullets("Demo: perché ci sono i segnaposto", [
+bullets_foto("Demo: perché ci sono i segnaposto", [
     "Una data inventata è un danno; un buco visibile è dieci secondi di lavoro",
     "La regola sta nel prompt di sistema, non nella buona volontà del modello",
     "È il modo più semplice per rendere visibile il confine di quello che il sistema sa",
-], notes="Aneddoto da raccontare: la risposta piu' pericolosa non e' quella sbagliata, e' quella verosimile. I segnaposto rendono l'ignoranza visibile.")
+], FOTO + "b50_puzzle.jpg", size=18,
+    notes="Aneddoto da raccontare: la risposta piu' pericolosa non e' quella sbagliata, e' quella verosimile. I segnaposto rendono l'ignoranza visibile.")
 
 foto_piena("Dodici richieste vere", FOTO + "hd_dodici.jpg",
            caption="Dodici richieste arrivate davvero alla Fondazione, anonimizzate, importate nel repository.",
            notes="Qui si cambia registro: fino a ora i dati erano sintetici. Da qui in poi sono i loro. Vale la pena dirlo esplicitamente, cambia l'attenzione della sala.")
 
-bullets("Cosa ci hanno insegnato le dodici 1/3", [
+bullets_foto("Cosa ci hanno insegnato le dodici 1/3", [
     "Dieci su dodici hanno corso 'nessuno': il catalogo vero non è quello della tassonomia di prova",
     "Lavoro agile, cyber security, OIV, performance, società partecipate: non c'erano",
     "Non è un errore del modello. È la tassonomia che va riscritta sul catalogo vostro",
-], notes="Questo e' il risultato piu' utile della giornata e non era previsto. La tassonomia sintetica era plausibile e sbagliata.")
+], FOTO + "b52_scomparti.jpg", size=17,
+    notes="Questo e' il risultato piu' utile della giornata e non era previsto. La tassonomia sintetica era plausibile e sbagliata.")
 
-bullets("Cosa ci hanno insegnato le dodici 2/3", [
+bullets_foto("Cosa ci hanno insegnato le dodici 2/3", [
     "Tre richieste su dodici sono commerciali: preventivi, sconti, codici MEPA",
     "La tassonomia non ha una voce per il commerciale, e le abbiamo messe sotto fatturazione",
     "È l'approssimazione migliore disponibile, ed è comunque sbagliata",
-], notes="Domanda per la sala: chi risponde oggi a una richiesta di sconto? Se la risposta e' 'dipende', avete trovato la prossima voce della tassonomia.")
+], FOTO + "b53_ricevute.jpg", size=17,
+    notes="Domanda per la sala: chi risponde oggi a una richiesta di sconto? Se la risposta e' 'dipende', avete trovato la prossima voce della tassonomia.")
 
-bullets("Cosa ci hanno insegnato le dodici 3/3", [
+bullets_foto("Cosa ci hanno insegnato le dodici 3/3", [
     "Una richiesta su dodici non è una richiesta: è l'avviso automatico di una casella dismessa",
     "Il modello l'ha classificata come 'informazioni' e l'ha mandata alla segreteria",
     "Un sistema che smista tutto smista anche il rumore. Serve una voce per buttare via",
-], notes="RE12. E' l'argomento migliore a favore della voce 'altro' e della coda umana: qualcuno deve poter dire 'questa non e' una richiesta'.")
+], FOTO + "b54_filtro.jpg", size=17,
+    notes="RE12. E' l'argomento migliore a favore della voce 'altro' e della coda umana: qualcuno deve poter dire 'questa non e' una richiesta'.")
 
 # ---------- 4. Limiti ----------
 section("4. Limiti e rischi", "15 minuti", foto=FOTO + "sez4_limiti.jpg",
         notes="Senza giri di parole. Questa parte serve a evitare che qualcuno compri qualcosa a ottobre sull'onda dell'entusiasmo.")
 
-bullets("L'accuratezza si misura, non si stima", [
+bullets_foto("L'accuratezza si misura, non si stima", [
     "Serve un campione etichettato a mano: 100-200 richieste, due persone, poi confronto",
     "Dove le due persone non concordano, il problema è la tassonomia, non il modello",
     "Quello che segue è misurato sul repository, oggi, con quaranta richieste",
-], notes="Le quaranta sono: 19 sintetiche, 12 reali della Fondazione, 9 estratte da chat Zoom e questionari. Poche, ma vere e verificabili.")
+], FOTO + "b56_calibro.jpg", size=17,
+    notes="Le quaranta sono: 19 sintetiche, 12 reali della Fondazione, 9 estratte da chat Zoom e questionari. Poche, ma vere e verificabili.")
 
 image_full("I numeri di questa esecuzione", FIG + "accuratezza.png",
            caption="gpt-5-mini, 40 richieste, 10 settembre 2026. Etichette di riferimento scritte a mano.",
@@ -757,27 +844,30 @@ image_full("Il modello è sicuro anche quando sbaglia", FIG + "confidenza.png",
            caption="Nessuna richiesta è scesa sotto la soglia. Sedici su quaranta avevano almeno un campo sbagliato.",
            notes="Questa e' la slide piu' importante della giornata. Fermarsi. La soglia di confidenza a 0,7 non e' scattata nemmeno una volta: la confidenza minima dichiarata e' stata 0,75. Il punto di controllo automatico, da solo, non ha protetto niente.")
 
-bullets("Cosa dice quel grafico", [
+bullets_foto("Cosa dice quel grafico", [
     "La confidenza dichiarata non è una probabilità: è un numero che il modello sceglie",
     "Le crocette rosse stanno a destra della soglia quanto i pallini blu",
     "La coda umana va tarata sui dati, non sul numero che il modello si autoassegna",
-], notes="Come si tara davvero: si prende il campione etichettato, si ordina per confidenza e si guarda dove gli errori si diradano. Se non si diradano mai, la confidenza non serve e il controllo deve essere un altro.")
+], FOTO + "b59_bussola.jpg", size=18,
+    notes="Come si tara davvero: si prende il campione etichettato, si ordina per confidenza e si guarda dove gli errori si diradano. Se non si diradano mai, la confidenza non serve e il controllo deve essere un altro.")
 
 image_full("Dove si concentrano gli errori", FIG + "errori_campi.png",
            caption="Undici errori su quaranta sul campo urgenza, nessuno sul corso.",
            notes="L'urgenza e' il campo piu' soggettivo e il piu' sbagliato. Non e' un caso: e' quello dove anche due persone della segreteria non sarebbero d'accordo.")
 
-bullets("Urgenza: perché è il campo peggiore", [
+bullets_foto("Urgenza: perché è il campo peggiore", [
     "La regola dice: alta solo con vincolo di tempo esplicito o blocco di accesso",
     "Ma 'avrei urgentemente bisogno' è un vincolo esplicito o solo un tono?",
     "Finché non lo decidete voi, il modello sceglie, e sceglie ogni volta in modo diverso",
-], notes="RE10 dice 'avrei urgentemente bisogno': noi l'abbiamo etichettata alta, il modello media. Nessuno dei due ha torto. Manca la regola.")
+], FOTO + "b61_sveglia.jpg", size=18,
+    notes="RE10 dice 'avrei urgentemente bisogno': noi l'abbiamo etichettata alta, il modello media. Nessuno dei due ha torto. Manca la regola.")
 
-bullets("Quando sbaglia il modello e quando la tassonomia", [
+bullets_foto("Quando sbaglia il modello e quando la tassonomia", [
     "Se due persone della segreteria darebbero risposte diverse, non è colpa del modello",
     "Se tutti darebbero la stessa risposta e il modello no, è colpa del modello",
     "Il test costa venti minuti e si fa su venti richieste, prima di comprare qualsiasi cosa",
-], notes="E' la diagnosi differenziale piu' utile che si portano a casa oggi. Scriverla alla lavagna.")
+], FOTO + "b62_bivio.jpg", size=17,
+    notes="E' la diagnosi differenziale piu' utile che si portano a casa oggi. Scriverla alla lavagna.")
 
 bullets_foto("La coda umana, in pratica", [
     "Qualcuno la apre ogni mattina, o non è un controllo: è un secondo arretrato",
@@ -814,25 +904,25 @@ bullets_foto("Chi risponde delle decisioni sui dati", [
 ], FOTO + "an_fornitore.jpg", size=16,
     notes="Detto senza drammi e senza diagnosi: non sto dicendo che siete inadempienti, sto dicendo che serve un nome accanto a una decisione. Se poi quel nome debba essere un responsabile della protezione dei dati e' una domanda per un legale.")
 
-bullets("Il perimetro, senza conclusioni", [
+bullets_foto("Il perimetro, senza conclusioni", [
     "Ci sono tre testi di cui sentirete parlare: l'AI Act europeo, la legge italiana sull'IA, le linee guida AgID",
     "Nel 2026 le date si sono mosse più di una volta: qualunque cosa vi dica oggi va riverificata sul testo ufficiale",
     "Nessuno di questi testi nomina l'helpdesk di una fondazione formativa: la qualificazione la fa un giurista",
-], size=18,
+], FOTO + "b68_recinto.jpg", size=16,
     notes="Non leggere numeri di articolo dalla slide. Se qualcuno li chiede, stanno in docs/domande_legali.md con i link alle fonti e la data di consultazione, e con scritto che il consolidato non e' stato letto direttamente. Il messaggio della slide e' uno solo: il perimetro esiste, non lo traccio io.")
 
-bullets("Le sei domande da mettere per iscritto 1/2", [
+bullets_foto("Le sei domande da mettere per iscritto 1/2", [
     "Il sistema che vogliamo costruire rientra fra quelli soggetti a obblighi rafforzati? Su quale base?",
     "Dobbiamo dire a chi ci scrive che una parte del processo usa AI? In quale momento e con quali parole?",
     "Con quale base giuridica trattiamo il testo delle richieste, e dove va scritta?",
-], size=17,
+], FOTO + "b69_macchina.jpg", size=16,
     notes="Sono domande, non risposte. Suggerire di mandarle via e-mail a chi le deve firmare: una domanda scritta produce una risposta scritta, e una risposta scritta protegge chi la riceve.")
 
-bullets("Le sei domande da mettere per iscritto 2/2", [
+bullets_foto("Le sei domande da mettere per iscritto 2/2", [
     "Il fornitore del modello che ruolo assume rispetto ai nostri dati, e cosa dobbiamo firmare con lui?",
     "Serve una valutazione d'impatto prima di partire? Se sì, chi la redige e chi la firma?",
     "Ogni umano che togliete dal ciclo allunga questa lista: cosa cambierebbe se la risposta partisse da sola?",
-], size=17,
+], FOTO + "b70_cassetta.jpg", size=16,
     notes="L'ultimo punto e' il ponte con il resto della lezione: l'invio umano non e' solo una scelta di qualita', e' anche quello che tiene corta la lista delle domande. Non dire perche', dire solo che la lista si allunga.")
 
 bullets_foto("Quanto costa davvero", [
@@ -896,17 +986,19 @@ bullets_foto("Metriche decise prima di partire", [
 ], FOTO + "pi_metro.jpg",
     notes="Il terzo punto nasce dall'errore visto prima: una coda che nessuno guarda non e' un controllo.")
 
-bullets("Le tre soglie, spiegate", [
+bullets_foto("Le tre soglie, spiegate", [
     "Sotto l'80% su tipologia e operatore il sistema fa perdere tempo invece di darne",
     "Sopra il 30% di coda umana la tassonomia è ambigua, non il modello è scarso",
     "Se il tempo alla prima risposta non scende, il collo di bottiglia era altrove",
-], notes="Sono punti di partenza, non standard: vanno fissati dalla Fondazione prima di vedere i risultati. Oggi, su 40 richieste, tipologia e operatore stanno all'85 per cento e i quattro campi insieme al 60.")
+], FOTO + "b81_pesi.jpg", size=17,
+    notes="Sono punti di partenza, non standard: vanno fissati dalla Fondazione prima di vedere i risultati. Oggi, su 40 richieste, tipologia e operatore stanno all'85 per cento e i quattro campi insieme al 60.")
 
-bullets("Strumenti a basso codice", [
+bullets_foto("Strumenti a basso codice", [
     "ChatGPT Business: GPT personalizzato o Progetto con la tassonomia come file. Zero codice",
     "Connettori: Make, Zapier, n8n, oppure le automazioni di Microsoft 365 o Google Workspace già in uso",
     "Il codice del repository serve quando volete misurare e integrare per davvero",
-], notes="Non fare pubblicità a un fornitore. Il criterio: prendete lo strumento che qualcuno in Fondazione sa già usare.")
+], FOTO + "b82_cassetta_attrezzi.jpg", size=17,
+    notes="Non fare pubblicità a un fornitore. Il criterio: prendete lo strumento che qualcuno in Fondazione sa già usare.")
 
 foto_piena("Il report che nessuno legge", FOTO + "gag_stampante.jpg",
            caption="Una metrica che non cambia una decisione è carta.",
@@ -977,17 +1069,19 @@ bullets_foto("Tre errori da evitare", [
 ], FOTO + "c39_errori.jpg", size=19,
     notes="Chiusura. Sono le tre righe della tesi iniziale, al contrario.")
 
-bullets("Che cosa vi portate a casa", [
+bullets_foto("Che cosa vi portate a casa", [
     "Un repository con dati, codice, griglia e queste slide, che gira anche senza chiave API",
     "Tre domande da fare a un fornitore, e una diagnosi per capire chi ha sbagliato",
     "Una tassonomia da riscrivere sui vostri corsi veri: è il compito per lunedì",
-], notes="Il terzo punto e' il vero compito. Dieci minuti a settimana per un mese e il passo 2 e' fatto.")
+], FOTO + "b95_borsa.jpg", size=17,
+    notes="Il terzo punto e' il vero compito. Dieci minuti a settimana per un mese e il passo 2 e' fatto.")
 
-bullets("Materiali e contatti", [
+bullets_foto("Materiali e contatti", [
     "Codice, dati, griglia e slide: github.com/<da completare>/promopa-agenti-ai",
     "Tutto gira anche senza chiave API (modalità 'mock') per provare la forma dell'output",
     "fabrizio.silvestri@uniroma1.it",
-], notes="ATTENZIONE: il repository non è ancora pubblicato. Sostituire <da completare> con l'account GitHub prima della lezione, poi rigenerare il deck. Il comando di push è in HANDOFF.md.")
+], FOTO + "b96_taccuino.jpg", size=18,
+    notes="ATTENZIONE: il repository non è ancora pubblicato. Sostituire <da completare> con l'account GitHub prima della lezione, poi rigenerare il deck. Il comando di push è in HANDOFF.md.")
 
 section("Grazie", "Domande?", foto=FOTO + "sez7_grazie.jpg", notes="")
 

@@ -31,6 +31,34 @@ def salva(fig, nome):
     plt.close(fig)
 
 
+def tabella(ax, colonne, righe, evidenzia=None, fs=11, altezza=2.0, allinea="left"):
+    """Tabella con uno stile piu' quieto di quello di default di matplotlib.
+
+    Niente righe verticali, separatori orizzontali chiarissimi, intestazione
+    piena in blu, righe alternate appena tinte. `evidenzia` e' una funzione
+    (indice_riga, indice_colonna, valore) -> colore di sfondo, oppure None.
+    """
+    t = ax.table(cellText=righe, colLabels=colonne, loc="center",
+                 cellLoc=allinea, colLoc=allinea)
+    t.auto_set_font_size(False); t.set_fontsize(fs); t.scale(1, altezza)
+    for (i, j), c in t.get_celld().items():
+        c.set_linewidth(0.8)
+        c.visible_edges = "horizontal"
+        c.set_edgecolor("#E4E7EB")
+        c.PAD = 0.055
+        if i == 0:
+            c.set_facecolor(BLU); c.set_edgecolor(BLU)
+            c.visible_edges = "closed"
+            c.set_text_props(color="white", fontweight="bold")
+        else:
+            c.set_facecolor("#FFFFFF" if i % 2 else "#F7F9FB")
+            colore = evidenzia(i - 1, j, righe[i - 1][j]) if evidenzia else None
+            if colore:
+                c.set_facecolor(colore)
+    t.auto_set_column_width(col=list(range(len(colonne))))
+    return t
+
+
 # 1. chatbot / workflow / agente
 fig, ax = fresh(10, 4.6)
 cols = [("Chatbot", "Risponde a una domanda.\nNessuna azione,\nnessun passo successivo.", AZZ),
@@ -77,19 +105,15 @@ arrow(ax, 0.22, 0.12, 0.30, 0.12); arrow(ax, 0.52, 0.12, 0.66, 0.12)
 salva(fig, "pattern.png")
 
 # 4. mappa esigenze
-fig, ax = fresh(10, 4.8)
-righe = [("1. Repository unico", "Integrazione", "Connettori da 5 caselle e moduli\nverso un contenitore unico", "#DCE8DC"),
-         ("2. Zoom e Moodle", "AI", "Estrarre richieste da testo\nnon strutturato", "#F6E7D8"),
-         ("3. Classificazione", "AI + regola", "Modello applica la tassonomia;\nsoglia di confidenza", "#F6E7D8"),
-         ("4. Tracciamento", "Workflow + AI", "Stati e scadenze deterministici;\nbozze generate, invio umano", "#DCE8DC")]
-ax.text(0.03, 0.96, "Esigenza", fontsize=12, fontweight="bold", color=BLU, va="top")
-ax.text(0.40, 0.96, "Natura", fontsize=12, fontweight="bold", color=BLU, va="top")
-ax.text(0.60, 0.96, "Cosa serve davvero", fontsize=12, fontweight="bold", color=BLU, va="top")
-for i, (e, n, c, fc) in enumerate(righe):
-    y = 0.72 - i * 0.22
-    box(ax, 0.02, y, 0.34, 0.17, e, fc=AZZ, fs=12, bold=True)
-    box(ax, 0.39, y, 0.18, 0.17, n, fc=fc, fs=12, bold=True)
-    ax.text(0.60, y + 0.085, c, fontsize=11, va="center", color=NERO, linespacing=1.3)
+fig, ax = plt.subplots(figsize=(11, 3.4), dpi=200); ax.axis("off")
+cols = ["Esigenza", "Natura", "Cosa serve davvero"]
+cells = [["1. Repository unico", "Integrazione", "Connettori da 5 caselle e moduli verso un contenitore unico"],
+         ["2. Zoom e Moodle", "AI", "Estrarre richieste da testo non strutturato"],
+         ["3. Classificazione", "AI + regola", "Il modello applica la tassonomia, la soglia decide"],
+         ["4. Tracciamento", "Workflow + AI", "Stati e scadenze deterministici, bozze, invio umano"]]
+tinte = {"Integrazione": "#D3E5D6", "AI": "#F7DFC4", "AI + regola": "#F7DFC4", "Workflow + AI": "#D3E5D6"}
+tabella(ax, cols, cells, fs=11.5, altezza=2.2,
+        evidenzia=lambda i, j, v: tinte.get(v) if j == 1 else None)
 salva(fig, "mappa_esigenze.png")
 
 # 5. pipeline
@@ -120,17 +144,15 @@ fig, ax = plt.subplots(figsize=(11, 4.4), dpi=200); ax.axis("off")
 cols = ["id", "canale", "corso", "tipologia", "urgenza", "operatore", "conf."]
 cells = [[r["id"], r["canale"], r["corso"], r["tipologia"], r["urgenza"],
           r["operatore"] if r["assegnazione_automatica"] else "DA VERIFICARE", f"{r['confidenza']:.2f}"] for r in righe]
-tab = ax.table(cellText=cells, colLabels=cols, loc="center", cellLoc="left", colLoc="left")
-tab.auto_set_font_size(False); tab.set_fontsize(10); tab.scale(1, 1.55)
-for (i, j), c in tab.get_celld().items():
-    c.set_edgecolor("#D0D0D0")
-    if i == 0:
-        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
-    elif cells[i - 1][5] == "DA VERIFICARE":
-        c.set_facecolor("#FBE9E7")
-    elif cells[i - 1][4] == "alta":
-        c.set_facecolor("#FFF4E5")
-tab.auto_set_column_width(col=list(range(len(cols))))
+def _tinta(i, j, v):
+    if cells[i][5] == "DA VERIFICARE":
+        return "#F8D7D2"
+    if cells[i][4] == "alta":
+        return "#FBE3C2"
+    return None
+
+
+tabella(ax, cols, cells, fs=10.5, altezza=1.9, evidenzia=_tinta)
 salva(fig, "tabella_demo.png")
 
 # 7. quattro passi
@@ -146,7 +168,7 @@ for i, (t, d) in enumerate(passi):
 salva(fig, "quattro_passi.png")
 
 # 8. griglia esempio
-fig, ax = plt.subplots(figsize=(11, 4.6), dpi=200); ax.axis("off")
+fig, ax = plt.subplots(figsize=(11, 4.4), dpi=200); ax.axis("off")
 cols = ["#", "Passo", "Input", "Decisione", "Tipo"]
 cells = [["1", "Raccogliere le richieste", "5 caselle, moduli, Moodle", "nessuna", "Integrazione"],
          ["2", "Estrarre da Zoom e questionari", "chat, risposte aperte", "è una richiesta?", "AI"],
@@ -155,16 +177,9 @@ cells = [["1", "Raccogliere le richieste", "5 caselle, moduli, Moodle", "nessuna
          ["5", "Verificare bassa confidenza", "coda 'da verificare'", "giudizio", "Umano"],
          ["6", "Scrivere la risposta", "richiesta + contesto", "cosa rispondere", "AI"],
          ["7", "Inviare e chiudere", "bozza", "approvazione", "Umano"]]
-tab = ax.table(cellText=cells, colLabels=cols, loc="center", cellLoc="left", colLoc="left")
-tab.auto_set_font_size(False); tab.set_fontsize(10.5); tab.scale(1, 1.5)
-colori = {"AI": "#F6E7D8", "Umano": "#DCE8DC", "Integrazione": AZZ, "Regola": AZZ}
-for (i, j), c in tab.get_celld().items():
-    c.set_edgecolor("#D0D0D0")
-    if i == 0:
-        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
-    elif j == 4:
-        c.set_facecolor(colori[cells[i - 1][4]])
-tab.auto_set_column_width(col=list(range(len(cols))))
+colori = {"AI": "#F7DFC4", "Umano": "#D3E5D6", "Integrazione": "#DCE7F2", "Regola": "#DCE7F2"}
+tabella(ax, cols, cells, fs=11, altezza=1.9,
+        evidenzia=lambda i, j, v: colori.get(v) if j == 4 else None)
 salva(fig, "griglia.png")
 
 # 9. numeri: nessuna figura, si fanno con shape in pptx
@@ -241,16 +256,10 @@ ax.text(0.5, 0.10, "nessuna AI: sono regole e date", ha="center", fontsize=12, c
 salva(fig, "stati.png")
 
 # 14. griglia vuota da compilare
-fig, ax = plt.subplots(figsize=(11, 3.6), dpi=200); ax.axis("off")
+fig, ax = plt.subplots(figsize=(11, 3.8), dpi=200); ax.axis("off")
 cols = ["#", "Passo", "Chi lo fa oggi", "Input", "Decisione", "Output", "Tipo"]
 cells = [[str(i), "", "", "", "", "", ""] for i in range(1, 7)]
-tab = ax.table(cellText=cells, colLabels=cols, loc="center", cellLoc="left", colLoc="left")
-tab.auto_set_font_size(False); tab.set_fontsize(11); tab.scale(1, 1.9)
-for (i, j), c in tab.get_celld().items():
-    c.set_edgecolor("#C8C8C8")
-    if i == 0:
-        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
-tab.auto_set_column_width(col=list(range(len(cols))))
+tabella(ax, cols, cells, fs=11.5, altezza=2.4)
 salva(fig, "griglia_vuota.png")
 
 # 15. chi fa cosa nel pilota
@@ -260,15 +269,8 @@ cells = [["1. Audit", "Segreteria", "Chi risponde oggi", "1-2 settimane"],
          ["2. Tassonomia e dati", "Segreteria", "Due persone che etichettano", "2 settimane"],
          ["3. Prototipo", "Chi sa usare lo strumento", "Segreteria", "2-4 settimane"],
          ["4. Misura e decidi", "Direzione", "Tutti", "1 mese"]]
-tab = ax.table(cellText=cells, colLabels=cols, loc="center", cellLoc="left", colLoc="left")
-tab.auto_set_font_size(False); tab.set_fontsize(11); tab.scale(1, 1.8)
-for (i, j), c in tab.get_celld().items():
-    c.set_edgecolor("#D0D0D0")
-    if i == 0:
-        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
-    elif j == 0:
-        c.set_facecolor(AZZ)
-tab.auto_set_column_width(col=list(range(len(cols))))
+tabella(ax, cols, cells, fs=11.5, altezza=2.2,
+        evidenzia=lambda i, j, v: "#DCE7F2" if j == 0 else None)
 salva(fig, "ruoli.png")
 
 # 16. calendario del pilota

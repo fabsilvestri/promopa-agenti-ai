@@ -245,6 +245,160 @@ FOTO: dict[str, str] = {
         "Un metro a nastro d'acciaio srotolato su un tavolo di legno chiaro, "
         "le tacche non sono leggibili, luce laterale netta, fondo pulito."
     ),
+    # --- quarta serie: una per ogni slide che prima era di soli bullet -------
+    "b08_tre_tipi": (
+        "Tre oggetti allineati su un tavolo di legno scuro: un campanello da "
+        "banco di ottone, un timbro automatico, un piccolo drone quadricottero. "
+        "Luce radente da sinistra, fondo neutro."
+    ),
+    "b19_orchestra": (
+        "Leggii da orchestra neri disposti a semicerchio in una sala prove "
+        "vuota, nessuno spartito sopra, parquet, luce dall'alto."
+    ),
+    "b20_dizionario": (
+        "Un vocabolario aperto su un tavolo con una lente d'ingrandimento "
+        "appoggiata sopra, le parole non sono leggibili, luce calda laterale."
+    ),
+    "b21_occhiali": (
+        "Un paio di occhiali da lettura appoggiati su un plico di fogli "
+        "rilegati con una graffetta, macro, profondità di campo cortissima."
+    ),
+    "b22_bilancia": (
+        "Una piccola bilancia da orafo a due piatti in ottone su un tavolo "
+        "scuro, i piatti sono vuoti, luce laterale che disegna l'ombra."
+    ),
+    "b35_imbuto": (
+        "Un imbuto di metallo appoggiato sulla bocca di un barattolo di vetro "
+        "vuoto, su un piano da lavoro, luce da finestra a sinistra."
+    ),
+    "b41_caratteri": (
+        "Una cassetta tipografica di legno con i caratteri di piombo divisi "
+        "negli scomparti, vista dall'alto, luce radente, nessuna lettera "
+        "leggibile."
+    ),
+    "b43_cartellini": (
+        "Un vecchio orologio marcatempo da parete con la rastrelliera dei "
+        "cartellini accanto, i cartellini sono bianchi, muro intonacato."
+    ),
+    "b48_segnalibri": (
+        "Tre segnalibri di stoffa colorati che spuntano dalle pagine di un "
+        "libro chiuso su un tavolo, macro, luce morbida."
+    ),
+    "b50_puzzle": (
+        "Un puzzle quasi completo su un tavolo con tre pezzi mancanti che "
+        "lasciano vedere il legno sotto, vista dall'alto, luce diffusa."
+    ),
+    "b52_scomparti": (
+        "Una cassetta di legno con dodici scomparti quadrati vuoti, vista "
+        "dall'alto, legno chiaro consumato, luce laterale netta."
+    ),
+    "b53_ricevute": (
+        "Un blocchetto di ricevute con la carta carbone sollevata e una penna "
+        "a sfera accanto, su un bancone, luce calda, nessuna scritta leggibile."
+    ),
+    "b54_filtro": (
+        "Un filtro da caffè di carta dentro un portafiltro di ceramica con i "
+        "fondi bagnati, primo piano, controluce morbido."
+    ),
+    "b56_calibro": (
+        "Un calibro a corsoio d'acciaio appoggiato su un piano da officina "
+        "accanto a un pezzo metallico, macro, riflessi controllati."
+    ),
+    "b59_bussola": (
+        "Una bussola da rilevamento in ottone appoggiata su una mappa "
+        "topografica piegata, le scritte della mappa non sono leggibili, "
+        "luce naturale."
+    ),
+    "b61_sveglia": (
+        "Una sveglia meccanica a due campane accanto a un calendario da "
+        "tavolo, su un comodino di legno, luce del mattino presto."
+    ),
+    "b62_bivio": (
+        "Un bivio di due sentieri sterrati in un bosco di faggi, visto da "
+        "terra, luce filtrata dalle foglie, nessun cartello."
+    ),
+    "b68_recinto": (
+        "Un muretto a secco basso che attraversa un campo, con un varco "
+        "aperto nel mezzo, colline sullo sfondo, luce del tardo pomeriggio."
+    ),
+    "b69_macchina": (
+        "Una macchina da scrivere meccanica vista di tre quarti con un foglio "
+        "bianco inserito nel rullo, il foglio è vuoto, fondo scuro, luce "
+        "laterale."
+    ),
+    "b70_cassetta": (
+        "Una cassetta delle lettere rossa incassata in un muro di pietra "
+        "italiana, sportello chiuso, nessuna scritta leggibile, luce del "
+        "mattino."
+    ),
+    "b81_pesi": (
+        "Tre pesi da bilancia di ottone di dimensioni diverse allineati su un "
+        "piano di marmo chiaro, luce radente che allunga le ombre."
+    ),
+    "b82_cassetta_attrezzi": (
+        "Una cassetta degli attrezzi di metallo aperta con dentro pochi "
+        "attrezzi essenziali ben disposti, vista dall'alto, banco da lavoro."
+    ),
+    "b95_borsa": (
+        "Una borsa di tela grezza appoggiata su una panchina di legno, con un "
+        "quaderno che spunta fuori, luce di fine giornata da dietro."
+    ),
+    "b96_taccuino": (
+        "Un taccuino chiuso da un elastico con una penna infilata sotto "
+        "l'elastico, su un tavolo di legno chiaro, luce laterale calda."
+    ),
+    # --- basi fotografiche per gli schemi -----------------------------------
+    # Il modello non sa scrivere testo leggibile: queste immagini danno la
+    # disposizione, le etichette le mette sopra PowerPoint come testo vero.
+    # Per questo i prompt insistono su oggetti identici a distanze uguali.
+    "sch_scaletta": (
+        "Sei valigie di cuoio d'epoca quasi identiche, in piedi, allineate a "
+        "distanze uguali su un pavimento di pietra di una stazione, vista "
+        "frontale, fondo neutro sfocato, luce laterale morbida."
+    ),
+    "sch_tre_tipi": (
+        "Tre cubi di pietra chiara identici allineati a distanze uguali su un "
+        "piano di legno scuro, vista frontale appena dall'alto, luce da studio, "
+        "ombre nette e corte."
+    ),
+    "sch_anatomia": (
+        "Cinque ingranaggi di ottone su un panno grigio scuro: uno grande "
+        "esattamente al centro e quattro piu' piccoli ai quattro angoli, "
+        "disposti simmetricamente, vista perfettamente dall'alto, luce radente."
+    ),
+    "sch_ciclo": (
+        "Quattro ingranaggi d'acciaio identici disposti in cerchio su un fondo "
+        "scuro, uno in alto uno a destra uno in basso uno a sinistra, spazio "
+        "vuoto al centro, vista perfettamente dall'alto."
+    ),
+    "sch_canali": (
+        "Cinque imbuti di metallo identici allineati nella parte alta "
+        "dell'inquadratura che versano dentro un unico barattolo di vetro "
+        "al centro in basso, piano da laboratorio, vista frontale."
+    ),
+    "sch_pipeline": (
+        "Sette spezzoni di tubo di rame identici allineati a distanze uguali "
+        "su un banco da lavoro, vista frontale dall'alto, luce radente, "
+        "fondo di legno consumato."
+    ),
+    "sch_stati": (
+        "Quattro tazze di ceramica bianca identiche allineate a distanze "
+        "uguali su un tavolo di legno chiaro, vista frontale, luce diffusa."
+    ),
+    "sch_passi": (
+        "Quattro casse di legno identiche allineate a distanze uguali sul "
+        "pavimento di un magazzino luminoso, vista frontale, luce dall'alto."
+    ),
+    "sch_pattern": (
+        "Ciottoli di fiume grigi su sabbia chiara disposti in due file "
+        "orizzontali parallele, la fila in alto si apre a ventaglio verso "
+        "destra in quattro rami, vista perfettamente dall'alto."
+    ),
+    "sch_calendario": (
+        "Quattro strisce di nastro adesivo di carta beige, di lunghezze "
+        "diverse, attaccate orizzontalmente e sfalsate su una lavagna bianca "
+        "pulita, vista frontale, nessuna scritta."
+    ),
 }
 
 
