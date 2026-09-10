@@ -1339,11 +1339,11 @@ bullets_foto("Che cosa vi portate a casa", [
     notes="Il terzo punto e' il vero compito. Dieci minuti a settimana per un mese e il passo 2 e' fatto.")
 
 bullets_foto("Materiali e contatti", [
-    "Codice, dati, griglia e slide: github.com/<da completare>/promopa-agenti-ai",
+    "Codice, dati, griglia e slide: github.com/fabsilvestri/promopa-agenti-ai",
     "Tutto gira anche senza chiave API (modalità 'mock') per provare la forma dell'output",
     "fabrizio.silvestri@uniroma1.it",
 ], FOTO + "b96_taccuino.jpg", size=18,
-    notes="ATTENZIONE: il repository non è ancora pubblicato. Sostituire <da completare> con l'account GitHub prima della lezione, poi rigenerare il deck. Il comando di push è in HANDOFF.md.")
+    notes="ATTENZIONE: oggi il repository è privato, quindi il link dà 404 a chi non è invitato. Prima della lezione: renderlo pubblico con `gh repo edit fabsilvestri/promopa-agenti-ai --visibility public`, oppure invitare i partecipanti, oppure consegnare il materiale in altro modo e togliere questa riga.")
 
 section("Grazie", "Domande?", foto=FOTO + "sez7_grazie.jpg", notes="")
 

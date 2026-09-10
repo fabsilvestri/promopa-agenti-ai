@@ -60,10 +60,10 @@ dati, in forma condizionale.
 
 ## Da fare
 
-1. **Sostituire `<da completare>` con l'account GitHub** in
-   `slides/tools/build_deck.py`, poi rigenerare il deck. È l'unico segnaposto
-   rimasto nel deck.
-2. **Push**. Il comando è in fondo a questo file.
+1. **Decidere se il repository resta privato.** Oggi è privato, quindi il link
+   sulla slide "Materiali e contatti" dà 404 a chi non è invitato. Prima della
+   lezione: renderlo pubblico, invitare i partecipanti, o togliere la riga.
+   Il comando è in fondo a questo file.
 3. **Riscrivere la tassonomia sui corsi veri della Fondazione.** Dieci delle
    dodici richieste reali hanno corso `nessuno`, e tre sono commerciali
    (preventivi, sconti, MEPA) senza una voce dedicata. È il lavoro che vale di
@@ -136,14 +136,13 @@ mette sopra una griglia.
 
 Push, da eseguire dopo aver creato il repository su GitHub:
 
-Il branch locale si chiama `master`. GitHub oggi usa `main` come predefinito,
-quindi conviene rinominarlo prima del primo push.
+Il repository è `github.com/fabsilvestri/promopa-agenti-ai`, privato, branch
+`main`. Per renderlo pubblico prima della lezione:
 
 ```bash
-git branch -m master main
-git remote add origin git@github.com:<utente>/promopa-agenti-ai.git
-git push -u origin main
+gh repo edit fabsilvestri/promopa-agenti-ai --visibility public --accept-visibility-change-consequences
 ```
 
-Se preferite tenere `master`, saltate la prima riga e usate
-`git push -u origin master`.
+Attenzione a cosa diventa pubblico: le dodici richieste vere della Fondazione,
+anche se anonimizzate, e le frasi sulla loro situazione interna. Il docx
+originale resta comunque fuori, è in `.gitignore`.
