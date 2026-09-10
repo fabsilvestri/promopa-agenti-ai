@@ -1314,3 +1314,255 @@ qualcosa spendendo tre mesi invece di una piattaforma."
 avrete messo dentro tre mesi di lavoro, sarà più difficile dirlo."
 
 ---
+
+# Blocco 6. Esercitazione (1:30 - 2:00)
+
+Trenta minuti. Da remoto, senza stanze separate. Meno di quindici collegati,
+quindi la chat si legge mentre si parla e si possono chiamare le persone per
+nome.
+
+## Slide 87. Sezione 6
+
+**Dire:** "Ultima mezz'ora, e non faccio lezione. Tre tempi: dieci minuti da
+soli, quindici insieme, cinque in chat."
+
+**Fare:** incollare in chat il link alla griglia.
+
+## Slide 88. Come funziona l'esercizio
+
+**[clic]** "Dieci minuti da soli. Ognuno prende un processo che conosce e lo
+scompone con la griglia. Microfoni chiusi."
+
+**[clic]** "Poi quindici minuti insieme: ne scomponiamo uno dal vivo, e lo
+scegliete voi."
+
+**[clic]** "E cinque minuti finali in chat, tre domande, una riga a testa."
+
+**Dire:** "Non vi metto in stanze separate. Da remoto, in una stanza da
+quattro, di solito parla uno e gli altri tre aspettano che finisca. Preferisco
+che ognuno provi con le proprie mani e poi lo facciamo insieme."
+
+## Slide 89. Consegna
+
+**Dire:** "La consegna è questa. Scegliete un processo della Fondazione. Poi lo
+scomponete: un passo per riga."
+
+**Dire, insistendo:** "Un passo per riga anche se sembra banale. Anzi,
+soprattutto se sembra banale, perché è lì che si nascondono le integrazioni.
+Scaricare un allegato è un passo. Aprire un foglio è un passo."
+
+**Dire:** "E per ogni passo una parola sola nell'ultima colonna: integrazione,
+AI, oppure umano."
+
+## Slide 90. La griglia da compilare
+
+**Fare:** ricordare il link in chat. Lasciare trenta secondi perché la aprano.
+
+**Dire:** "Sei righe bastano. Se ve ne servono di più, quello che avete scelto
+erano due processi, e conviene sceglierne uno."
+
+**Dire:** "Chi preferisce può scriverla a mano su un foglio. L'importante è che
+ognuno abbia la sua, perché serve fra dieci minuti."
+
+## Slide 91. La griglia, compilata sull'helpdesk
+
+**Dire:** "Questo è l'esempio, ed è il vostro helpdesk. Sette passi. Guardate
+l'ultima colonna: tre AI, due umano, due integrazione o regola."
+
+**Dire:** "Arrivate a una tabella così. Non più bella: così."
+
+## Slide 92. Tre processi candidati
+
+**Dire:** "Se non vi viene in mente niente, tre proposte. Rendicontazione di un
+progetto, rassegna stampa e bandi, gestione delle iscrizioni."
+
+**Dire:** "Ma un processo vostro è sempre meglio di uno dei miei."
+
+**Fare:** chiedere. "Scrivete in chat quale avete scelto, anche solo due
+parole. Mi serve dopo."
+
+## Slide 93. Dieci minuti, ognuno per sé
+
+**Fare:** lasciare questa slide condivisa per tutti e dieci i minuti. Tenere il
+microfono aperto.
+
+**Dire:** "Dieci minuti. Microfoni chiusi, telecamere come volete. Se avete una
+domanda scrivetela in chat e vi rispondo mentre lavorate. Quando avete finito,
+scrivete fatto."
+
+**Fare, durante i dieci minuti:**
+- leggere in chat i processi scelti
+- decidere quale scomporre insieme: meglio uno che nessuno ha già risolto, e meglio uno proposto da chi non ha ancora parlato
+- avvisare a tre minuti dalla fine: "tre minuti"
+
+## Slide 94. Adesso ne scomponiamo uno insieme
+
+Questo è il pezzo centrale della mezz'ora. Quindici minuti.
+
+**Dire:** "Prendiamo quello di [nome], la rendicontazione. Lo facciamo insieme,
+riga per riga, e lo compilo io mentre voi mi dettate."
+
+**Fare:** condividere la griglia vuota, in un foglio o in un documento, e
+compilarla davvero mentre parlano. Non usare la slide: usare un file
+modificabile.
+
+**Come condurre, una riga alla volta:**
+
+1. **Dire:** "Primo passo. Cosa succede per primo, in ordine di tempo?"
+   Aspettare. Scrivere quello che dicono, con le loro parole.
+2. **Dire:** "Input: da dove arriva quello che serve a questo passo?"
+3. **Dire:** "Decisione: in questo passo qualcuno decide qualcosa? Se sì, in
+   base a quale regola?"
+4. **Dire:** "Output: dove finisce il risultato?"
+5. **E poi, la colonna che conta.** Non rispondere. **Dire:** "Ultima colonna.
+   Questo passo è integrazione, AI o umano? Scrivetelo in chat."
+
+**Fare:** aspettare le risposte in chat. Contarle ad alta voce.
+
+**Se le risposte sono diverse, fermarsi.** **Dire:** "Ecco. Tre dicono AI, due
+dicono umano. Non state sbagliando: la riga è ambigua. È esattamente quello
+che vi ho detto mezz'ora fa, quando abbiamo visto che il modello sbaglia
+l'urgenza undici volte su quaranta. Dove due persone non concordano, il
+problema non è il modello: è che la regola non è ancora scritta."
+
+**Dire, e questa è la frase da non perdere:** "E questo è il lavoro del passo
+due del pilota. Non è un lavoro da consulente. È questo, che stiamo facendo
+adesso, ripetuto per duecento richieste."
+
+**Poi continuare con le righe successive**, più velocemente. Arrivare a sei
+righe, non oltre.
+
+**Chiudere dicendo:** "Contate le righe con AI. Su sei passi, quante ne
+abbiamo? [dire il numero]. Il resto è idraulica e persone. È la stessa
+proporzione dell'helpdesk."
+
+**PIANO B, se in chat non arriva nessun processo:** prendere la gestione delle
+iscrizioni ai corsi, che tutti conoscono, e condurla nello stesso modo,
+chiedendo comunque a loro le righe. Non usare l'helpdesk: quello è già
+scomposto nella slide precedente e non insegnerebbe niente.
+
+## Slide 95. Le tre domande, in chat
+
+**Dire:** "Cinque minuti, tre domande, una riga a testa in chat. Sul processo
+che avete scomposto voi, non su quello che abbiamo fatto insieme."
+
+**[clic]** "Qual è il passo che, automatizzato, fa risparmiare più tempo?"
+
+**[clic]** "Qual è il passo dove un errore del sistema costa di più?"
+
+**[clic]** "Quale numero misurereste dopo un mese per decidere se continuare?"
+
+**Fare:** aspettare, poi leggere ad alta voce tre o quattro risposte, con il
+nome di chi le ha scritte.
+
+**Dire, quando emerge:** "Notate una cosa: molto spesso il passo che vale di
+più e quello che rischia di più sono lo stesso passo. È il momento in cui la
+lezione si chiude da sola: quello è il passo dove serve una persona, non
+nonostante il valore, ma proprio per quello."
+
+**Fare, a fine giornata:** salvare la chat. È un elenco di processi candidati
+scritto dal personale della Fondazione, e vale più di queste slide.
+
+## Slide 96. Guardate la chat
+
+**Dire, dieci secondi, senza spiegare:** "Guardate la chat. Testo non
+strutturato, in una chat, che nessuno rileggerà."
+
+Pausa.
+
+**Dire:** "Vi ricorda qualcosa?"
+
+Avanti.
+
+## Slide 97. Tre errori da evitare
+
+**Dire:** "Chiusura. Sono le tre righe di apertura, girate al contrario."
+
+**[clic]** "Automatizzare prima di misurare."
+
+**[clic]** "Togliere l'umano troppo presto."
+
+**[clic]** "Comprare la piattaforma prima di aver definito il processo."
+
+## Slide 98. Che cosa vi portate a casa
+
+**[clic]** "Un repository con dati, codice, griglia e queste slide, che gira
+anche senza chiave API."
+
+**[clic]** "Tre domande da fare a un fornitore, e una diagnosi per capire chi
+ha sbagliato fra il modello e la tassonomia."
+
+**[clic]** "E il compito per lunedì: una tassonomia da riscrivere sui vostri
+corsi veri."
+
+**Dire:** "Il terzo è il vero compito, ed è anche l'unico che non posso fare
+io. Dieci minuti a settimana per un mese e il passo due è fatto."
+
+## Slide 99. Materiali e contatti
+
+**Dire:** "Tutto quello che avete visto è nel repository, link qui. Gira anche
+senza chiave API, in modalità mock, così potete provare la forma dell'uscita
+senza spendere niente."
+
+**Dire:** "E la mia e-mail. Scrivetemi quando riscrivete la tassonomia: sono
+curioso di vedere quante voci vi servono davvero."
+
+**ATTENZIONE, da verificare prima della lezione:** oggi il repository è
+privato, quindi quel link dà 404 a chi non è invitato. Tre strade: renderlo
+pubblico, invitare i partecipanti, oppure togliere la riga e mandare il
+materiale per e-mail. Il comando per renderlo pubblico è in HANDOFF.md.
+
+## Slide 100. Grazie
+
+**Dire:** "Grazie. Domande."
+
+**Fare:** smettere di parlare. Aspettare. Da remoto il primo silenzio dura più
+del previsto: non riempirlo.
+
+**Se non arriva niente entro dieci secondi, dire:** "Ne faccio una io, che me
+la fanno sempre: quanto costa? La risposta è che le chiamate al modello, su
+trecento richieste al mese, sono la voce più piccola del conto. Il costo è la
+persona che ogni trimestre guarda gli errori."
+
+---
+
+# Appendice. Le domande che arrivano sempre
+
+Risposte pronte, in una frase ciascuna.
+
+**"Quanto costa?"**
+Le chiamate al modello su questi volumi sono la voce più piccola. Il costo
+vero è il tempo di chi mantiene la tassonomia. Chiedete ai fornitori il costo
+per mille richieste, non per token.
+
+**"Ma i dati vanno negli Stati Uniti?"**
+Dipende dal contratto e dalla configurazione, e non è una domanda a cui
+risponde un informatico in una slide. È la domanda numero quattro delle sei
+da mettere per iscritto.
+
+**"Non è che poi ci sostituisce?"**
+Su questo processo no, e non per gentilezza: perché tre passi su sette
+richiedono di decidere qualcosa di cui qualcuno risponde. Quello che sostituisce
+è lo smistamento, che è la parte che nessuno ama fare.
+
+**"Possiamo farlo senza far uscire i dati?"**
+Tecnicamente esistono modelli che girano dentro casa. Su trecento richieste al
+mese il rapporto fra costo e beneficio è cattivo, e non è il primo problema da
+risolvere. Se diventa un requisito, cambia il fornitore, non il disegno.
+
+**"E se il modello sbaglia e mandiamo una risposta sbagliata?"**
+Nel disegno che vi ho mostrato non può, perché il modello non invia. Se un
+giorno lo farà inviare, quella è la domanda numero sei.
+
+**"Quanto tempo ci vuole per partire?"**
+Tre mesi fino alla decisione, di cui il primo è contare e il secondo
+etichettare. Il pezzo tecnologico è il terzo ed è il più corto.
+
+**"Chi lo fa da noi?"**
+La segreteria per i primi due passi, chi sa già usare lo strumento per il
+terzo, la direzione per la decisione. Se per il terzo non c'è nessuno, si
+compra quel pezzo.
+
+**"Perché non usiamo direttamente un agente che fa tutto?"**
+Perché non sapreste dire dove ha sbagliato. Con sette passi separati, quando
+qualcosa va storto sapete quale passo guardare.
