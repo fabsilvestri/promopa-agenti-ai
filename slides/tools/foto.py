@@ -394,6 +394,11 @@ FOTO: dict[str, str] = {
         "orizzontali parallele, la fila in alto si apre a ventaglio verso "
         "destra in quattro rami, vista perfettamente dall'alto."
     ),
+    "sch_lavagna": (
+        "Una lavagna bianca pulita con cornice di alluminio, vista frontale "
+        "perfettamente perpendicolare, superficie vuota e uniforme, nessuna "
+        "scritta, riflesso morbido di una finestra sul lato sinistro."
+    ),
     "sch_calendario": (
         "Quattro strisce di nastro adesivo di carta beige, di lunghezze "
         "diverse, attaccate orizzontalmente e sfalsate su una lavagna bianca "
