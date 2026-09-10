@@ -1344,7 +1344,7 @@ foto_piena("Dieci minuti, ognuno per sé", FOTO + "gag_cane.jpg",
 
 image_full("Adesso ne scomponiamo uno insieme", FIG + "griglia_vuota.png",
            caption="Uno dei vostri processi, riga per riga, con la griglia vuota condivisa sullo schermo.",
-           notes="Il pezzo centrale. Condividere la griglia vuota e compilarla dal vivo, chiedendo una riga alla volta. Quando si arriva alla colonna Tipo, non rispondere: chiedere in chat 'AI o umano?' e aspettare. Se arrivano risposte diverse, fermarsi e dirlo ad alta voce: dove due persone non concordano il problema e' la tassonomia, non il modello. E' la stessa frase del blocco 4, dimostrata dal vivo con il loro processo.")
+           notes="Il pezzo centrale. Condividere la griglia vuota e compilarla dal vivo, chiedendo una riga alla volta. Quando si arriva alla colonna Tipo, non rispondere: chiedere in chat 'AI o umano?' e aspettare. Se arrivano risposte diverse, fermarsi e dirlo ad alta voce: dove due persone non concordano il problema e' la tassonomia, non il modello. E' la stessa frase del blocco 4, dimostrata dal vivo con il loro processo. PIANO B: se in chat non arriva nessun processo, prendere le iscrizioni ai corsi, che tutti conoscono, e chiedere a loro le righe invece di sceglierle. Non usare l'helpdesk: quello e' gia' scomposto nella slide precedente.")
 
 bullets_foto("Le tre domande, in chat", [
     "Qual è il passo che, automatizzato, fa risparmiare più tempo?",
