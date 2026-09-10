@@ -1,0 +1,73 @@
+# Tassonomia delle richieste all'helpdesk formazione di Promo PA Fondazione.
+# La tassonomia la scrivono le persone della Fondazione; il modello la applica.
+# Ogni voce ha una descrizione breve: serve al modello quanto agli operatori.
+
+corsi:
+  - id: contratti-pubblici
+    nome: "Codice dei contratti pubblici"
+  - id: digitalizzazione-pnrr
+    nome: "Digitalizzazione e PNRR"
+  - id: anticorruzione
+    nome: "Anticorruzione e trasparenza"
+  - id: privacy-gdpr
+    nome: "Privacy e GDPR nella PA"
+  - id: ia-pa
+    nome: "Intelligenza artificiale nella PA"
+  - id: bilancio-enti-locali
+    nome: "Bilancio e contabilità degli enti locali"
+  - id: nessuno
+    nome: "Nessun corso specifico"
+
+tipologie:
+  - id: iscrizione
+    descrizione: "Iscrizione, conferma posto, cambio partecipante, disdetta"
+  - id: attestato
+    descrizione: "Rilascio, correzione o reinvio dell'attestato di partecipazione"
+  - id: fatturazione
+    descrizione: "Fatture, CIG, split payment, pagamenti, determine"
+  - id: accesso-piattaforma
+    descrizione: "Credenziali, link Zoom, problemi tecnici su Moodle"
+  - id: contenuti
+    descrizione: "Domande di merito sul corso, materiali, slide, domande al docente"
+  - id: informazioni
+    descrizione: "Richiesta di informazioni su date, programma, costi, corsi futuri"
+  - id: feedback
+    descrizione: "Apprezzamenti, suggerimenti, valutazioni"
+  - id: reclamo
+    descrizione: "Lamentele su servizio, ritardi, qualità"
+  - id: altro
+    descrizione: "Tutto ciò che non rientra nelle voci precedenti"
+
+urgenza:
+  - id: alta
+    descrizione: "Il corso è oggi o domani; blocco di accesso; scadenza amministrativa imminente"
+  - id: media
+    descrizione: "Serve una risposta entro la settimana"
+  - id: bassa
+    descrizione: "Nessuna scadenza; informazione o feedback"
+
+stato:
+  - nuova
+  - presa-in-carico
+  - in-attesa-utente
+  - chiusa
+
+# Gli operatori sono ruoli, non persone: così la tassonomia non invecchia
+# quando cambia l'organico.
+operatori:
+  - id: segreteria-didattica
+    competenze: [iscrizione, attestato, informazioni]
+  - id: amministrazione
+    competenze: [fatturazione]
+  - id: tutor-piattaforma
+    competenze: [accesso-piattaforma]
+  - id: coordinamento-docenti
+    competenze: [contenuti]
+  - id: direzione
+    competenze: [reclamo, feedback]
+  - id: da-assegnare
+    competenze: [altro]
+
+# Sotto questa soglia di confidenza la richiesta va a un umano senza
+# assegnazione automatica.
+soglia_confidenza: 0.7

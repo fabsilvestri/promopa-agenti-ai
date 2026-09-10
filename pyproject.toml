@@ -1,0 +1,12 @@
+[project]
+name = "helpdesk-agent-promopa"
+version = "0.1.0"
+description = "Materiale della lezione 'Agenti AI per i processi interni' (Promo PA Fondazione, 15 settembre 2026)"
+requires-python = ">=3.10"
+dependencies = ["openai>=1.60", "pydantic>=2.6", "pyyaml>=6.0", "python-docx>=1.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+demo/output/
+data/reali/*.docx
+data/reali/*.jsonl
+.pytest_cache/
