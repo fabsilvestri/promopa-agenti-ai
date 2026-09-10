@@ -46,8 +46,14 @@ cp "Richieste a Promo PA Fondazione.docx" data/reali/
 cd src && python -m helpdesk_agent.importa_docx "../data/reali/Richieste a Promo PA Fondazione.docx"
 ```
 
-Poi controllare canale e mittente in `data/reali/richieste_reali.jsonl`
-(ignorato da git) e, se si vuole, unirli a `data/richieste.jsonl`.
+Lo script separa le richieste sui paragrafi numerati del documento e scrive
+`data/reali/richieste_reali.jsonl` (ignorato da git, come il docx). Il canale
+è una prima ipotesi da parole chiave e il mittente non c'e': vanno controllati
+a mano prima di unire le richieste a `data/richieste.jsonl` e le etichette a
+`data/etichette_oro.jsonl`.
+
+I 12 esempi della Fondazione (id da `RE01` a `RE12`) sono già stati importati,
+controllati e uniti. Il docx resta fuori dal repository.
 
 ## Scaletta (2 ore)
 

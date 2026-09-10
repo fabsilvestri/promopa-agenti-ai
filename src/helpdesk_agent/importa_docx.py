@@ -1,10 +1,14 @@
 """Importa gli esempi reali (anonimizzati) dal docx della Fondazione.
 
-Il documento è una lista di richieste. Lo script prende ogni paragrafo
-non vuoto (o ogni riga di tabella) come una richiesta, prova a riconoscere
-il canale da parole chiave e scrive data/reali/richieste_reali.jsonl.
-Il canale e il mittente vanno poi controllati a mano: è il primo esempio
-di "l'umano etichetta, il modello applica".
+Il documento elenca le richieste numerate: un paragrafo che contiene solo
+un numero apre una richiesta, tutto quello che segue le appartiene finché
+non arriva il numero successivo. Le tabelle vengono lette nella posizione
+in cui stanno nel documento, così il dettaglio dell'ordine resta attaccato
+alla richiesta che lo contiene.
+
+Lo script prova a riconoscere il canale da parole chiave e scrive
+data/reali/richieste_reali.jsonl. Canale e mittente vanno poi controllati
+a mano: è il primo esempio di "l'umano etichetta, il modello applica".
 
 Uso:
     python -m helpdesk_agent.importa_docx "data/reali/Richieste a Promo PA Fondazione.docx"
@@ -17,34 +21,66 @@ import sys
 from pathlib import Path
 
 from docx import Document
+from docx.table import Table
+from docx.text.paragraph import Paragraph
 
 from .schema import RADICE
 
 CANALI = [
-    ("zoom_chat", r"zoom|chat"),
+    ("zoom_chat", r"\bzoom\b|\bchat\b"),
     ("moodle_questionario", r"questionario|gradimento"),
-    ("moodle_messaggio", r"moodle"),
-    ("form_sito", r"modulo|sito|form"),
+    ("moodle_messaggio", r"\bmoodle\b"),
+    ("form_sito", r"^oggetto:.*\bnome\b.*\bdescrizione\b|modulo di contatto"),
 ]
+
+SEPARATORE = re.compile(r"^\d{1,2}$")
 
 
 def indovina_canale(testo: str) -> str:
-    t = testo.lower()
+    """Prima ipotesi sul canale. Va confermata a mano, non è una verità."""
+    t = re.sub(r"\s+", " ", testo.lower())
     for canale, pattern in CANALI:
         if re.search(pattern, t):
             return canale
     return "email"
 
 
-def estrai_paragrafi(percorso: Path) -> list[str]:
-    doc = Document(str(percorso))
-    blocchi = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
-    for tabella in doc.tables:
-        for riga in tabella.rows:
-            celle = [c.text.strip() for c in riga.cells if c.text.strip()]
-            if celle:
-                blocchi.append(" | ".join(celle))
-    return blocchi
+def _blocchi_in_ordine(doc: Document) -> list[str]:
+    """Paragrafi e tabelle nell'ordine in cui compaiono nel documento."""
+    fuori = []
+    for elemento in doc.element.body.iterchildren():
+        if elemento.tag.endswith("}p"):
+            fuori.append(Paragraph(elemento, doc).text.strip())
+        elif elemento.tag.endswith("}tbl"):
+            fuori.append(_tabella_a_testo(Table(elemento, doc)))
+    return fuori
+
+
+def _tabella_a_testo(tabella: Table) -> str:
+    """Una riga per riga di tabella, nella forma 'campo: valore'."""
+    righe = []
+    for riga in tabella.rows:
+        celle = []
+        for cella in riga.cells:
+            testo = cella.text.strip()
+            if testo and (not celle or celle[-1] != testo):  # salta le celle unite
+                celle.append(testo)
+        if celle:
+            righe.append(": ".join(celle))
+    return "\n".join(righe)
+
+
+def raggruppa(blocchi: list[str]) -> list[str]:
+    """Unisce i blocchi in richieste, separandole sui paragrafi numerici."""
+    richieste: list[list[str]] = []
+    for blocco in blocchi:
+        if not blocco:
+            continue
+        if SEPARATORE.match(blocco):
+            richieste.append([])
+        elif richieste:
+            richieste[-1].append(blocco)
+    return ["\n".join(r).strip() for r in richieste if r]
 
 
 def main() -> None:
@@ -54,18 +90,15 @@ def main() -> None:
     sorgente = Path(sys.argv[1])
     uscita = RADICE / "data" / "reali" / "richieste_reali.jsonl"
     uscita.parent.mkdir(parents=True, exist_ok=True)
-    blocchi = estrai_paragrafi(sorgente)
-    n = 0
+    richieste = raggruppa(_blocchi_in_ordine(Document(str(sorgente))))
     with uscita.open("w", encoding="utf-8") as f:
-        for i, testo in enumerate(blocchi, 1):
-            if len(testo) < 25:  # titoli, numerazioni, righe vuote di fatto
-                continue
-            n += 1
+        for i, testo in enumerate(richieste, 1):
             f.write(json.dumps(dict(
-                id=f"REALE-{n:02d}", canale=indovina_canale(testo),
-                sorgente="da verificare", mittente="Anonimo", testo=testo,
+                id=f"RE{i:02d}", canale=indovina_canale(testo),
+                sorgente="da verificare", mittente="da verificare", testo=testo,
             ), ensure_ascii=False) + "\n")
-    print(f"Scritte {n} richieste in {uscita}. Controlla canale e mittente a mano.")
+    print(f"Scritte {len(richieste)} richieste in {uscita}.")
+    print("Ora controlla canale e mittente a mano: il docx non li dichiara.")
 
 
 if __name__ == "__main__":
