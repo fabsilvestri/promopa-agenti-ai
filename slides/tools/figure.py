@@ -6,11 +6,11 @@ import json, textwrap
 from pathlib import Path
 
 OUT = Path("slides/tools/fig"); OUT.mkdir(exist_ok=True)
-BORD = "#822433"; AZZ = "#E9F1F8"; GRIG = "#595959"; NERO = "#212121"; VERDE = "#2C6E49"; ARANC = "#C8772B"
+BORD = "#822433"; BLU = "#1B3A5F"; AZZ = "#E9F1F8"; GRIG = "#595959"; NERO = "#212121"; VERDE = "#2C6E49"; ARANC = "#C8772B"
 plt.rcParams["font.family"] = "DejaVu Sans"
 
 
-def box(ax, x, y, w, h, testo, fc=AZZ, ec=BORD, fs=11, tc=NERO, bold=False, lw=1.5, r=0.02):
+def box(ax, x, y, w, h, testo, fc=AZZ, ec=BLU, fs=11, tc=NERO, bold=False, lw=1.5, r=0.02):
     ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}", fc=fc, ec=ec, lw=lw))
     ax.text(x + w / 2, y + h / 2, testo, ha="center", va="center", fontsize=fs, color=tc,
             fontweight="bold" if bold else "normal", linespacing=1.3)
@@ -38,7 +38,7 @@ cols = [("Chatbot", "Risponde a una domanda.\nNessuna azione,\nnessun passo succ
         ("Agente", "Decide lui i passi\ne quando fermarsi.\nFlessibile, meno prevedibile.", "#F6E7D8")]
 for i, (t, d, c) in enumerate(cols):
     x = 0.03 + i * 0.325
-    box(ax, x, 0.55, 0.29, 0.28, t, fc=c, fs=16, bold=True, tc=BORD)
+    box(ax, x, 0.55, 0.29, 0.28, t, fc=c, fs=16, bold=True, tc=BLU)
     ax.text(x + 0.145, 0.42, d, ha="center", va="top", fontsize=11.5, color=NERO, linespacing=1.4)
 ax.annotate("", xy=(0.97, 0.06), xytext=(0.03, 0.06), arrowprops=dict(arrowstyle="-|>", color=GRIG, lw=1.5))
 ax.text(0.5, 0.0, "autonomia crescente, controllo decrescente", ha="center", va="bottom", fontsize=10, color=GRIG, style="italic")
@@ -82,9 +82,9 @@ righe = [("1. Repository unico", "Integrazione", "Connettori da 5 caselle e modu
          ("2. Zoom e Moodle", "AI", "Estrarre richieste da testo\nnon strutturato", "#F6E7D8"),
          ("3. Classificazione", "AI + regola", "Modello applica la tassonomia;\nsoglia di confidenza", "#F6E7D8"),
          ("4. Tracciamento", "Workflow + AI", "Stati e scadenze deterministici;\nbozze generate, invio umano", "#DCE8DC")]
-ax.text(0.03, 0.96, "Esigenza", fontsize=12, fontweight="bold", color=BORD, va="top")
-ax.text(0.40, 0.96, "Natura", fontsize=12, fontweight="bold", color=BORD, va="top")
-ax.text(0.60, 0.96, "Cosa serve davvero", fontsize=12, fontweight="bold", color=BORD, va="top")
+ax.text(0.03, 0.96, "Esigenza", fontsize=12, fontweight="bold", color=BLU, va="top")
+ax.text(0.40, 0.96, "Natura", fontsize=12, fontweight="bold", color=BLU, va="top")
+ax.text(0.60, 0.96, "Cosa serve davvero", fontsize=12, fontweight="bold", color=BLU, va="top")
 for i, (e, n, c, fc) in enumerate(righe):
     y = 0.72 - i * 0.22
     box(ax, 0.02, y, 0.34, 0.17, e, fc=AZZ, fs=12, bold=True)
@@ -125,7 +125,7 @@ tab.auto_set_font_size(False); tab.set_fontsize(10); tab.scale(1, 1.55)
 for (i, j), c in tab.get_celld().items():
     c.set_edgecolor("#D0D0D0")
     if i == 0:
-        c.set_facecolor(BORD); c.set_text_props(color="white", fontweight="bold")
+        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
     elif cells[i - 1][5] == "DA VERIFICARE":
         c.set_facecolor("#FBE9E7")
     elif cells[i - 1][4] == "alta":
@@ -139,7 +139,7 @@ passi = [("1. Audit", "canali, volumi,\ntempi (1-2 sett.)"), ("2. Tassonomia\ne 
          ("3. Prototipo", "contenitore, connettori,\nclassificatore (2-4 sett.)"), ("4. Misura\ne decidi", "un mese di metriche,\npoi estendere o fermare")]
 for i, (t, d) in enumerate(passi):
     x = 0.02 + i * 0.245
-    box(ax, x, 0.50, 0.21, 0.30, t, fc=AZZ if i % 2 == 0 else "#DCE8DC", fs=13, bold=True, tc=BORD)
+    box(ax, x, 0.50, 0.21, 0.30, t, fc=AZZ if i % 2 == 0 else "#DCE8DC", fs=13, bold=True, tc=BLU)
     ax.text(x + 0.105, 0.42, d, ha="center", va="top", fontsize=10.5, color=NERO, linespacing=1.3)
     if i < 3:
         arrow(ax, x + 0.21, 0.65, x + 0.245, 0.65)
@@ -161,7 +161,7 @@ colori = {"AI": "#F6E7D8", "Umano": "#DCE8DC", "Integrazione": AZZ, "Regola": AZ
 for (i, j), c in tab.get_celld().items():
     c.set_edgecolor("#D0D0D0")
     if i == 0:
-        c.set_facecolor(BORD); c.set_text_props(color="white", fontweight="bold")
+        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
     elif j == 4:
         c.set_facecolor(colori[cells[i - 1][4]])
 tab.auto_set_column_width(col=list(range(len(cols))))
@@ -190,7 +190,7 @@ blocchi = [("1\nRiaggancio", "10'"), ("2\nAnatomia", "20'"), ("3\nIl caso", "30'
 n = len(blocchi); gap = 0.012; w = (1 - gap * (n - 1)) / n
 for i, (t, m) in enumerate(blocchi):
     x = i * (w + gap)
-    box(ax, x, 0.42, w, 0.40, t, fc=AZZ if i % 2 == 0 else "#DCE8DC", fs=12, bold=True, tc=BORD)
+    box(ax, x, 0.42, w, 0.40, t, fc=AZZ if i % 2 == 0 else "#DCE8DC", fs=12, bold=True, tc=BLU)
     ax.text(x + w / 2, 0.33, m, ha="center", va="top", fontsize=13, color=GRIG)
 ax.annotate("", xy=(1.0, 0.13), xytext=(0.0, 0.13), arrowprops=dict(arrowstyle="-|>", color=GRIG, lw=1.4))
 ax.text(0.5, 0.03, "due ore, con una pausa dentro il blocco 3", ha="center", fontsize=10.5, color=GRIG, style="italic")
@@ -200,7 +200,7 @@ salva(fig, "scaletta.png")
 fig, ax = fresh(8, 4.2)
 passi = [("Leggi", 0.50, 0.80), ("Decidi", 0.82, 0.50), ("Agisci", 0.50, 0.20), ("Verifica", 0.18, 0.50)]
 for t, cx, cy in passi:
-    box(ax, cx - 0.15, cy - 0.09, 0.30, 0.18, t, fc=AZZ, fs=14, bold=True, tc=BORD)
+    box(ax, cx - 0.15, cy - 0.09, 0.30, 0.18, t, fc=AZZ, fs=14, bold=True, tc=BLU)
 for i in range(4):
     _, x1, y1 = passi[i]
     _, x2, y2 = passi[(i + 1) % 4]
@@ -231,7 +231,7 @@ stati = ["nuova", "presa in carico", "in attesa utente", "chiusa"]
 n = len(stati); gap = 0.05; w = (1 - gap * (n - 1)) / n
 for i, t in enumerate(stati):
     x = i * (w + gap)
-    box(ax, x, 0.45, w, 0.32, t, fc=AZZ, fs=13, bold=True, tc=BORD)
+    box(ax, x, 0.45, w, 0.32, t, fc=AZZ, fs=13, bold=True, tc=BLU)
     if i < n - 1:
         arrow(ax, x + w, 0.61, x + w + gap, 0.61)
 # il ritorno da "in attesa utente" a "presa in carico", disegnato sotto i box
@@ -249,7 +249,7 @@ tab.auto_set_font_size(False); tab.set_fontsize(11); tab.scale(1, 1.9)
 for (i, j), c in tab.get_celld().items():
     c.set_edgecolor("#C8C8C8")
     if i == 0:
-        c.set_facecolor(BORD); c.set_text_props(color="white", fontweight="bold")
+        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
 tab.auto_set_column_width(col=list(range(len(cols))))
 salva(fig, "griglia_vuota.png")
 
@@ -265,7 +265,7 @@ tab.auto_set_font_size(False); tab.set_fontsize(11); tab.scale(1, 1.8)
 for (i, j), c in tab.get_celld().items():
     c.set_edgecolor("#D0D0D0")
     if i == 0:
-        c.set_facecolor(BORD); c.set_text_props(color="white", fontweight="bold")
+        c.set_facecolor(BLU); c.set_text_props(color="white", fontweight="bold")
     elif j == 0:
         c.set_facecolor(AZZ)
 tab.auto_set_column_width(col=list(range(len(cols))))
@@ -291,7 +291,7 @@ voci = [("corso", acc["corso"]), ("tipologia", acc["tipologia"]),
         ("tutti e quattro", VALUTAZIONE["tutti_i_campi_corretti"])]
 voci.sort(key=lambda v: v[1])
 y = range(len(voci))
-ax.barh(list(y), [v * 100 for _, v in voci], height=0.55, color=BORD, zorder=3)
+ax.barh(list(y), [v * 100 for _, v in voci], height=0.55, color=BLU, zorder=3)
 ax.axvline(80, color=GRIG, lw=1.4, ls="--", zorder=4)
 ax.text(80.8, len(voci) - 0.35, "soglia 80%", fontsize=10, color=GRIG)
 for i, (nome, v) in enumerate(voci):
@@ -343,7 +343,7 @@ fig, ax = plt.subplots(figsize=(9, 3.2), dpi=200)
 errori = VALUTAZIONE["errori"]
 ordine = ["urgenza", "tipologia", "operatore", "corso"]
 conteggi = [len(errori.get(c, [])) for c in ordine]
-ax.bar(ordine, conteggi, width=0.5, color=BORD, zorder=3)
+ax.bar(ordine, conteggi, width=0.5, color=BLU, zorder=3)
 for i, c in enumerate(conteggi):
     ax.text(i, c + 0.25, str(c), ha="center", fontsize=13, color=NERO, fontweight="bold")
 ax.set_ylim(0, max(conteggi) + 2)

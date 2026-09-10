@@ -17,7 +17,11 @@ TPL = "slides/tools/Template_RSTLess.pptx"
 OUT = "slides/Lezione_15_settembre_Agenti_AI_PromoPA.pptx"
 FIG = "slides/tools/fig/"
 FOTO = "slides/tools/fig/foto/"
-BORD = RGBColor(0x82, 0x24, 0x33); NERO = RGBColor(0x21, 0x21, 0x21); GRIG = RGBColor(0x59, 0x59, 0x59)
+# Il template RSTLess e' bordeaux. I titoli passano a un blu notte: il filetto
+# del footer e il logo restano bordeaux e fanno da accento, non da protagonista.
+BORD = RGBColor(0x82, 0x24, 0x33)
+BLU = RGBColor(0x1B, 0x3A, 0x5F)
+NERO = RGBColor(0x21, 0x21, 0x21); GRIG = RGBColor(0x59, 0x59, 0x59)
 AZZ = RGBColor(0xE9, 0xF1, 0xF8); VERDE = RGBColor(0x2C, 0x6E, 0x49)
 BIANCO = RGBColor(0xFF, 0xFF, 0xFF); CHIARO = RGBColor(0xEC, 0xEC, 0xEC)
 VELO = RGBColor(0x1A, 0x0A, 0x0D)  # quasi nero con una punta di bordeaux
@@ -43,15 +47,15 @@ L_TITLE, L_SECTION, L_BODY, L_TWO, L_TITLEONLY, L_BLANK = [prs.slide_layouts[i] 
 BULLET_COUNT_MAX = 3
 
 
-def _style_title(ph, size=26):
+def _style_title(ph, size=27):
     tf = ph.text_frame
     p = tf.paragraphs[0]
     p.alignment = PP_ALIGN.LEFT
     for r in p.runs:
-        r.font.size = Pt(size); r.font.bold = True; r.font.color.rgb = BORD; r.font.name = "Arial"
+        r.font.size = Pt(size); r.font.bold = True; r.font.color.rgb = BLU; r.font.name = "Arial"
 
 
-def _bullets(tf, items, size=17, color=NERO, space=10):
+def _bullets(tf, items, size=19, color=NERO, space=10):
     """Scrive bullet veri (buChar), uno per paragrafo. Sottoelenchi con tuple (testo, [sub])."""
     assert len(items) <= BULLET_COUNT_MAX, f"troppi bullet: {items}"
     tf.word_wrap = True
@@ -80,7 +84,7 @@ def _set_bullet(p, text, size, color, space, level=0):
     for tag in ("a:buNone", "a:buChar", "a:buClr", "a:buFont"):
         for e in pPr.findall(qn(tag)):
             pPr.remove(e)
-    buClr = etree.SubElement(pPr, qn("a:buClr")); c = etree.SubElement(buClr, qn("a:srgbClr")); c.set("val", "822433")
+    buClr = etree.SubElement(pPr, qn("a:buClr")); c = etree.SubElement(buClr, qn("a:srgbClr")); c.set("val", "1B3A5F")
     buFont = etree.SubElement(pPr, qn("a:buFont")); buFont.set("typeface", "Arial")
     bu = etree.SubElement(pPr, qn("a:buChar")); bu.set("char", "•" if level == 0 else "–")
 
@@ -166,7 +170,7 @@ def title_slide(title, subtitle, notes="", foto=None):
     # La fascia azzurra del template va da 564050 a 3630050: la foto la copre.
     if foto:
         _sfondo_fotografico(s, foto, 0, 564050, W, 3066000, opacita=55)
-    colore_titolo = BIANCO if foto else BORD
+    colore_titolo = BIANCO if foto else BLU
     colore_sotto = CHIARO if foto else GRIG
     s.shapes.title.text = title
     for r in s.shapes.title.text_frame.paragraphs[0].runs:
@@ -191,7 +195,7 @@ def section(title, subtitle="", notes="", foto=None):
     # Foto a tutta pagina fino al filetto del footer, che resta leggibile.
     if foto:
         _sfondo_fotografico(s, foto, 0, 0, W, 4500000, opacita=52)
-    colore_titolo = BIANCO if foto else BORD
+    colore_titolo = BIANCO if foto else BLU
     colore_sotto = CHIARO if foto else GRIG
     s.shapes.title.text = title
     for r in s.shapes.title.text_frame.paragraphs[0].runs:
@@ -213,7 +217,7 @@ def section(title, subtitle="", notes="", foto=None):
     return s
 
 
-def bullets_foto(title, items, foto, notes="", size=17, foto_frac=0.40):
+def bullets_foto(title, items, foto, notes="", size=19, foto_frac=0.40):
     """Bullet a sinistra, fotografia a destra. Per le slide con spazio vuoto."""
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
@@ -240,7 +244,7 @@ def foto_piena(title, foto, caption="", notes=""):
     return s
 
 
-def bullets(title, items, notes="", size=20):
+def bullets(title, items, notes="", size=22):
     s = prs.slides.add_slide(L_BODY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
     body = [ph for ph in s.placeholders if ph.placeholder_format.idx == 1][0]
@@ -251,7 +255,7 @@ def bullets(title, items, notes="", size=20):
     return s
 
 
-def bullets_image(title, items, image, notes="", img_w_frac=0.52, size=17):
+def bullets_image(title, items, image, notes="", img_w_frac=0.52, size=19):
     """Testo a sinistra, immagine a destra."""
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
@@ -287,7 +291,7 @@ def image_full(title, image, caption="", notes="", max_h=3000000):
 BASSO_UTILE = 4300000  # sotto questa quota comincia l'aria prima del footer
 
 
-def image_top_bullets(title, image, items, notes="", img_h=1500000, size=17):
+def image_top_bullets(title, image, items, notes="", img_h=1500000, size=19):
     """Figura larga in alto, bullet sotto.
 
     L'altezza chiesta viene ridotta se i bullet non ci starebbero: meglio una
@@ -311,7 +315,7 @@ def image_top_bullets(title, image, items, notes="", img_h=1500000, size=17):
     return s
 
 
-def bullets_code(title, items, code, notes="", code_frac=0.55, size=16, code_size=10.5):
+def bullets_code(title, items, code, notes="", code_frac=0.55, size=17, code_size=10.5):
     s = prs.slides.add_slide(L_TITLEONLY)
     s.shapes.title.text = title; _style_title(s.shapes.title)
     left_w = int(8784000 * (1 - code_frac)) - 90000
@@ -342,11 +346,11 @@ def numbers(title, stats, items, notes=""):
         box = s.shapes.add_shape(1, Emu(x), Emu(1150000), Emu(cw), Emu(1350000))
         box.fill.solid(); box.fill.fore_color.rgb = AZZ; box.line.fill.background()
         box.shadow.inherit = False
-        _textbox(s, x, 1180000, cw, 750000, num, size=40, color=BORD, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        _textbox(s, x, 1180000, cw, 750000, num, size=44, color=BLU, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
         _textbox(s, x, 1930000, cw, 520000, lab, size=13, color=GRIG, align=PP_ALIGN.CENTER)
     tb = s.shapes.add_textbox(Emu(180000), Emu(2700000), Emu(8784000), Emu(1900000))
     tb.text_frame.margin_left = Emu(0)
-    _bullets(tb.text_frame, items, size=16)
+    _bullets(tb.text_frame, items, size=18)
     _notes(s, notes)
     return s
 
@@ -367,7 +371,7 @@ section("1. Riaggancio e tesi della giornata", "10 minuti", foto=FOTO + "sez1_ri
 bullets_foto("Da giugno a oggi", [
     "A giugno: ChatGPT come collega. Prompt, Progetti, documenti, RAG",
     "Oggi: dal collega al processo. Cosa succede quando l'AI entra in un flusso di lavoro",
-    "La vostra e-mail del 2 settembre è il caso di studio: helpdesk formazione",
+    "Caso di studio: helpdesk formazione",
 ], FOTO + "c03_da_giugno.jpg",
     notes="Richiamare che ChatGPT Business è già in uso in Fondazione: tutto ciò che vedremo si può provare lì, senza acquistare niente.")
 
