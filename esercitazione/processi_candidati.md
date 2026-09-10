@@ -1,7 +1,9 @@
-# Processi candidati per l'esercitazione (20 minuti, gruppi da 3-4)
+# Processi candidati per l'esercitazione (30 minuti, da remoto)
 
-Ogni gruppo sceglie un processo della Fondazione e lo scompone con la griglia.
-Tre proposte, ma un processo vostro è meglio.
+Dieci minuti da soli: ognuno sceglie un processo della Fondazione e lo scompone
+con la griglia. Poi quindici minuti insieme, su uno scelto fra i vostri. Qui
+sotto tre proposte, ma un processo vostro è meglio: scrivete in chat quale
+avete scelto.
 
 ## A. Rendicontazione di un progetto finanziato
 Fonti: fatture, timesheet, convenzione. Decisioni: la spesa è ammissibile?
@@ -19,6 +21,7 @@ convenzionato? fattura elettronica o determina?
 Dove sta l'AI: estrarre i dati dai testi liberi, segnalare incongruenze.
 Dove sta l'umano: confermare, fatturare.
 
-## Restituzione (10 minuti)
-Per ogni gruppo, 2 minuti: il passo che vale di più, il passo che rischia di
-più, il numero da misurare.
+## Restituzione (5 minuti, in chat)
+Una riga a testa: il passo che vale di più, il passo che rischia di più, il
+numero da misurare. La chat va salvata a fine giornata: è un elenco di processi
+candidati scritto dal personale della Fondazione.

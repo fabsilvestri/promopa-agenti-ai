@@ -648,7 +648,7 @@ title_slide("Agenti AI per i processi interni",
 
 # ---------- 1. Riaggancio ----------
 section("1. Riaggancio e tesi della giornata", "10 minuti", foto=FOTO + "sez1_riaggancio.jpg",
-        notes="Chiedere: chi ha usato Progetti o GPT personalizzati da giugno? Due minuti di giro di tavolo, non di piu'.")
+        notes="Chiedere: chi ha usato Progetti o GPT personalizzati da giugno? Da remoto conviene un giro di risposte in chat, una parola a testa, invece del giro di tavolo. Due minuti, non di piu'.")
 
 bullets_foto("Da giugno a oggi", [
     "A giugno: ChatGPT come collega. Prompt, Progetti, documenti, RAG",
@@ -670,7 +670,7 @@ schema_bullets("La scaletta di oggi", FOTO + "sch_scaletta.jpg", [
     ("5 Pilota\n15'", 0.79, 0.60), ("6 Esercizio\n30'", 0.94, 0.60),
 ], [
     "Prima il vocabolario, poi il vostro caso, poi i limiti",
-    "L'ultima mezz'ora è vostra: si lavora in gruppi su un processo della Fondazione",
+    "L'ultima mezz'ora è vostra: si lavora su un processo della Fondazione",
     "Molte slide sono immagini: interrompete quando volete, le domande valgono di più",
 ], sx=(0.02, 0.81), size=11, frecce_chiare=True,
     frecce=[(0.200, 0.60, 0.240, 0.60), (0.360, 0.60, 0.412, 0.60),
@@ -822,7 +822,7 @@ bullets_foto("Tre domande da fare a un fornitore", [
     "In quale passo esatto interviene una persona, e che cosa vede sullo schermo?",
     "Se cambio la tassonomia, cosa devo toccare, quanto costa e chi lo fa?",
 ], FOTO + "an_fornitore.jpg", costruisci=True,
-    notes="Sono tre domande che si fanno in due minuti e che separano un fornitore serio da un venditore. Suggerire di scriverle sul quaderno.")
+    notes="Sono tre domande che si fanno in due minuti e che separano un fornitore serio da un venditore. Mandarle in chat, cosi' le hanno gia' scritte.")
 
 # ---------- 3. Il caso ----------
 section("3. Il caso helpdesk formazione", "30 minuti, con demo", foto=FOTO + "sez3_helpdesk.jpg",
@@ -1115,7 +1115,7 @@ bullets_foto("Quando sbaglia il modello e quando la tassonomia", [
     "Se tutti darebbero la stessa risposta e il modello no, è colpa del modello",
     "Il test costa venti minuti e si fa su venti richieste, prima di comprare qualsiasi cosa",
 ], FOTO + "b62_bivio.jpg", size=17, costruisci=True,
-    notes="E' la diagnosi differenziale piu' utile che si portano a casa oggi. Scriverla alla lavagna.")
+    notes="E' la diagnosi differenziale piu' utile che si portano a casa oggi. Da remoto: scriverla in chat, cosi' resta. Torna nell'esercitazione.")
 
 bullets_foto("La coda umana, in pratica", [
     "Qualcuno la apre ogni mattina, o non è un controllo: è un secondo arretrato",
@@ -1305,41 +1305,57 @@ bullets_foto("Fermarsi è un esito legittimo", [
     notes="Da dire con convinzione: dare il permesso di fermarsi e' la cosa che rende un pilota davvero un pilota.")
 
 # ---------- 6. Esercitazione ----------
-section("6. Esercitazione in gruppi", "20 minuti più 10 di restituzione", foto=FOTO + "sez6_esercitazione.jpg",
-        notes="Gruppi da 3-4. Griglia stampata in esercitazione/griglia_scomposizione.md. Passare fra i tavoli, non restare davanti.")
+section("6. Esercitazione", "30 minuti: 10 da soli, 15 insieme, 5 in chat",
+        foto=FOTO + "sez6_remoto.jpg",
+        notes="La lezione e' da remoto: niente stanze separate. Con meno di quindici collegati la chat si legge mentre si parla e si possono chiamare le persone per nome, quindi l'esercizio funziona meglio cosi' che in stanze da quattro dove nessuno parla. Griglia in esercitazione/griglia_scomposizione.md: mandare il link in chat adesso.")
+
+bullets_foto("Come funziona l'esercizio", [
+    "Dieci minuti da soli: ognuno compila la griglia su un processo che conosce",
+    "Quindici minuti insieme: ne scomponiamo uno dal vivo, lo scegliete voi",
+    "Cinque minuti in chat: tre domande, una riga a testa",
+], FOTO + "c36_consegna.jpg", costruisci=True,
+    notes="Dire i tre tempi in apertura, cosi' nessuno si chiede quanto dura. Il pezzo che conta e' il secondo: il primo serve a farli arrivare con qualcosa in mano.")
 
 bullets_foto("Consegna", [
     "Scegliete un processo della Fondazione: rendicontazione, rassegna stampa, iscrizioni, o uno vostro",
     "Scomponetelo con la griglia: un passo per riga, input, decisione, output",
     "Per ogni passo: integrazione, AI o umano?",
-], FOTO + "c36_consegna.jpg",
+], FOTO + "sez6_esercitazione.jpg",
     notes="Insistere: un passo per riga anche se sembra banale. La banalità è dove si nascondono le integrazioni.")
 
 image_full("La griglia da compilare", FIG + "griglia_vuota.png",
            caption="Sei righe bastano. Se ne servono di più, il processo era due processi.",
-           notes="Distribuire la griglia stampata. Dare venti minuti veri e avvisare a cinque minuti dalla fine.")
+           notes="Il file e' in esercitazione/griglia_scomposizione.md: mandare il link in chat e lasciare trenta secondi perche' lo aprano. Chi preferisce puo' scriverla a mano su un foglio: l'importante e' che ognuno abbia la sua.")
 
 image_full("La griglia, compilata sull'helpdesk", FIG + "griglia.png",
            caption="Tre passi su sette con AI. Due restano umani. Il resto è integrazione o regola.",
-           notes="Esempio da usare come modello. Chiedere ai gruppi di arrivare a una tabella così, non più bella.")
+           notes="Esempio da usare come modello. Chiedere di arrivare a una tabella cosi', non piu' bella.")
 
 bullets_foto("Tre processi candidati", [
     "Rendicontazione di un progetto: documenti eterogenei, la firma resta umana",
     "Rassegna stampa e bandi: filtrare con criteri scritti da voi, decidere resta a voi",
     "Iscrizioni ai corsi: estrarre dati da testi liberi e segnalare le incongruenze",
 ], FOTO + "es_processi.jpg",
-    notes="Dettagli in esercitazione/processi_candidati.md. Un processo loro e' sempre meglio di uno dei tre.")
+    notes="Dettagli in esercitazione/processi_candidati.md. Un processo loro e' sempre meglio di uno dei tre. Chiedere di scrivere in chat quale hanno scelto: serve dopo, per pescare quello da scomporre insieme.")
 
-foto_piena("Mentre lavorate", FOTO + "gag_cane.jpg",
-           caption="Venti minuti. Nessuno vi guarda le spalle.",
-           notes="Slide da lasciare proiettata durante l'esercitazione. Serve a togliere pressione e a segnare il tempo.")
+foto_piena("Dieci minuti, ognuno per sé", FOTO + "gag_cane.jpg",
+           caption="Microfoni chiusi, telecamere come volete. Scrivete in chat quando avete finito.",
+           notes="Slide da lasciare condivisa per tutti e dieci i minuti. Tenere il microfono aperto per le domande. Avvisare a tre minuti dalla fine. Intanto leggere in chat i processi scelti e decidere quale scomporre insieme: meglio uno che nessuno ha gia' risolto.")
 
-bullets_foto("Restituzione: tre domande per gruppo", [
+image_full("Adesso ne scomponiamo uno insieme", FIG + "griglia_vuota.png",
+           caption="Uno dei vostri processi, riga per riga, con la griglia vuota condivisa sullo schermo.",
+           notes="Il pezzo centrale. Condividere la griglia vuota e compilarla dal vivo, chiedendo una riga alla volta. Quando si arriva alla colonna Tipo, non rispondere: chiedere in chat 'AI o umano?' e aspettare. Se arrivano risposte diverse, fermarsi e dirlo ad alta voce: dove due persone non concordano il problema e' la tassonomia, non il modello. E' la stessa frase del blocco 4, dimostrata dal vivo con il loro processo.")
+
+bullets_foto("Le tre domande, in chat", [
     "Qual è il passo che, automatizzato, fa risparmiare più tempo?",
     "Qual è il passo dove un errore del sistema costa di più?",
     "Quale numero misurereste dopo un mese per decidere se continuare?",
-], FOTO + "c38_restituzione.jpg",
-    notes="Due minuti a gruppo. Scrivere le risposte alla lavagna: di solito il passo che vale di più e quello che rischia di più sono vicini.")
+], FOTO + "c38_restituzione.jpg", costruisci=True,
+    notes="Una riga a testa in chat, poi leggerne tre o quattro ad alta voce. Di solito il passo che vale di piu' e quello che rischia di piu' sono lo stesso: e' il momento in cui la lezione si chiude da sola. A fine giornata la chat va salvata: e' un elenco di processi candidati scritto dal personale della Fondazione, e vale piu' di queste slide.")
+
+foto_piena("Guardate la chat", FOTO + "gag_postit.jpg",
+           caption="Testo non strutturato, in una chat, che nessuno rileggerà. Vi ricorda qualcosa?",
+           notes="Chiusura dell'esercizio, dieci secondi. La chat piena e' esattamente il caso di studio di oggi: richieste vere dentro testo libero, e nessuno che le rilegga. Dirlo e passare oltre, senza spiegarlo.")
 
 bullets_foto("Tre errori da evitare", [
     "Automatizzare prima di misurare",

@@ -1,6 +1,6 @@
 # Agenti AI per i processi interni
 
-Materiale della lezione per Promo PA Fondazione, 15 settembre 2026.
+Materiale della lezione per Promo PA Fondazione, 15 settembre 2026, da remoto.
 Docente: Fabrizio Silvestri (Sapienza, DIAG). Caso di studio: helpdesk formazione.
 
 ## Struttura
@@ -67,4 +67,4 @@ controllati e uniti. Il docx resta fuori dal repository.
 3. Il caso helpdesk, scomposto, con demo (30')
 4. Limiti e rischi (15')
 5. Dal caso d'uso al pilota (15')
-6. Esercitazione in gruppi e restituzione (30')
+6. Esercitazione individuale, scomposizione dal vivo, restituzione in chat (30')

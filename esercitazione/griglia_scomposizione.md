@@ -3,6 +3,10 @@
 Prima di parlare di agenti, si scompone il processo. Compilate una riga per
 ogni passo. Un passo per riga, anche se sembra banale.
 
+La lezione e' da remoto: questa griglia si compila da soli, non in gruppo.
+Dieci minuti, poi ne scomponiamo una insieme dal vivo. Copiatela in un foglio
+di calcolo, in un documento, o su carta: l'importante e' che sia vostra.
+
 | # | Passo | Chi lo fa oggi | Input (da dove arriva) | Decisione (sì/no, quale regola) | Output (dove finisce) | AI, integrazione o umano? |
 |---|-------|----------------|------------------------|----------------------------------|-----------------------|----------------------------|
 | 1 |       |                |                        |                                  |                       |                            |
@@ -21,7 +25,7 @@ ogni passo. Un passo per riga, anche se sembra banale.
   non ha (inviare, promettere una data, gestire un reclamo, casi ambigui).
 - Se la regola si scrive in un "se... allora", è integrazione, non AI.
 
-## Tre domande finali (una risposta per gruppo)
+## Tre domande finali (una riga a testa, in chat)
 
 1. Qual è il passo che, automatizzato, fa risparmiare più tempo?
 2. Qual è il passo dove un errore del sistema costa di più?

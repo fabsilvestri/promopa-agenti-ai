@@ -76,6 +76,12 @@ FOTO: dict[str, str] = {
         "che lavorano su fogli quadrettati, matite, un evidenziatore, tazzine "
         "di caffè ai bordi. Solo mani e avambracci, nessun volto."
     ),
+    "sez6_remoto": (
+        "Una scrivania di casa vista dall'alto: un portatile aperto con lo "
+        "schermo che illumina il piano, accanto un quaderno a quadretti aperto "
+        "e una matita, una tazza di caffe' a lato. Nessuna persona inquadrata, "
+        "luce di tardo pomeriggio da una finestra fuori campo."
+    ),
     "sez7_grazie": (
         "L'interno di una sala storica italiana con volte alte e finestroni, "
         "la luce del tardo pomeriggio che entra di traverso e disegna rettangoli "

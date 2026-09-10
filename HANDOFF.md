@@ -1,6 +1,6 @@
 # Handoff per Claude Code
 
-Stato all'11 settembre 2026. La lezione è il 15 settembre.
+Stato all'11 settembre 2026. La lezione è il 15 settembre, **da remoto**.
 
 ## Fatto in questa sessione
 
@@ -52,7 +52,31 @@ Poi una seconda passata sullo stile:
 - Tabelle e grafici restano matplotlib, ristilizzati: intestazione blu piena,
   niente righe verticali, righe alternate.
 - Dissolvenza fra le slide, più lenta sui cambi di blocco. Comparsa
-  progressiva dei bullet su sedici slide, quelle dove ogni riga è un passo.
+  progressiva dei bullet su diciotto slide, quelle dove ogni riga è un passo.
+
+## Il blocco 6 è stato rifatto per il remoto
+
+Le stanze separate da remoto, con dipendenti pubblici spesso senza telecamera,
+producono silenzio: nessuno si offre di scrivere e chi conduce non può girare
+fra i tavoli. Il blocco ora è:
+
+| Tempo | Cosa succede |
+|---|---|
+| 10 minuti | ognuno compila la griglia da solo, microfoni chiusi |
+| 15 minuti | si scompone dal vivo un processo scelto fra i loro, riga per riga |
+| 5 minuti | le tre domande finali, una riga a testa in chat |
+
+Il punto che le stanze servivano a insegnare non si perde, anzi si vede meglio:
+quando si arriva alla colonna Tipo si chiede alla chat "AI o umano?" e le
+risposte divergenti dimostrano dal vivo che dove due persone non concordano il
+problema è la tassonomia. È la stessa frase del blocco 4, sul loro processo.
+
+A fine giornata la chat va salvata: è un elenco di processi candidati scritto
+dal personale della Fondazione, e vale più delle slide.
+
+Attesi meno di quindici collegati, quindi la chat si legge mentre si parla e si
+possono chiamare le persone per nome. Sopra le cinquanta il blocco andrebbe
+ripensato con sondaggi al posto del testo libero.
 
 Il materiale non presuppone più un DPO, che la Fondazione non ha, e non lo
 dichiara neppure come mancanza: la slide chiede chi risponde delle decisioni sui
