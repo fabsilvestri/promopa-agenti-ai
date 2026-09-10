@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from .bozza import scrivi_bozza
@@ -80,23 +81,43 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bozze", action="store_true", help="genera anche le bozze di risposta")
     ap.add_argument("--senza-grezzi", action="store_true", help="salta l'estrazione da Zoom e Moodle")
+    ap.add_argument("--solo-grezzi", action="store_true",
+                    help="solo Zoom e Moodle: e' la parte che si vede meglio in demo")
+    ap.add_argument("--limite", type=int, default=0,
+                    help="ferma dopo N richieste. In aula serve: quaranta richieste con "
+                         "le bozze sono venticinque minuti, cinque sono un minuto")
+    ap.add_argument("--paralleli", type=int, default=6,
+                    help="quante richieste in parallelo. Con 1 le righe escono una alla "
+                         "volta, piu' lento ma piu' bello da guardare in aula")
     ap.add_argument("--out", default=str(RADICE / "demo" / "output"))
     args = ap.parse_args()
 
     print(f"Backend: {backend()}")
-    richieste = ingerisci()
+    richieste = [] if args.solo_grezzi else ingerisci()
     print(f"Richieste strutturate: {len(richieste)}")
     if not args.senza_grezzi:
         estratte = estrai_grezzi()
         print(f"Richieste estratte da Zoom e Moodle: {len(estratte)}")
         richieste += estratte
+    if args.limite:
+        richieste = richieste[:args.limite]
+        print(f"Limite attivo: mi fermo a {len(richieste)} richieste")
 
-    classificate: list[RichiestaClassificata] = []
-    for r in richieste:
+    def lavora(r: Richiesta) -> RichiestaClassificata:
         rc = classifica(r)
         if args.bozze:
             rc.bozza_risposta = scrivi_bozza(rc)
-        classificate.append(rc)
+        return rc
+
+    # Le richieste sono indipendenti fra loro: in fila sono tredici secondi
+    # l'una, in parallelo il tempo e' quello della piu' lenta. Le righe si
+    # stampano comunque in ordine, cosi' in aula si legge come una lista.
+    if args.paralleli > 1:
+        with ThreadPoolExecutor(max_workers=args.paralleli) as pool:
+            classificate = list(pool.map(lavora, richieste))
+    else:
+        classificate = [lavora(r) for r in richieste]
+    for r, rc in zip(richieste, classificate):
         segno = "auto" if rc.assegnazione_automatica else "UMANO"
         print(f"  {r.id:8s} {rc.classificazione.tipologia.value:20s} -> {rc.classificazione.operatore.value:22s} [{segno}]")
 

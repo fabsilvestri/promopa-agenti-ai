@@ -26,6 +26,19 @@ OPENAI_API_KEY=sk-... python -m helpdesk_agent.pipeline --bozze  # con modello
 cd .. && python -m pytest -q
 ```
 
+Per la demo dal vivo, tre comandi che stanno nei tempi di un'aula:
+
+```bash
+cd src
+HELPDESK_BACKEND=mock python -m helpdesk_agent.pipeline     # istantaneo
+python -m helpdesk_agent.pipeline --solo-grezzi             # ~60 s, Zoom e Moodle
+python -m helpdesk_agent.una --bozza "il testo di una richiesta"   # ~14 s
+```
+
+`--limite N` ferma la pipeline dopo N richieste, `--paralleli N` decide quante
+ne lavora insieme. Tutto lo svolgimento della lezione, parola per parola, è in
+[SCRIPT.md](SCRIPT.md).
+
 Output in `demo/output/`: CSV, JSONL e `coda_per_operatore.md`.
 
 ## Rigenerare le slide
