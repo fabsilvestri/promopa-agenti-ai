@@ -389,7 +389,7 @@ educazione, ed è l'esempio più corto che ho di cosa vuol dire dichiararlo."
 - Non aggiungere altro sulle fotografie: se qualcuno chiede, si riprende nel blocco 4.
 - Se qualcuno arriva tardi, non ricominciare.
 
-## Slide 2. Sezione 1
+## Slide 2. 1. Riaggancio e tesi della giornata
 
 **Dire:** "Primo blocco, dieci minuti. Riprendiamo il filo da giugno e vi dico
 qual è la tesi della giornata, così sapete dove andiamo a parare."
@@ -489,7 +489,7 @@ errori da evitare."
 
 # Blocco 2. Anatomia di un sistema agentico (0:10 - 0:30)
 
-## Slide 10. Sezione 2
+## Slide 10. 2. Anatomia di un sistema agentico
 
 **Dire:** "Venti minuti di vocabolario. Non per farvi diventare tecnici: per
 farvi capire quando qualcuno vi sta vendendo un agente e a voi serve una
@@ -657,7 +657,7 @@ potete più modificare."
 Trenta minuti, la demo dentro. La demo ha la sua sezione dedicata più sopra:
 qui ci sono le slide che la circondano.
 
-## Slide 25. Sezione 3
+## Slide 25. 3. Il caso helpdesk formazione
 
 **Dire:** "Mezz'ora sul vostro caso. Nella prima metà scomponiamo, nella
 seconda ve lo faccio vedere che gira."
@@ -943,7 +943,7 @@ Quindici minuti. È il blocco che serve a evitare che qualcuno compri qualcosa a
 ottobre sull'onda dell'entusiasmo. Le slide 57 e 58 sono le più importanti
 della giornata.
 
-## Slide 55. Sezione 4
+## Slide 55. 4. Limiti e rischi
 
 **Dire:** "Quindici minuti su cosa non funziona. Senza giri di parole, perché
 è la parte che vi serve di più."
@@ -1187,7 +1187,7 @@ cento, si rivede la tassonomia, non il modello."
 
 Quindici minuti. Da qui in poi si parla solo di cose da fare lunedì.
 
-## Slide 73. Sezione 5
+## Slide 73. 5. Dal caso d'uso al pilota
 
 **Dire:** "Quindici minuti su come si parte davvero. Quattro passi, tre mesi,
 e la possibilità di fermarsi."
@@ -1284,16 +1284,7 @@ qualcuno in Fondazione."
 **Dire:** "Regola pratica: per ogni numero che decidete di misurare, dite in
 anticipo quale decisione cambierebbe. Se non ce n'è una, non misuratelo."
 
-## Slide 84. Quello che il piano non prevede
-
-**Dire:** "Due cose che succedono sempre. Una persona chiave in ferie proprio
-nelle due settimane di etichettatura. E il fornitore che cambia versione del
-modello mentre state misurando."
-
-**Dire:** "Mettete due settimane di margine e decidete in anticipo chi
-sostituisce chi. Nessun piano di tre mesi regge senza margine."
-
-## Slide 85. Cosa mettere per iscritto prima di partire
+## Slide 84. Cosa mettere per iscritto prima di partire
 
 **Dire:** "Tre righe, non un documento. Chi possiede la tassonomia e ogni
 quanto la rivede. Chi guarda la coda, quando, e cosa fa se cresce. E le
@@ -1301,6 +1292,15 @@ risposte scritte alle sei domande di prima."
 
 **Dire:** "Senza queste tre righe il pilota dipende dalla buona volontà di una
 persona, e finisce quando quella persona cambia ufficio."
+
+## Slide 85. Quello che il piano non prevede
+
+**Dire:** "Due cose che succedono sempre. Una persona chiave in ferie proprio
+nelle due settimane di etichettatura. E il fornitore che cambia versione del
+modello mentre state misurando."
+
+**Dire:** "Mettete due settimane di margine e decidete in anticipo chi
+sostituisce chi. Nessun piano di tre mesi regge senza margine."
 
 ## Slide 86. Fermarsi è un esito legittimo
 
@@ -1321,7 +1321,7 @@ Trenta minuti. Da remoto, senza stanze separate. Meno di quindici collegati,
 quindi la chat si legge mentre si parla e si possono chiamare le persone per
 nome.
 
-## Slide 87. Sezione 6
+## Slide 87. 6. Esercitazione
 
 **Dire:** "Ultima mezz'ora, e non faccio lezione. Tre tempi: dieci minuti da
 soli, quindici insieme, cinque in chat."

@@ -82,6 +82,18 @@ Il materiale non presuppone più un DPO, che la Fondazione non ha, e non lo
 dichiara neppure come mancanza: la slide chiede chi risponde delle decisioni sui
 dati, in forma condizionale.
 
+## Lo script
+
+`SCRIPT.md` contiene lo svolgimento completo: cosa dire su ognuna delle cento
+slide, dove sono i clic delle animazioni, quando si chiede qualcosa alla chat.
+Le prime cento righe sono la checklist da fare venti minuti prima e la demo
+scritta alla lettera, con i comandi cronometrati e i blocchi di testo da
+incollare nel GPT. In fondo, otto domande che arrivano sempre con la risposta
+pronta.
+
+I numeri delle slide nello script sono verificati contro il pptx: se si
+aggiunge o si toglie una slide, ricontrollarli.
+
 ## Da fare
 
 1. **Decidere se il repository resta privato.** Oggi è privato, quindi il link
