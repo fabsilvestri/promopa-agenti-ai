@@ -94,6 +94,12 @@ pronta.
 I numeri delle slide nello script sono verificati contro il pptx: se si
 aggiunge o si toglie una slide, ricontrollarli.
 
+`SCRIPT.docx` è la versione impaginata, pensata per essere letta mentre si parla
+o stampata: il parlato ha un filetto blu a sinistra e un corpo più grande, le
+azioni sono in corsivo grigio con un triangolino, i titoli di slide hanno una
+fascia azzurra per ritrovare il punto sfogliando. Non si modifica a mano: si
+cambia `SCRIPT.md` e si rilancia `python slides/tools/script_docx.py`.
+
 ## Da fare
 
 1. **Decidere se il repository resta privato.** Oggi è privato, quindi il link

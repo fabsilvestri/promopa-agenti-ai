@@ -14,6 +14,7 @@ Docente: Fabrizio Silvestri (Sapienza, DIAG). Caso di studio: helpdesk formazion
 | `esercitazione/` | Griglia di scomposizione e processi candidati |
 | `docs/` | Pilota in quattro passi, domande da girare a un legale |
 | `SCRIPT.md` | Lo svolgimento della lezione, slide per slide, con la demo alla lettera |
+| `SCRIPT.docx` | Lo stesso, impaginato per essere letto o stampato. Si rigenera, non si modifica |
 | `tests/` | Test sul backend mock (nessuna chiamata di rete) |
 
 ## Avvio rapido
@@ -48,6 +49,7 @@ Output in `demo/output/`: CSV, JSONL e `coda_per_operatore.md`.
 pip install python-pptx matplotlib pillow
 python slides/tools/figure.py      # 18 diagrammi in slides/tools/fig/
 python slides/tools/build_deck.py  # deck da Template_RSTLess.pptx
+python slides/tools/script_docx.py # SCRIPT.docx da SCRIPT.md
 ```
 
 Le 44 fotografie in `slides/tools/fig/foto/` sono generate una volta sola con

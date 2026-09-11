@@ -1419,7 +1419,9 @@ modificabile.
 
 **Fare:** aspettare le risposte in chat. Contarle ad alta voce.
 
-**Se le risposte sono diverse, fermarsi.** **Dire:** "Ecco. Tre dicono AI, due
+**Se le risposte sono diverse, fermarsi.**
+
+**Dire:** "Ecco. Tre dicono AI, due
 dicono umano. Non state sbagliando: la riga è ambigua. È esattamente quello
 che vi ho detto mezz'ora fa, quando abbiamo visto che il modello sbaglia
 l'urgenza undici volte su quaranta. Dove due persone non concordano, il
