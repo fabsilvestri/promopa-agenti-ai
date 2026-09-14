@@ -1,6 +1,25 @@
 # Handoff per Claude Code
 
-Stato all'11 settembre 2026. La lezione è il 15 settembre, **da remoto**.
+Stato al 14 settembre 2026. **La lezione è domani, 15 settembre, da remoto.**
+
+Il materiale è finito e verificato. Quello che manca non è lavoro di codice: è
+una decisione sul repository e un lavoro di contenuto che può fare solo la
+Fondazione. Sta tutto nella sezione "Da fare", qui sotto.
+
+## Che cosa c'è, in due righe
+
+| | |
+|---|---|
+| Deck | 100 slide, 86 immagini, transizioni e comparsa progressiva su 18 slide |
+| Script | `SCRIPT.md` e `SCRIPT.docx`, 35 pagine, con la demo scritta alla lettera |
+| Dati | 40 richieste etichettate a mano, di cui 12 vere della Fondazione |
+| Codice | pipeline, valutazione, importatore, 6 test verdi |
+| Documenti | pilota in quattro passi, domande da girare a un legale, esercitazione |
+
+Ricostruzione verificata il 14 settembre: `figure.py`, `build_deck.py` e
+`script_docx.py` rigenerano deck e script con contenuto identico a quello
+committato, e i test passano. I due file binari cambiano byte a ogni build per
+via dei timestamp interni: è normale, non vuol dire che siano cambiati.
 
 ## Fatto in questa sessione
 
@@ -33,8 +52,9 @@ I sei punti dell'handoff precedente sono chiusi.
 
 ## Poi, su richiesta
 
-Il deck è passato da 41 a 97 slide con 86 immagini: 78 fotografie generate con
-gpt-image-1 e 8 fra tabelle e grafici fatti con matplotlib. Contenuto aggiunto,
+Il deck è passato da 41 a 100 slide con 86 immagini: 78 fotografie generate con
+gpt-image-1 e 8 fra tabelle e grafici fatti con matplotlib. Le fotografie
+versionate sono 79: una, la base del calendario, è servita solo come prova. Contenuto aggiunto,
 non riempitivo: il glossario per leggere un'offerta, i canali e gli stati, cosa
 hanno insegnato i dodici esempi reali, i quattro passi del pilota uno per slide.
 
@@ -102,21 +122,36 @@ cambia `SCRIPT.md` e si rilancia `python slides/tools/script_docx.py`.
 
 ## Da fare
 
-1. **Decidere se il repository resta privato.** Oggi è privato, quindi il link
-   sulla slide "Materiali e contatti" dà 404 a chi non è invitato. Prima della
-   lezione: renderlo pubblico, invitare i partecipanti, o togliere la riga.
-   Il comando è in fondo a questo file.
-3. **Riscrivere la tassonomia sui corsi veri della Fondazione.** Dieci delle
-   dodici richieste reali hanno corso `nessuno`, e tre sono commerciali
-   (preventivi, sconti, MEPA) senza una voce dedicata. È il lavoro che vale di
-   più prima della lezione, e si fa guardando il catalogo.
-4. **Provare i tempi.** 97 slide in due ore, di cui trenta minuti di
-   esercitazione, fanno circa un minuto a slide. Molte sono immagini da dieci
-   secondi, ma vale la pena cronometrare almeno i blocchi 2 e 3.
-5. **Far leggere il blocco 4 a un legale**, se ne avete uno a disposizione.
-   Non per farlo correggere, ma per sapere se anche in forma di domanda c'è
-   qualcosa che conviene togliere.
-6. Facoltativo: un costo per mille richieste da citare in aula. Nella slide
+### Prima di domani
+
+1. **Decidere che fine fa il link sulla slide 99.** Oggi il repository è
+   privato, quindi `github.com/fabsilvestri/promopa-agenti-ai` dà 404 a chi non
+   è invitato. Tre strade: renderlo pubblico (comando in fondo), invitare i
+   partecipanti, oppure togliere quella riga dalla slide e mandare il materiale
+   per e-mail. Se si sceglie di togliere la riga, va rigenerato il deck.
+   Prima di rendere pubblico, rileggere cosa diventa pubblico: le dodici
+   richieste vere, anche se anonimizzate, e le frasi sulla situazione interna
+   della Fondazione.
+2. **Fare la prova della demo, una volta, per intero.** La checklist dei venti
+   minuti prima è in testa a `SCRIPT.md`. In particolare verificare che
+   `python -m helpdesk_agent.una "prova"` risponda `Backend: openai` e non
+   `Backend: mock`, e ingrandire il carattere del terminale.
+3. **Creare il GPT personalizzato**, se non è già fatto. Istruzioni passo passo
+   in `SCRIPT.md`, sezione A.0.
+4. **Cronometrare i blocchi 2 e 3.** Cento slide in due ore, di cui trenta
+   minuti di esercitazione, lasciano circa settanta minuti per novanta slide.
+   Molte durano dieci secondi, ma vale la pena provarlo davvero.
+
+### Dopo la lezione
+
+5. **Riscrivere la tassonomia sui corsi veri della Fondazione.** È il lavoro
+   che vale di più e non è un lavoro da codice. Dieci delle dodici richieste
+   reali hanno corso `nessuno`, e tre sono commerciali senza una voce dedicata.
+   È anche il compito che viene assegnato in aula.
+6. **Salvare la chat della lezione.** Nell'esercitazione i partecipanti
+   scrivono in chat quale processo hanno scelto e le risposte alle tre domande
+   finali: è un elenco di processi candidati scritto dal loro personale.
+7. Facoltativo: un costo per mille richieste da citare in aula. Nella slide
    "Quanto costa davvero" c'è un `[NEEDS SOURCE]` nelle note.
 
 ## Numeri da citare, misurati e non stimati

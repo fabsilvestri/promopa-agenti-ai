@@ -7,7 +7,7 @@ Docente: Fabrizio Silvestri (Sapienza, DIAG). Caso di studio: helpdesk formazion
 
 | Cartella | Contenuto |
 |---|---|
-| `slides/` | Il deck (`Lezione_15_settembre_Agenti_AI_PromoPA.pptx`, 97 slide) e gli script che lo generano (`tools/`) |
+| `slides/` | Il deck (`Lezione_15_settembre_Agenti_AI_PromoPA.pptx`, 100 slide) e gli script che lo generano (`tools/`) |
 | `data/` | Tassonomia, richieste sintetiche, grezzi Zoom/Moodle, etichette di riferimento |
 | `src/helpdesk_agent/` | Pipeline: estrazione, classificazione con output strutturato, bozze, valutazione |
 | `demo/` | Istruzioni per il GPT personalizzato, sequenza della demo, output di esempio |
@@ -47,12 +47,12 @@ Output in `demo/output/`: CSV, JSONL e `coda_per_operatore.md`.
 
 ```bash
 pip install python-pptx matplotlib pillow
-python slides/tools/figure.py      # 18 diagrammi in slides/tools/fig/
+python slides/tools/figure.py      # 18 fra diagrammi, tabelle e grafici
 python slides/tools/build_deck.py  # deck da Template_RSTLess.pptx
 python slides/tools/script_docx.py # SCRIPT.docx da SCRIPT.md
 ```
 
-Le 44 fotografie in `slides/tools/fig/foto/` sono generate una volta sola con
+Le 79 fotografie in `slides/tools/fig/foto/` sono generate una volta sola con
 `slides/tools/foto.py` (gpt-image-1, serve `OPENAI_API_KEY`) e poi versionate:
 il deck si ricostruisce senza rigenerarle. Sono immagini sintetiche e la nota
 del relatore della prima slide dice di dirlo in aula.
