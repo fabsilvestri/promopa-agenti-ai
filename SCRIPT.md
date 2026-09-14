@@ -69,6 +69,33 @@ Una checklist, in quest'ordine.
    `demo/output_esempio/valutazione.json`. Se la rete cade durante la demo si
    passa a quelli senza dire niente.
 
+## Provare la demo da un treno
+
+Si può, ma solo per metà, e va saputo prima.
+
+**Funziona senza rete**, ed è la prova che conta di più perché verifica Python,
+i dati e la leggibilità del terminale:
+
+```bash
+cd /Users/fabriziosilvestri/Documents/Codice/PromoPA-Lezione/src
+HELPDESK_BACKEND=mock python -m helpdesk_agent.pipeline
+```
+
+**Non funziona, o funziona male, su una rete di treno:** tutto quello che chiama
+il modello, cioè `helpdesk_agent.una`, `--solo-grezzi` e ChatGPT. Non è che non
+parta: è che i tempi che misurate saranno falsi, tre o quattro volte più lunghi
+del vero, e una chiamata su tre può cadere.
+
+Quindi dal treno si può fare questo: verificare che il comando mock giri,
+ingrandire il carattere, preparare i messaggi da incollare in chat, rileggere
+questo script. E se la rete regge, fare **una** prova di
+`python -m helpdesk_agent.una "prova"` solo per vedere che risponda
+`Backend: openai`.
+
+Quello che va rifatto da una rete ferma, prima di cominciare: la prova dei tempi
+e la creazione del GPT, o in alternativa il prompt unico della sezione A.0-bis,
+che si incolla in trenta secondi.
+
 ## I comandi della demo, in ordine
 
 Sono tre. Sono già stati cronometrati. Vanno lanciati da
@@ -114,6 +141,22 @@ Da fare una volta sola, non in aula.
    spegnere navigazione e generazione immagini: non servono e rallentano.
 7. Salvare come **Solo io**.
 8. Aprire una conversazione nuova con quel GPT e lasciarla vuota.
+
+### A.0-bis Se il GPT non è pronto
+
+Il GPT personalizzato è comodo, non necessario. Se non c'è tempo o la rete non
+collabora, si ottiene la stessa cosa da una conversazione normale.
+
+▸ Aprire una conversazione nuova in ChatGPT. Incollare tutto il blocco che sta
+in `demo/gpt_personalizzato/prompt_unico.md` fra le due righe di trattini:
+sono le stesse istruzioni più la tassonomia dentro il messaggio, invece che in
+un file allegato. Il modello risponde "Pronto. Mandami le richieste."
+
+Da lì in poi i prompt A.1, A.2 e A.3 sono identici.
+
+**Dire, se qualcuno chiede perché non è un GPT:** "Non serve. Un GPT
+personalizzato è comodo perché ve lo ritrovate nel menu, ma quello che conta
+sono le istruzioni e il file, e quelli li ho appena incollati."
 
 ### A.1 In aula: primo prompt
 

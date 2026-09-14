@@ -124,20 +124,23 @@ cambia `SCRIPT.md` e si rilancia `python slides/tools/script_docx.py`.
 
 ### Prima di domani
 
-1. **Decidere che fine fa il link sulla slide 99.** Oggi il repository è
-   privato, quindi `github.com/fabsilvestri/promopa-agenti-ai` dà 404 a chi non
-   è invitato. Tre strade: renderlo pubblico (comando in fondo), invitare i
-   partecipanti, oppure togliere quella riga dalla slide e mandare il materiale
-   per e-mail. Se si sceglie di togliere la riga, va rigenerato il deck.
-   Prima di rendere pubblico, rileggere cosa diventa pubblico: le dodici
-   richieste vere, anche se anonimizzate, e le frasi sulla situazione interna
-   della Fondazione.
-2. **Fare la prova della demo, una volta, per intero.** La checklist dei venti
-   minuti prima è in testa a `SCRIPT.md`. In particolare verificare che
-   `python -m helpdesk_agent.una "prova"` risponda `Backend: openai` e non
-   `Backend: mock`, e ingrandire il carattere del terminale.
+1. ~~Decidere che fine fa il link sulla slide 99.~~ **Fatto il 14 settembre:**
+   il repository è pubblico su `github.com/fabsilvestri/promopa-agenti-ai` e il
+   link sulla slide funziona. Prima di pubblicare è stata cercata in tutta la
+   storia dei commit ogni traccia di chiavi API, del docx originale e di `.env`:
+   nessuna. Sono pubbliche le dodici richieste vere, anonimizzate all'origine
+   dalla Fondazione, e le frasi sulla loro situazione interna.
+2. **Fare la prova della demo, una volta, per intero, da una rete ferma.**
+   La checklist dei venti minuti prima è in testa a `SCRIPT.md`. Dal treno si
+   può fare solo metà della prova, e c'è una sezione apposta nello script che
+   dice quale metà: il comando `mock` gira senza rete ed è la verifica che
+   conta di più, mentre i tempi misurati su una rete mobile sono tre o quattro
+   volte più lunghi del vero e non vanno creduti.
 3. **Creare il GPT personalizzato**, se non è già fatto. Istruzioni passo passo
-   in `SCRIPT.md`, sezione A.0.
+   in `SCRIPT.md`, sezione A.0. Se non si fa in tempo non è un problema: il
+   ripiego è `demo/gpt_personalizzato/prompt_unico.md`, un blocco solo da
+   incollare in una conversazione normale, che fa la stessa cosa in trenta
+   secondi. È la sezione A.0-bis dello script.
 4. **Cronometrare i blocchi 2 e 3.** Cento slide in due ore, di cui trenta
    minuti di esercitazione, lasciano circa settanta minuti per novanta slide.
    Molte durano dieci secondi, ma vale la pena provarlo davvero.
